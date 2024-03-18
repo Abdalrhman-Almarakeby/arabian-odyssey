@@ -9,6 +9,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      colors: {
+        primary: "#01A368",
+      },
       spacing: {
         4.5: "1.125rem",
         6.5: "1.625rem",
