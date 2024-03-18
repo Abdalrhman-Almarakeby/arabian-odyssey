@@ -1,119 +1,162 @@
-import { useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useMenu } from "./useMenu";
-import { useShowHeader } from "./useShowHeader";
+import { useLocation } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
-import XIconSVG from "@/assets/icons/x-mark.svg?react";
-import BurgerIconSVG from "@/assets/icons/burger-menu.svg?react";
 
-export default function Header() {
+const navigation = [
+  { name: "Home", href: "/#" },
+  { name: "About", href: "/about#" },
+  { name: "Projects", href: "#" },
+  { name: "Calendar", href: "#" },
+];
+
+export default function Example() {
   const { pathname } = useLocation();
-  const menuRef = useRef<HTMLElement>(null);
-
-  const showHeader = useShowHeader();
-  const { isOpen, toggle, menuTransitionEnd } = useMenu(menuRef);
+  console.log(pathname);
 
   return (
-    <header
-      className={cn(
-        "border-y z-40 border-y-gray-15 fixed  w-full left-0 md:static transition-[top] duration-300 bg-gray-10 py-5 text-sm  2xl:py-5 2xl:text-lg",
-        showHeader ? "top-0" : "-top-full md:top-0"
-      )}
-    >
-      <div className="container flex items-center justify-between md:block">
-        <div className="w-[100px] text-4xl md:hidden">Logo</div>
-        <nav
-          id="main-menu"
-          aria-label="Main menu"
-          aria-expanded={isOpen}
-          aria-hidden={window.innerWidth < 768 && !isOpen}
-          role="menu"
-          ref={menuRef}
-          className={cn(
-            "absolute z-50 top-0 flex h-svh w-svw flex-col items-center gap-5 self-stretch pt-20 text-3xl backdrop-blur-md transition-[right] duration-300 md:visible md:static md:flex md:size-auto md:flex-row md:gap-1 md:pt-0 md:text-base md:backdrop-blur-none 2xl:gap-1.5",
-            isOpen ? "right-0" : "-right-[110%]"
-          )}
-          onTransitionEnd={menuTransitionEnd}
-        >
-          <div className="mr-auto hidden w-[100px] text-4xl md:block lg:w-[110px] xl:w-[130px] 2xl:w-[160px]">
-            Logo
+    <Disclosure as="nav" className="shadow">
+      {({ open }: { open: boolean }) => (
+        <>
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 justify-between">
+              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                {/* Mobile menu button*/}
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex flex-shrink-0 items-center text-3xl font-bold">Logo</div>
+                <div className="hidden sm:ml-6 sm:flex">
+                  <div className="flex space-x-4">
+                    {navigation.map((item) => (
+                      <HashLink
+                        key={item.name}
+                        to={item.href}
+                        className={cn(
+                          "grid place-items-center  px-3 py-2 text-base font-medium border-b-2 border-b-transparent",
+                          item.href.split("#")[0] === pathname
+                            ? "text-gray-900  border-b-primary"
+                            : " text-gray-500 hover:text-gray-700 hover:border-b-gray-300"
+                        )}
+                        aria-current={item.href.split("#")[0] === pathname ? "page" : undefined}
+                      >
+                        {item.name}
+                      </HashLink>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <button
+                  type="button"
+                  className="relative rounded-full p-1 text-gray-400 transition hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  <span className="absolute -inset-1.5" />
+                  <span className="sr-only">View notifications</span>
+                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+
+                {/* Profile dropdown */}
+                <Menu as="div" className="relative ml-3">
+                  <div>
+                    <Menu.Button className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                      <span className="absolute -inset-1.5" />
+                      <span className="sr-only">Open user menu</span>
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-primary ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }: { active: boolean }) => (
+                          <HashLink
+                            to="/#"
+                            className={cn(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Your Profile
+                          </HashLink>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }: { active: boolean }) => (
+                          <HashLink
+                            to="/#"
+                            className={cn(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Settings
+                          </HashLink>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }: { active: boolean }) => (
+                          <a
+                            href="#"
+                            className={cn(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Sign out
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              </div>
+            </div>
           </div>
-          <Link
-            onClick={() => isOpen && toggle()}
-            to="/"
-            role="menuitem"
-            className={cn(
-              "rounded-[0.625rem] border border-transparent px-5 py-3 transition duration-300 2xl:px-6 2xl:py-3.5",
-              pathname === "/" && "md:bg-gray-08 md:border-gray-15"
-            )}
-          >
-            Home
-          </Link>
-          <Link
-            onClick={() => isOpen && toggle()}
-            to="/about"
-            role="menuitem"
-            className={cn(
-              "rounded-[0.625rem] border border-transparent px-5 py-3 transition duration-300 2xl:px-6 2xl:py-3.5",
-              pathname === "/about" && "md:bg-gray-08 md:border-gray-15"
-            )}
-          >
-            About Us
-          </Link>
-          <Link
-            onClick={() => isOpen && toggle()}
-            to="/properties"
-            role="menuitem"
-            className={cn(
-              "rounded-[0.625rem] border border-transparent px-5 py-3 transition duration-300 2xl:px-6 2xl:py-3.5",
-              pathname === "/properties" && "md:bg-gray-08 md:border-gray-15"
-            )}
-          >
-            Properties
-          </Link>
-          <Link
-            onClick={() => isOpen && toggle()}
-            to="/services"
-            role="menuitem"
-            className={cn(
-              "rounded-[0.625rem] border border-transparent px-5 py-3 transition duration-300 2xl:px-6 2xl:py-3.5",
-              pathname === "/services" && "md:bg-gray-08 md:border-gray-15"
-            )}
-          >
-            Services
-          </Link>
-          <Link
-            onClick={() => isOpen && toggle()}
-            to="/contact"
-            role="menuitem"
-            className="md:border-gray-15 md:bg-gray-08 rounded-[0.625rem] px-5 py-3 md:ml-auto md:border 2xl:px-6 2xl:py-3.5"
-          >
-            Contact Us
-          </Link>
-        </nav>
-        <button
-          aria-expanded={isOpen}
-          aria-controls="main-menu"
-          aria-label="Toggle menu"
-          onClick={toggle}
-          className="z-[99999] md:hidden"
-        >
-          {isOpen ? (
-            <XIconSVG
-              role="img"
-              aria-label="Close navigation menu."
-              className="size-10 fill-black stroke-black"
-            />
-          ) : (
-            <BurgerIconSVG
-              role="img"
-              aria-label="Open navigation menu."
-              className="size-10 fill-black stroke-black"
-            />
-          )}
-          <span className="sr-only">{isOpen ? "Close Menu" : "Open Menu"}</span>
-        </button>
-      </div>
-    </header>
+
+          <Disclosure.Panel className="sm:hidden">
+            <div className="space-y-1 px-2 pb-3 pt-2">
+              {navigation.map((item) => (
+                <Disclosure.Button
+                  key={item.name}
+                  as="a"
+                  href={item.href}
+                  className={cn(
+                    "block px-3 py-2 text-base font-medium border-l-2 border-l-transparent",
+                    item.href.split("#")[0] === pathname
+                      ? "text-gray-900  border-l-primary bg-primary/10"
+                      : " text-gray-500 "
+                  )}
+                  aria-current={item.href.split("#")[0] === pathname ? "page" : undefined}
+                >
+                  {item.name}
+                </Disclosure.Button>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
   );
 }
