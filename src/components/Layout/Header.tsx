@@ -14,7 +14,6 @@ const navigation = [
 
 export default function Example() {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <Disclosure as="nav" className="shadow">
@@ -35,7 +34,9 @@ export default function Example() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center text-3xl font-bold">Logo</div>
+                <div className="flex flex-shrink-0 items-center text-3xl font-bold text-primary">
+                  Logo
+                </div>
                 <div className="hidden sm:ml-6 sm:flex">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
