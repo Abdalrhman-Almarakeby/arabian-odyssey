@@ -2,6 +2,7 @@ import HotAttractionsSection from "./HotAttractionsSection";
 import LandingSection from "./LandingSection";
 import VisitArabiaSection from "./VisitArabiaSection";
 import TopDestinationsSection from "./TopDestinationsSection";
+// import MostVisitedSection from "./MostVisitedSection";
 import CategoriesSection from "./CategoriesSection";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <VisitArabiaSection />
       <HotAttractionsSection />
       <TopDestinationsSection />
+      {/* <MostVisitedSection /> */}
       <CategoriesSection />
     </main>
   );
