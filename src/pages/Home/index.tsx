@@ -7,13 +7,17 @@ import CategoriesSection from "./CategoriesSection";
 
 export default function Home() {
   return (
-    <main className="grid flex-grow gap-20">
-      <LandingSection />
-      <VisitArabiaSection />
-      <HotAttractionsSection />
-      <TopDestinationsSection />
-      {/* <MostVisitedSection /> */}
-      <CategoriesSection />
-    </main>
+    <div>
+      <header>
+        <LandingSection />
+      </header>
+      <main className="grid flex-grow gap-20 py-[120px]">
+        <VisitArabiaSection />
+        <HotAttractionsSection />
+        <TopDestinationsSection />
+        {/* <MostVisitedSection /> */}
+        <CategoriesSection />
+      </main>
+    </div>
   );
 }
