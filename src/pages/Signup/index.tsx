@@ -4,6 +4,7 @@ import Loading from "@/components/Loading";
 import { useSignupEmail } from "@/context/SignupEmailContext";
 import { useUser } from "@/context/UserContext";
 import FormError from "@/components/FormError";
+import { Input } from "@/components/Input";
 
 export default function Signup() {
   const { setSignupEmail } = useSignupEmail();
@@ -88,15 +89,14 @@ export default function Signup() {
               <label htmlFor="name" className="mb-2 block text-sm font-medium text-black">
                 Your full name
               </label>
-              <input
+              <Input
                 type="text"
                 name="name"
+                id="name"
                 minLength={3}
                 maxLength={30}
-                id="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-black focus:border-primary focus:ring-primary sm:text-sm"
                 placeholder="John Doe"
                 required
               />
@@ -105,13 +105,12 @@ export default function Signup() {
               <label htmlFor="email" className="mb-2 block text-sm font-medium text-black">
                 Email
               </label>
-              <input
+              <Input
                 type="email"
                 name="email"
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-black focus:border-primary focus:ring-primary sm:text-sm"
                 placeholder="John_doe@example.com"
                 required
               />
@@ -120,7 +119,7 @@ export default function Signup() {
               <label htmlFor="password" className="mb-2 block text-sm font-medium text-black">
                 Password
               </label>
-              <input
+              <Input
                 type="password"
                 name="password"
                 id="password"
@@ -128,7 +127,6 @@ export default function Signup() {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="••••••••"
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-black focus:border-primary focus:ring-primary sm:text-sm"
                 required
               />
             </div>
@@ -139,7 +137,7 @@ export default function Signup() {
               >
                 Confirm Password
               </label>
-              <input
+              <Input
                 type="password"
                 name="cpassword"
                 id="confirmPassword"

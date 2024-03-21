@@ -3,12 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "@/lib/hooks/useStorage";
 import { useUser } from "@/context/UserContext";
 import Loading from "@/components/Loading";
+import { Input } from "@/components/Input";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  //  Logo   Search  (Login avatar)
+  // categories
   const [error, setErrors] = useState<string[] | string>([]);
   const [loading, setLoading] = useState(false);
   const { setValue: setToken } = useLocalStorage<string>("token", "");
@@ -95,13 +98,12 @@ export default function Signup() {
               <label htmlFor="email" className="mb-2 block text-sm font-medium text-black">
                 Email
               </label>
-              <input
+              <Input
                 type="email"
                 name="email"
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-black focus:border-primary focus:ring-primary sm:text-sm"
                 placeholder="John_doe@example.com"
                 required
               />
@@ -110,7 +112,7 @@ export default function Signup() {
               <label htmlFor="password" className="mb-2 block text-sm font-medium text-black">
                 Password
               </label>
-              <input
+              <Input
                 type="password"
                 name="password"
                 id="password"
@@ -118,7 +120,6 @@ export default function Signup() {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="••••••••"
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-black focus:border-primary focus:ring-primary sm:text-sm"
                 required
               />
             </div>
