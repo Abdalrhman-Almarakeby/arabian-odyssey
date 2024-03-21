@@ -5,6 +5,7 @@ import { useSignupEmail } from "@/context/SignupEmailContext";
 import { useUser } from "@/context/UserContext";
 import FormError from "@/components/FormError";
 import { Input } from "@/components/Input";
+import SubmitButton from "@/components/SubmitButton";
 
 export default function Signup() {
   const { setSignupEmail } = useSignupEmail();
@@ -148,12 +149,7 @@ export default function Signup() {
                 required
               />
             </div>
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-primary/90 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-black"
-            >
-              Create an account
-            </button>
+            <SubmitButton>Create an account</SubmitButton>
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account?{" "}
               <Link className="font-medium text-primary hover:underline" to="/signin">

@@ -4,6 +4,7 @@ import { useLocalStorage } from "@/lib/hooks/useStorage";
 import { useUser } from "@/context/UserContext";
 import Loading from "@/components/Loading";
 import { Input } from "@/components/Input";
+import SubmitButton from "@/components/SubmitButton";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -124,12 +125,7 @@ export default function Signup() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-primary/90 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-black"
-            >
-              Log in
-            </button>
+            <SubmitButton>Log in</SubmitButton>
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Don't have an account?{" "}
               <Link className="font-medium text-primary hover:underline" to="/signup">
