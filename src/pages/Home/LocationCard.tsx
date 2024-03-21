@@ -7,12 +7,7 @@ type LocationCardProps = {
   ratingCount: number;
 };
 
-export default function LocationCard({
-  image,
-  locationName,
-  rating,
-  ratingCount,
-}: LocationCardProps) {
+export function LocationCard({ image, locationName, rating, ratingCount }: LocationCardProps) {
   return (
     <div className="grid gap-3.5">
       <img src={image} alt="" className="rounded-[0.625rem]" />

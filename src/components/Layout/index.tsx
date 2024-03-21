@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
-export default function Layout() {
+export function Layout() {
   const { pathname } = useLocation();
 
   useEffect(() => {

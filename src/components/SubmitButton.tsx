@@ -5,7 +5,7 @@ type SubmitButtonProps = {
   className?: string;
 };
 
-export default function SubmitButton({ children, className }: SubmitButtonProps) {
+export function SubmitButton({ children, className }: SubmitButtonProps) {
   return (
     <button
       type="submit"

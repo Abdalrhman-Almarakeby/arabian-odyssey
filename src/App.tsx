@@ -2,12 +2,12 @@ import { useLayoutEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useUser } from "@/context/UserContext";
 import { useLocalStorage } from "./lib/hooks/useStorage";
-import Layout from "@/components/Layout";
-import Home from "@/pages/Home";
-import Error from "@/pages/Error";
-import Signup from "@/pages/Signup";
-import Signin from "@/pages/Signin";
-import ConfirmEmail from "@/pages/ConfirmEmail";
+import { Layout } from "@/components/Layout";
+import { Home } from "@/pages/Home";
+import { Error } from "@/pages/Error";
+import { Signup } from "@/pages/Signup";
+import { Signin } from "@/pages/Signin";
+import { ConfirmEmail } from "@/pages/ConfirmEmail";
 import "./CSS/output.css";
 
 export default function App() {

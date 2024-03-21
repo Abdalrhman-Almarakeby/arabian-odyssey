@@ -1,7 +1,7 @@
 import homeImg from "@/assets/imgs/home.webp";
 import { HashLink } from "react-router-hash-link";
 
-export default function LandingSection() {
+export function LandingSection() {
   return (
     <section className="relative grid place-items-center">
       <img src={homeImg} alt="" className="h-[calc(100svh-64px)] w-full object-cover" />

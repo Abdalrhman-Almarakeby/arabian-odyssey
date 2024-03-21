@@ -1,7 +1,7 @@
 import { useSignupEmail } from "@/context/SignupEmailContext";
 import { useNavigate } from "react-router-dom";
 
-export default function ConfirmEmail() {
+export function ConfirmEmail() {
   const navigate = useNavigate();
   const { signupEmail } = useSignupEmail();
 

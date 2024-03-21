@@ -14,7 +14,7 @@ const navigation = [
   { name: "Calendar", href: "#" },
 ];
 
-export default function Header() {
+export function Header() {
   const { pathname } = useLocation();
   const { setUser, user } = useUser();
   const { setValue: setToken } = useLocalStorage("token", "");

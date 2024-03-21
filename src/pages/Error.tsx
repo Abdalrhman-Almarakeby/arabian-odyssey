@@ -1,3 +1,3 @@
-export default function Error() {
+export function Error() {
   return <div className="flex-grow">Error</div>;
 }

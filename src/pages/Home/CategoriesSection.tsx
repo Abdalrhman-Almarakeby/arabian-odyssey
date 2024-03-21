@@ -1,6 +1,6 @@
-import SectionHeading from "@/components/SectionHeading";
+import { SectionHeading } from "@/components/SectionHeading";
 
-export default function CategoriesSection() {
+export function CategoriesSection() {
   return (
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
       <SectionHeading>Browse By Category</SectionHeading>
