@@ -4,16 +4,14 @@ function useStorage<T>(
   key: string,
   defaultValue: T | (() => T),
   storageObject: Storage
-): [T, Dispatch<SetStateAction<T>>, () => void] {
+): { value: T; setValue: Dispatch<SetStateAction<T>>; remove: () => void } {
   const [value, setValue] = useState<T>(() => {
     const jsonValue = storageObject.getItem(key);
     if (jsonValue != null) return JSON.parse(jsonValue);
 
-    if (typeof defaultValue === "function") {
-      return (defaultValue as () => T)();
-    } else {
-      return defaultValue;
-    }
+    if (typeof defaultValue === "function") return (defaultValue as () => T)();
+
+    return defaultValue;
   });
 
   useEffect(() => {
@@ -28,7 +26,7 @@ function useStorage<T>(
     setValue(undefined as unknown as T);
   }, []);
 
-  return [value, setValue, remove];
+  return { value, setValue, remove };
 }
 
 export function useLocalStorage<T>(key: string, defaultValue: T | (() => T)) {
