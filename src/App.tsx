@@ -1,5 +1,6 @@
 import { useLayoutEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { User } from "@/types/user";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
 import { Layout } from "@/components/Layout";
@@ -8,8 +9,11 @@ import { Error } from "@/pages/Error";
 import { Signup } from "@/pages/Signup";
 import { Signin } from "@/pages/Signin";
 import { ConfirmEmail } from "@/pages/ConfirmEmail";
+import { Category } from "@/pages/Category";
+import { Settings } from "@/pages/Settings";
+import { Profile } from "@/pages/Profile";
+
 import "./CSS/output.css";
-import { User } from "./types/user";
 
 export default function App() {
   const { token } = useLocalStorageToken();
@@ -40,6 +44,9 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/category/:category" element={<Category />} />
       </Route>
       <Route path="/confirm-email" element={<ConfirmEmail />} />
       <Route path="*" element={<Error />} />
