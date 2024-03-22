@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-type  SliderContentProps=  {
+type SliderContentProps = {
   img: string;
   location: string;
-}
+};
 
-function SliderContent({ img, location }: SliderContentProps) {
+export function SliderContent({ img, location }: SliderContentProps) {
   return (
     <div className="relative flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
       <div className="absolute right-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center px-16 py-2">
@@ -32,5 +32,3 @@ function SliderContent({ img, location }: SliderContentProps) {
     </div>
   );
 }
-
-export default SliderContent;

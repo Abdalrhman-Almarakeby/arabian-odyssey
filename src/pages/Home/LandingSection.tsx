@@ -1,8 +1,8 @@
+import { Carousel } from "flowbite-react";
+import { SliderContent } from "@/components/SliderContent";
 import homeImg1 from "@/assets/imgs/slider1.webp";
 import homeImg2 from "@/assets/imgs/slider2.webp";
 import homeImg3 from "@/assets/imgs/slider3.webp";
-import { Carousel } from "flowbite-react";
-import SliderContent from "../../components/SliderContent";
 
 export function LandingSection() {
   return (

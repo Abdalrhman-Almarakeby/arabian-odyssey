@@ -1,4 +1,4 @@
-import ReasonElem from "@/components/ReasonElem";
+import { ReasonElem } from "@/components/ReasonElem";
 import { SectionHeading } from "@/components/SectionHeading";
 import { faBuildingColumns, faMountain } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -10,7 +10,7 @@ type reasonObj = {
   icon: IconProp;
 };
 
-export default function VisitArabiaSection() {
+export function VisitArabiaSection() {
   const reasons: reasonObj[] = [
     {
       title: "Rich cultural and history",

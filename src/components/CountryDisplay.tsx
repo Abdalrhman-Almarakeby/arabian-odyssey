@@ -7,7 +7,7 @@ type CountryDisplayProps = {
   id: string;
 };
 
-function CountryDisplay({ name, touristCount, flag, id }: CountryDisplayProps) {
+export function CountryDisplay({ name, touristCount, flag, id }: CountryDisplayProps) {
   return (
     <li className="flex items-center justify-center gap-4">
       <Link to={`/country/${id}`} className="flex flex-col items-center">
@@ -20,5 +20,3 @@ function CountryDisplay({ name, touristCount, flag, id }: CountryDisplayProps) {
     </li>
   );
 }
-
-export default CountryDisplay;

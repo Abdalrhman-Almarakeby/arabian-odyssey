@@ -5,13 +5,14 @@ import axios from "axios";
 import { Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 
-export default function CategoriesSection() {
+export function CategoriesSection() {
   const [categories, setCategories]: unknown = useState(false);
   useEffect(() => {
     axios.get("https://arabian-odyssey.vercel.app/category").then((res: unknown) => {
       setCategories(res.data.category);
     });
   }, []);
+
   return (
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
       <SectionHeading>Browse By Category</SectionHeading>

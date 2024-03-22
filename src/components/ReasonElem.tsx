@@ -7,7 +7,7 @@ type reasonItemProps = {
   logo: IconProp;
 };
 
-function ReasonElem({ title, desc, logo }: reasonItemProps) {
+export function ReasonElem({ title, desc, logo }: reasonItemProps) {
   return (
     <div className="group relative overflow-hidden rounded-[0.625rem] bg-primary/10 p-5 hover:bg-primary">
       <div className="relative z-10">
@@ -26,5 +26,3 @@ function ReasonElem({ title, desc, logo }: reasonItemProps) {
     </div>
   );
 }
-
-export default ReasonElem;

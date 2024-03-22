@@ -1,18 +1,18 @@
-import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
 import { useEffect, useState } from "react";
-import "pure-react-carousel/dist/react-carousel.es.css";
-import RatedSwiperSlide from "@/components/RatedSwiperSlide";
+import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
+import { RatedSwiperSlide } from "@/components/RatedSwiperSlide";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import UnratedSwiperSlide from "./UnratedSwiperSlide";
-import x from "@/assets/temp.jpg";
+import { UnratedSwiperSlide } from "./UnratedSwiperSlide";
+import temp from "@/assets/temp.jpg";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
 type ContentSliderProps = {
   data: any;
   isRated: boolean;
 };
 
-function ContentSlider({ data, isRated }: ContentSliderProps) {
+export function ContentSlider({ data, isRated }: ContentSliderProps) {
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
@@ -50,7 +50,7 @@ function ContentSlider({ data, isRated }: ContentSliderProps) {
           ? data.map((item: any, i: number) => (
               <RatedSwiperSlide
                 locationName={item.name}
-                image={item.image ? item.image.path : x}
+                image={item.image ? item.image.path : temp}
                 rating={item.rating}
                 ratingCount={item.ratingCount}
                 key={i}
@@ -61,7 +61,7 @@ function ContentSlider({ data, isRated }: ContentSliderProps) {
               return (
                 <UnratedSwiperSlide
                   locationName={item.name}
-                  image={item.image ? item.image.path : x}
+                  image={item.image ? item.image.path : temp}
                   key={i}
                   i={i}
                 />
@@ -79,5 +79,3 @@ function ContentSlider({ data, isRated }: ContentSliderProps) {
     </CarouselProvider>
   );
 }
-
-export default ContentSlider;
