@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useLocalStorage } from "@/lib/hooks/useStorage";
+import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
 import { Loading } from "@/components/Loading";
 import { Input } from "@/components/Input";
@@ -11,11 +11,9 @@ export function Signin() {
     email: "",
     password: "",
   });
-  //  Logo   Search  (Login avatar)
-  // categories
   const [error, setErrors] = useState<string[] | string>([]);
   const [loading, setLoading] = useState(false);
-  const { setValue: setToken } = useLocalStorage<string>("token", "");
+  const { setToken } = useLocalStorageToken();
   const navigate = useNavigate();
   const { user } = useUser();
 
@@ -41,12 +39,11 @@ export function Signin() {
           );
         }
         if (data.message === "success") {
-          setLoading(false);
           setToken(data.token);
-          location.reload();
+          () => setTimeout(() => navigate("/"), 10);
         }
+        setLoading(false);
       })
-      .then(() => setTimeout(() => navigate("/"), 100))
       .catch((err) => console.log(err));
   }
 

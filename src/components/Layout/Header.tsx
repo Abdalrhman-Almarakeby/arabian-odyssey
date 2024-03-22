@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useUser } from "@/contexts/UserContext";
+import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
-import { useLocalStorage } from "@/lib/hooks/useStorage";
 
 const navigation = [
   { name: "Home", href: "/#" },
@@ -17,7 +17,7 @@ const navigation = [
 export function Header() {
   const { pathname } = useLocation();
   const { setUser, user } = useUser();
-  const { setValue: setToken } = useLocalStorage("token", "");
+  const { setToken } = useLocalStorageToken();
 
   function signOut() {
     setUser("");

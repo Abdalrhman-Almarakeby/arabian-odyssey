@@ -1,7 +1,7 @@
 import { useLayoutEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
-import { useLocalStorage } from "./lib/hooks/useStorage";
 import { Layout } from "@/components/Layout";
 import { Home } from "@/pages/Home";
 import { Error } from "@/pages/Error";
@@ -11,7 +11,7 @@ import { ConfirmEmail } from "@/pages/ConfirmEmail";
 import "./CSS/output.css";
 
 export default function App() {
-  const { value: token } = useLocalStorage("token", "");
+  const { token } = useLocalStorageToken();
   const { setUser } = useUser();
 
   useLayoutEffect(() => {
