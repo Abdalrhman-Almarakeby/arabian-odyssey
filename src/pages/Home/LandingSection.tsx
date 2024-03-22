@@ -6,7 +6,7 @@ import SliderContent from "../../components/SliderContent";
 
 export function LandingSection() {
   return (
-    <section className="h-[calc(100svh-64px)]">
+    <section className="h-[calc(100svh-52px)] md:h-[calc(100svh-52px)] lg:h-[calc(100svh-72px)]">
       <Carousel slideInterval={5000} pauseOnHover>
         <SliderContent img={homeImg1} location={"Sir Al Dannieyh, Lebanon"}></SliderContent>
         <SliderContent img={homeImg3} location={"Ain Draham, Tunisia"}></SliderContent>

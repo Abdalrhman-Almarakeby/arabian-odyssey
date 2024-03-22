@@ -49,13 +49,15 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-
       screens: {
         "3xl": "1600px",
         "min-450": "450px",
       },
       transitionDuration: {
         "10s": "10s",
+      },
+      boxShadow: {
+        1: " rgba(0, 0, 0, 0.1) 0px 4px 12px",
       },
     },
   },

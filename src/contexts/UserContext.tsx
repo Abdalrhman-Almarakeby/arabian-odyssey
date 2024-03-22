@@ -1,3 +1,4 @@
+import { User } from "@/types/user";
 import { useState, createContext, useContext } from "react";
 
 type UserContextProps = {
@@ -5,8 +6,8 @@ type UserContextProps = {
 };
 
 type UserContext = {
-  user: string;
-  setUser: React.Dispatch<React.SetStateAction<string>>;
+  user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
 };
 
 const UserContext = createContext<UserContext | null>(null);
@@ -19,7 +20,7 @@ export function useUser() {
 }
 
 export function UserContextProvider({ children }: UserContextProps) {
-  const [user, setUser] = useState<string>("");
+  const [user, setUser] = useState<User | null>(null);
 
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 }

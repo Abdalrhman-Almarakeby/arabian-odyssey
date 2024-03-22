@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { Loading } from "@/components/Loading";
 
-export function Layout() {
+export function Layout({ loading }: { loading: boolean }) {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -15,7 +16,8 @@ export function Layout() {
   }, [pathname]);
 
   return (
-    <div>
+    <div className="relative flex min-h-svh flex-col">
+      {loading && <Loading />}
       <Header />
       <Outlet />
       <Footer />

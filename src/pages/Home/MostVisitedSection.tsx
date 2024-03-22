@@ -15,10 +15,11 @@ export default function MostVisitedSection() {
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
       <SectionHeading>Most Visited</SectionHeading>
 
-      <ol className="grid grid-cols-1 min-450:grid-cols-2 md:grid-cols-3 gap-10 gap-x-4 w-full items-center justify-center">
+      <ol className="grid w-full grid-cols-1 items-center justify-center gap-10 gap-x-4 min-450:grid-cols-2 md:grid-cols-3">
         {countries.length ? (
           countries.map((country: any) => (
             <CountryDisplay
+              key={country.name}
               name={country.name}
               touristCount={country.numoftourist}
               flag={country.flag.path}
