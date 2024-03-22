@@ -4,7 +4,11 @@ import { HashLink } from "react-router-hash-link";
 export function LandingSection() {
   return (
     <section className="relative grid place-items-center">
-      <img src={homeImg} alt="" className="h-[calc(100svh-64px)] w-full object-cover" />
+      <img
+        src={homeImg}
+        alt=""
+        className="h-[calc(100svh-52px)] w-full object-cover md:h-[calc(100svh-52px)] lg:h-[calc(100svh-72px)]"
+      />
       <div className="container absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center px-4 text-center text-white">
         <h1 className="mb-6 text-2xl font-bold lg:mb-7.5 lg:text-4xl">Arabia Beyond the Desert</h1>
         <h2 className="mb-3 lg:mb-3.5 lg:text-lg">
