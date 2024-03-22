@@ -9,5 +9,5 @@ export function Settings() {
     navigate("/signin");
   }
 
-  return user && <div>Profile: {user.name}</div>;
+  return user && <div className="container px-4 flex-grow">Settings: {user.name}</div>;
 }
