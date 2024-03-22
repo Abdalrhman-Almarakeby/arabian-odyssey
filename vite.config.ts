@@ -10,7 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/arabian-odyssey",
+  base: "/",
   server: {
     port: 3000,
   },
