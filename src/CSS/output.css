@@ -1752,4 +1752,9 @@ p,
   .xl\:p-0 {
     padding: 0px;
   }
+
+  .xl\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
