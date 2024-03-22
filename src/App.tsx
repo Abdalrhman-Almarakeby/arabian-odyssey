@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import axios, { AxiosResponse } from "axios";
 import { User } from "@/types/user";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
@@ -23,14 +24,14 @@ export default function App() {
   useEffect(() => {
     if (!token) return setUser(null);
 
-    fetch("https://arabian-odyssey.vercel.app/user", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        token: `ArabianOdyssey__${token}`,
-      },
-    })
-      .then((res) => res.json())
+    axios
+      .get("https://arabian-odyssey.vercel.app/user", {
+        headers: {
+          "Content-Type": "application/json",
+          token: `ArabianOdyssey__${token}`,
+        },
+      })
+      .then((res: AxiosResponse) => res.data)
       .then((data: { message: string; user: User; err?: string }) => {
         if (data.message === "success") {
           setUser(data.user);

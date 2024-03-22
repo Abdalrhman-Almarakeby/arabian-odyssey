@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios, { AxiosResponse } from "axios";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
 import { Loading } from "@/components/Loading";
@@ -22,15 +23,15 @@ export function Signin() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     setLoading(true);
-    fetch("https://arabian-odyssey.vercel.app/auth/signin", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+
+    axios
+      .post("https://arabian-odyssey.vercel.app/auth/signin", JSON.stringify(formData), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res: AxiosResponse) => res.data)
+      .then((data: { message: string; token: string; err?: string | { message: string }[] }) => {
         if (data.err) {
           setErrors(
             typeof data.err === "string"
@@ -69,7 +70,7 @@ export function Signin() {
                   error.map((err) => (
                     <p
                       key={err}
-                      className="rounded-lg border border-red-600 bg-red-200 px-2 py-2 text-sm font-semibold text-red-600 md:text-base lg:text-lg"
+                      className="lg:text-lg rounded-lg border border-red-600 bg-red-200 px-2 py-2 text-sm font-semibold text-red-600 md:text-base"
                       aria-label={err}
                     >
                       {err}
@@ -77,7 +78,7 @@ export function Signin() {
                   ))
                 ) : (
                   <p
-                    className="rounded-lg border border-red-600 bg-red-200 px-2 py-2 text-sm font-semibold text-red-600 md:text-base lg:text-lg"
+                    className="lg:text-lg rounded-lg border border-red-600 bg-red-200 px-2 py-2 text-sm font-semibold text-red-600 md:text-base"
                     aria-label={error}
                   >
                     {error === "user already exist" ? (

@@ -7,12 +7,13 @@ import { CountryDisplay } from "@/components/CountryDisplay";
 
 export function MostVisitedSection() {
   const [countries, setCountries] = useState<Country[]>([]);
+
   useEffect(() => {
     axios.get("https://arabian-odyssey.vercel.app/country/home").then((res) => {
       setCountries(res.data.country);
-      console.log(res.data.country);
     });
   }, []);
+
   return (
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
       <SectionHeading>Most Visited</SectionHeading>

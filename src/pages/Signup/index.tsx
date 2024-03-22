@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios, { AxiosResponse } from "axios";
 import { Loading } from "@/components/Loading";
 import { useSignupEmail } from "@/contexts/SignupEmailContext";
 import { useUser } from "@/contexts/UserContext";
@@ -26,15 +27,15 @@ export function Signup() {
     e.preventDefault();
     setLoading(true);
     setSignupEmail(formData.email);
-    fetch("https://arabian-odyssey.vercel.app/auth/signup", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+
+    axios
+      .post("https://arabian-odyssey.vercel.app/auth/signup", JSON.stringify(formData), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res: AxiosResponse) => res.data)
+      .then((data: { message: string; err?: string | { message: string }[] }) => {
         console.log(data);
         if (data.err) {
           setErrors(
@@ -58,7 +59,7 @@ export function Signup() {
       [e.target.name]: e.target.value,
     }));
   }
-  console.log();
+
   return (
     <section className="flex flex-grow flex-col items-center pt-6">
       {loading && <Loading />}
