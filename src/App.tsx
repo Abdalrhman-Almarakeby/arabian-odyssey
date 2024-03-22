@@ -9,13 +9,14 @@ import { Signup } from "@/pages/Signup";
 import { Signin } from "@/pages/Signin";
 import { ConfirmEmail } from "@/pages/ConfirmEmail";
 import "./CSS/output.css";
+import { User } from "./types/user";
 
 export default function App() {
   const { token } = useLocalStorageToken();
   const { setUser } = useUser();
 
   useLayoutEffect(() => {
-    if (!token) return setUser("");
+    if (!token) return setUser(null);
 
     fetch("https://arabian-odyssey.vercel.app/user", {
       method: "GET",
@@ -25,7 +26,7 @@ export default function App() {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: { message: string; user: User; err?: string }) => {
         if (data.message === "success") {
           setUser(data.user);
         }
