@@ -1,8 +1,10 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 interface SliderContentProps {
-  img: string,
-  location: string
+  img: string;
+  location: string;
 }
 
 function SliderContent({ img, location }: SliderContentProps) {
@@ -20,11 +22,9 @@ function SliderContent({ img, location }: SliderContentProps) {
           Explore now
         </button>
       </div>
-      <div className="hidden sm:absolute">
-        
-      <p className="text-white">
-        {location}
-      </p>
+      <div className="absolute bottom-4 z-10 right-0 mx-6 text-white">
+        <FontAwesomeIcon icon={faLocationDot} className="mr-2 text-xl" />
+        <p className="inline-block">{location}</p>
       </div>
       <figure className="top-0 right-0 w-full h-full">
         <div className="bg-black w-full h-full opacity-20 absolute top-0 left-0"></div>

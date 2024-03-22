@@ -10,6 +10,7 @@ module.exports = {
   theme: {
     container: {
       center: true,
+      margin: "0px",
     },
     fontSize: {
       "4xl": "36px",
