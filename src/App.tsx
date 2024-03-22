@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { User } from "@/types/user";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
@@ -18,8 +18,9 @@ import "./CSS/output.css";
 export default function App() {
   const { token } = useLocalStorageToken();
   const { setUser } = useUser();
+  const [isLoading, setIsLoading] = useState(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!token) return setUser(null);
 
     fetch("https://arabian-odyssey.vercel.app/user", {
@@ -33,6 +34,7 @@ export default function App() {
       .then((data: { message: string; user: User; err?: string }) => {
         if (data.message === "success") {
           setUser(data.user);
+          setIsLoading(false);
         }
       })
       .catch((err) => console.log(err));
@@ -40,7 +42,7 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout loading={isLoading} />}>
         <Route index element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
