@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Loading } from "@/components/Loading";
-import { useSignupEmail } from "@/context/SignupEmailContext";
-import { useUser } from "@/context/UserContext";
+import { useSignupEmail } from "@/contexts/SignupEmailContext";
+import { useUser } from "@/contexts/UserContext";
 import { FormError } from "@/components/FormError";
 import { Input } from "@/components/Input";
 import { SubmitButton } from "@/components/SubmitButton";

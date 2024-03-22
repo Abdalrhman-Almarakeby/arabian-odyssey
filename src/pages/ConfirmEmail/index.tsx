@@ -1,4 +1,4 @@
-import { useSignupEmail } from "@/context/SignupEmailContext";
+import { useSignupEmail } from "@/contexts/SignupEmailContext";
 import { useNavigate } from "react-router-dom";
 
 export function ConfirmEmail() {

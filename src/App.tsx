@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/contexts/UserContext";
 import { useLocalStorage } from "./lib/hooks/useStorage";
 import { Layout } from "@/components/Layout";
 import { Home } from "@/pages/Home";

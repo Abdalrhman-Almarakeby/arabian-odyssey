@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "@/lib/hooks/useStorage";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/contexts/UserContext";
 import { Loading } from "@/components/Loading";
 import { Input } from "@/components/Input";
 import { SubmitButton } from "@/components/SubmitButton";
