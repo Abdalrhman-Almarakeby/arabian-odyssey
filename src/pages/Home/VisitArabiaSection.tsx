@@ -35,7 +35,7 @@ export default function VisitArabiaSection() {
 
       <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         {
-          reasons.map((reason) => <ReasonElem title={reason.title} desc={reason.desc} logo={reason.icon}></ReasonElem>)
+          reasons.map((reason, i) => <ReasonElem title={reason.title} desc={reason.desc} logo={reason.icon} key={i}></ReasonElem>)
         }
       </div>
     </section>

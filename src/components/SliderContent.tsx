@@ -21,7 +21,7 @@ function SliderContent({ img, location }: SliderContentProps) {
           Explore now
         </button>
       </div>
-      <div className="absolute bottom-4 z-10 right-0 mx-6 text-white">
+      <div className="absolute bottom-10 z-10 right-0 mx-6 text-white">
         <FontAwesomeIcon icon={faLocationDot} className="mr-2 text-xl" />
         <p className="inline-block">{location}</p>
       </div>
