@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import ContentSlider from './ContentSlider';
 import { Spinner } from 'flowbite-react';
 
-interface DataSliderProps {
+type  DataSliderProps = {
     path: string,
     isRated: boolean,
     field: string
@@ -26,7 +26,7 @@ function DataSlider({ path, isRated, field }: DataSliderProps) {
     data ? (
         <ContentSlider isRated={isRated} data={data} />
       ) : failure ? (
-        <p className="text-red-500 text-center text-base">
+        <p className="text-center text-base text-red-500">
           Unable to get data, try again later
         </p>
       ) : (

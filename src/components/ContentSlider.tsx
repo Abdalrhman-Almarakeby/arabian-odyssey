@@ -1,9 +1,4 @@
-import {
-  CarouselProvider,
-  Slider,
-  ButtonBack,
-  ButtonNext,
-} from "pure-react-carousel";
+import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
 import { useEffect, useState } from "react";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import RatedSwiperSlide from "@/components/RatedSwiperSlide";
@@ -12,10 +7,10 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import UnratedSwiperSlide from "./UnratedSwiperSlide";
 import x from "@/assets/temp.jpg";
 
-interface ContentSliderProps {
+type ContentSliderProps = {
   data: any;
   isRated: boolean;
-}
+};
 
 function ContentSlider({ data, isRated }: ContentSliderProps) {
   const [width, setWidth] = useState(window.innerWidth);
@@ -42,7 +37,7 @@ function ContentSlider({ data, isRated }: ContentSliderProps) {
 
   return (
     <CarouselProvider
-      className="w-full relative"
+      className="relative w-full"
       isIntrinsicHeight
       naturalSlideWidth={100}
       naturalSlideHeight={125}
@@ -73,7 +68,7 @@ function ContentSlider({ data, isRated }: ContentSliderProps) {
               );
             })}
       </Slider>
-      <div className="mt-3 w-full flex justify-between text-primary text-4xl absolute top-[calc(50%-36px)]">
+      <div className="absolute top-[calc(50%-36px)] mt-3 flex w-full justify-between text-4xl text-primary">
         <ButtonBack>
           <FontAwesomeIcon icon={faAngleLeft} />
         </ButtonBack>

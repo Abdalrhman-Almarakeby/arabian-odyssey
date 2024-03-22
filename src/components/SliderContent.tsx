@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-interface SliderContentProps {
+type  SliderContentProps=  {
   img: string;
   location: string;
 }

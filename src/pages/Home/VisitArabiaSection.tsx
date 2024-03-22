@@ -4,11 +4,11 @@ import { faBuildingColumns, faMountain } from "@fortawesome/free-solid-svg-icons
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-interface reasonObj {
+type reasonObj = {
   title: string;
   desc: string;
   icon: IconProp;
-}
+};
 
 export default function VisitArabiaSection() {
   const reasons: reasonObj[] = [
