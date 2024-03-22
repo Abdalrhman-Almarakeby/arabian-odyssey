@@ -4,11 +4,12 @@ import { RatedSwiperSlide } from "@/components/RatedSwiperSlide";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { UnratedSwiperSlide } from "./UnratedSwiperSlide";
+import { Attraction } from "@/types/attraction";
 import temp from "@/assets/temp.jpg";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
 type ContentSliderProps = {
-  data: any;
+  data: Attraction[];
   isRated: boolean;
 };
 
@@ -47,26 +48,23 @@ export function ContentSlider({ data, isRated }: ContentSliderProps) {
     >
       <Slider className="px-6">
         {isRated
-          ? data.map((item: any, i: number) => (
+          ? data.map((item, i) => (
               <RatedSwiperSlide
                 locationName={item.name}
                 image={item.image ? item.image.path : temp}
                 rating={item.rating}
-                ratingCount={item.ratingCount}
                 key={i}
                 i={i}
               />
             ))
-          : data.map((item: any, i: number) => {
-              return (
-                <UnratedSwiperSlide
-                  locationName={item.name}
-                  image={item.image ? item.image.path : temp}
-                  key={i}
-                  i={i}
-                />
-              );
-            })}
+          : data.map((item, i: number) => (
+              <UnratedSwiperSlide
+                locationName={item.name}
+                image={item.image ? item.image.path : temp}
+                key={i}
+                i={i}
+              />
+            ))}
       </Slider>
       <div className="absolute top-[calc(50%-36px)] mt-3 flex w-full justify-between text-4xl text-primary">
         <ButtonBack>

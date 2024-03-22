@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 type CountryDisplayProps = {
   name: string;
-  touristCount: number;
+  touristCount: string;
   flag: string;
   id: string;
 };

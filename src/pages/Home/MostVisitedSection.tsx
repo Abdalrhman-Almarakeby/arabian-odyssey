@@ -1,14 +1,16 @@
-import { CountryDisplay } from "@/components/CountryDisplay";
-import { SectionHeading } from "@/components/SectionHeading";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Spinner } from "flowbite-react";
-import { useEffect, useState } from "react";
+import { Country } from "@/types/Country";
+import { SectionHeading } from "@/components/SectionHeading";
+import { CountryDisplay } from "@/components/CountryDisplay";
 
 export function MostVisitedSection() {
-  const [countries, setCountries] = useState(false);
+  const [countries, setCountries] = useState<Country[]>([]);
   useEffect(() => {
     axios.get("https://arabian-odyssey.vercel.app/country/home").then((res) => {
       setCountries(res.data.country);
+      console.log(res.data.country);
     });
   }, []);
   return (
@@ -17,7 +19,7 @@ export function MostVisitedSection() {
 
       <ol className="grid w-full grid-cols-1 items-center justify-center gap-10 gap-x-4 min-450:grid-cols-2 md:grid-cols-3">
         {countries.length ? (
-          countries.map((country: any) => (
+          countries.map((country) => (
             <CountryDisplay
               key={country.name}
               name={country.name}

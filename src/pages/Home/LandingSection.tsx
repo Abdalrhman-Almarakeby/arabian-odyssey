@@ -6,7 +6,7 @@ import homeImg3 from "@/assets/imgs/slider3.webp";
 
 export function LandingSection() {
   return (
-    <section className="h-[calc(100svh-52px)] md:h-[calc(100svh-52px)] lg:h-[calc(100svh-72px)]">
+    <section className="h-[calc(100svh-61px)] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-84px)]">
       <Carousel slideInterval={5000} pauseOnHover>
         <SliderContent img={homeImg1} location={"Sir Al Dannieyh, Lebanon"}></SliderContent>
         <SliderContent img={homeImg3} location={"Ain Draham, Tunisia"}></SliderContent>
