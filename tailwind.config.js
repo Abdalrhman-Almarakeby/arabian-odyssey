@@ -2,15 +2,28 @@
 /* eslint-env node */
 module.exports = {
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}"],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "node_modules/flowbite-react/lib/esm/**/*.js",
+  ],
   prefix: "",
   theme: {
     container: {
       center: true,
+      margin: "0px",
+    },
+    fontSize: {
+      "4xl": "36px",
+      "3xl": "30px",
+      "2xl": "24px",
+      xl: "20px",
+      base: "18px",
+      sm: "16px",
     },
     extend: {
       colors: {
         primary: "#01A368",
+        secondary: "#00d692",
       },
       spacing: {
         4.5: "1.125rem",
@@ -46,5 +59,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("flowbite/plugin")],
 };

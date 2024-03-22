@@ -15,7 +15,7 @@ export function Layout() {
   }, [pathname]);
 
   return (
-    <div className="flex min-h-svh flex-col">
+    <div>
       <Header />
       <Outlet />
       <Footer />
