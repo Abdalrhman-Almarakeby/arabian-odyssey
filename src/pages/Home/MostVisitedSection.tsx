@@ -1,11 +1,11 @@
 import CountryDisplay from "@/components/CountryDisplay";
-import SectionHeading from "@/components/SectionHeading";
+import { SectionHeading } from "@/components/SectionHeading";
 import axios from "axios";
 import { Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 
 export default function MostVisitedSection() {
-  const [countries, setCountries]: any = useState(false);
+  const [countries, setCountries] = useState(false);
   useEffect(() => {
     axios.get("https://arabian-odyssey.vercel.app/country/home").then((res) => {
       setCountries(res.data.country);

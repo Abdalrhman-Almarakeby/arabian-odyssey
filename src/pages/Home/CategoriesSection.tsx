@@ -1,4 +1,4 @@
-import SectionHeading from "@/components/SectionHeading";
+import { SectionHeading } from "@/components/SectionHeading";
 import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
@@ -6,9 +6,9 @@ import { Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 
 export default function CategoriesSection() {
-  const [categories, setCategories]: any = useState(false);
+  const [categories, setCategories]: unknown = useState(false);
   useEffect(() => {
-    axios.get("https://arabian-odyssey.vercel.app/category").then((res) => {
+    axios.get("https://arabian-odyssey.vercel.app/category").then((res: unknown) => {
       setCategories(res.data.category);
     });
   }, []);
@@ -18,7 +18,7 @@ export default function CategoriesSection() {
 
       <ul className="grid grid-cols-1 min-450:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 gap-x-4 w-full justify-center">
         {categories ? (
-          categories.map((category: any) => (
+          categories.map((category: unknown) => (
             <li className="relative group flex flex-col items-center justify-center rounded-[0.625rem] bg-primary/10 hover:bg-primary px-14 py-3 overflow-hidden">
               <div className="relative z-10">
                 <img

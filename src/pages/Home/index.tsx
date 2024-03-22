@@ -5,7 +5,7 @@ import TopDestinationsSection from "./TopDestinationsSection";
 import MostVisitedSection from "./MostVisitedSection";
 import CategoriesSection from "./CategoriesSection";
 
-export default function Home() {
+export function Home() {
   return (
     <div>
       <header>

@@ -1,5 +1,5 @@
 import ReasonElem from "@/components/ReasonElem";
-import SectionHeading from "@/components/SectionHeading";
+import { SectionHeading } from "@/components/SectionHeading";
 import { faBuildingColumns, faMountain } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
