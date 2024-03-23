@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Spinner } from "flowbite-react";
 import axios from "axios";
-import { Attraction } from "@/types/attraction";
 import { ContentSlider } from "./ContentSlider";
 
 type DataSliderProps = {
@@ -11,7 +10,9 @@ type DataSliderProps = {
 };
 
 export function DataSlider({ path, isRated, field }: DataSliderProps) {
-  const [data, setData] = useState<Attraction[]>([]);
+  const [data, setData] = useState<{ name: string; image: { path: string }; rating?: number }[]>(
+    []
+  );
   const [error, setError] = useState(false);
 
   useEffect(() => {
