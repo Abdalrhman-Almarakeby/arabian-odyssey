@@ -13,7 +13,7 @@ import UnratedSwiperSlide from "./UnratedSwiperSlide";
 import x from "@/assets/temp.jpg";
 
 interface ContentSliderProps {
-  data: any;
+  data: [any];
   isRated: boolean;
 }
 

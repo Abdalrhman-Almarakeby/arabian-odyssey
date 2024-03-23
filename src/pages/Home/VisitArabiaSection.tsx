@@ -13,7 +13,7 @@ interface reasonObj {
 export default function VisitArabiaSection() {
   const reasons: reasonObj[] = [
     {
-      title: "Rich cultural and history",
+      title: "Rich culture and history",
       desc: "The Arab world holds a diverse cultural heritage and a captivating history. From ancient civilizations to the Islamic Golden Age, the region is a cradle of civilization, art, and science. Exploring archaeological sites and historical landmarks offers invaluable insights into humanity's shared heritage.",
       icon: faBuildingColumns,
     },

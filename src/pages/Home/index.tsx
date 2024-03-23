@@ -7,7 +7,7 @@ import CategoriesSection from "./CategoriesSection";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <header>
         <LandingSection />
       </header>
@@ -18,6 +18,6 @@ export default function Home() {
         <TopDestinationsSection />
         <CategoriesSection />
       </main>
-    </div>
+    </>
   );
 }
