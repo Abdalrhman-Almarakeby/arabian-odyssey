@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import Description from "./Description";
 import Food from "./Food";
 import Attractions from "./Attractions";
+import CountriesSuggestions from "./CountriesSuggestions";
 
 function index() {
   const { countryId } = useParams();
@@ -36,6 +37,7 @@ function index() {
             <Description country={country} countryId={countryId} />
             <Food foodData={country.popularFood} />
             <Attractions data={country.attractions} />
+            <CountriesSuggestions />
           </main>
         </>
       ) : (
