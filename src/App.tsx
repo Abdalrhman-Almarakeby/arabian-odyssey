@@ -23,7 +23,11 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!token) return setUser(null);
+    if (!token) {
+      setUser(null);
+      setIsLoading(false);
+      return;
+    }
 
     axios
       .get("https://arabian-odyssey.vercel.app/user", {
