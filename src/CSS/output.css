@@ -3257,6 +3257,10 @@ p,
   font-size: 20px;
 }
 
+.text-\[250px\] {
+  font-size: 250px;
+}
+
 .font-bold {
   font-weight: 700;
 }
