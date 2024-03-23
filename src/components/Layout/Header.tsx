@@ -46,8 +46,12 @@ export function Header() {
       </HashLink>
       <div className="relative flex items-center">
         <button
+          aria-label="Categories menu"
           className="relative flex items-center rounded-sm text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          onFocus={() => setIsCatagoriesMenuOpen(true)}
+          onFocus={() => {
+            setIsCatagoriesMenuOpen(true);
+            setIsUserMenuOpen(false);
+          }}
           ref={catagoriesMenuButtonRef}
         >
           Catagories <DropDownArrowSVG className="text-gray-700" />
@@ -58,23 +62,29 @@ export function Header() {
             "bg-white shadow-1 py-2 g z-10 w-48  rounded-md absolute top-[calc(100%+20px)] right-0",
             isCatagoriesMenuOpen ? "grid" : "hidden"
           )}
+          role="menu"
         >
           {CATAGORIES.map((category) => (
             <Link
               to={`/category/${category.toLowerCase()}`}
               key={category}
-              className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+              className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
+              role="menuitem"
             >
               {category}
             </Link>
           ))}
         </div>
       </div>
+
       {user ? (
         <div className="relative flex items-center">
           <button
             className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-            onFocus={() => setIsUserMenuOpen(true)}
+            onFocus={() => {
+              setIsUserMenuOpen(true);
+              setIsCatagoriesMenuOpen(false);
+            }}
             ref={userMenuButtonRef}
           >
             <span className="sr-only">Open user menu</span>
@@ -95,19 +105,19 @@ export function Header() {
           >
             <Link
               to="/profile"
-              className="bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
             >
               Your Profile
             </Link>
             <Link
               to="/settings"
-              className="bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="bg-white px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
             >
               Settings
             </Link>
             <button
               onClick={() => signOut()}
-              className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+              className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
             >
               Sign out
             </button>
@@ -117,13 +127,13 @@ export function Header() {
         <div className="flex items-center gap-2 md:gap-4">
           <Link
             to="/signin"
-            className="rounded-md border border-primary px-2 py-1 text-xs font-medium md:px-3 md:py-2 md:text-sm"
+            className="text-xs rounded-md border border-primary px-2 py-1 font-medium md:px-3 md:py-2 md:text-sm"
           >
             Log in
           </Link>
           <Link
             to="/signup"
-            className="rounded-md bg-primary px-2 py-1 text-xs font-medium text-white md:px-3 md:py-2 md:text-sm"
+            className="text-xs rounded-md bg-primary px-2 py-1 font-medium text-white md:px-3 md:py-2 md:text-sm"
           >
             Register
           </Link>

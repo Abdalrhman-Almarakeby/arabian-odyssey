@@ -1710,12 +1710,20 @@ p,
   width: 2.25rem;
 }
 
+.w-\[115px\] {
+  width: 115px;
+}
+
 .w-\[15px\] {
   width: 15px;
 }
 
 .w-\[20px\] {
   width: 20px;
+}
+
+.w-\[22\.5px\] {
+  width: 22.5px;
 }
 
 .w-auto {
@@ -1734,14 +1742,6 @@ p,
 .w-max {
   width: -moz-max-content;
   width: max-content;
-}
-
-.w-\[115px\] {
-  width: 115px;
-}
-
-.w-\[22\.5px\] {
-  width: 22.5px;
 }
 
 .max-w-2xl {
@@ -3233,14 +3233,6 @@ p,
   font-size: 30px;
 }
 
-.text-4xl {
-  font-size: 36px;
-}
-
-.text-\[100px\] {
-  font-size: 100px;
-}
-
 .text-\[42px\] {
   font-size: 42px;
 }
@@ -3255,10 +3247,6 @@ p,
 
 .text-xl {
   font-size: 20px;
-}
-
-.text-\[250px\] {
-  font-size: 250px;
 }
 
 .font-bold {
@@ -3497,10 +3485,6 @@ p,
 .text-primary {
   --tw-text-opacity: 1;
   color: rgb(1 163 104 / var(--tw-text-opacity));
-}
-
-.text-primary\/20 {
-  color: rgb(1 163 104 / 0.2);
 }
 
 .text-purple-500 {
@@ -4570,6 +4554,11 @@ p,
   --tw-ring-offset-width: 2px;
 }
 
+.focus-visible\:bg-gray-100:focus-visible {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .focus-visible\:outline-none:focus-visible {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -4963,11 +4952,6 @@ p,
 
   .group:hover .motion-safe\:group-hover\:fill-secondary {
     fill: #00d692;
-  }
-
-  .group:hover .motion-safe\:group-hover\:text-secondary {
-    --tw-text-opacity: 1;
-    color: rgb(0 214 146 / var(--tw-text-opacity));
   }
 
   .group:hover .motion-safe\:group-hover\:text-white {
