@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
 import { RatedSwiperSlide } from "@/components/RatedSwiperSlide";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
+import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
 import { UnratedSwiperSlide } from "./UnratedSwiperSlide";
 import { Attraction } from "@/types/attraction";
 import temp from "@/assets/temp.jpg";
@@ -66,12 +66,12 @@ export function ContentSlider({ data, isRated }: ContentSliderProps) {
               />
             ))}
       </Slider>
-      <div className="absolute top-[calc(50%-36px)] mt-3 flex w-full justify-between text-4xl text-primary">
+      <div className="absolute top-[calc(50%-36px)] mt-3 flex w-full justify-between">
         <ButtonBack>
-          <FontAwesomeIcon icon={faAngleLeft} />
+          <AngleLeftSVG className="w-[22.5px] fill-primary" />
         </ButtonBack>
         <ButtonNext>
-          <FontAwesomeIcon icon={faAngleRight} />
+          <AngleRightSVG className="w-[22.5px] fill-primary" />
         </ButtonNext>
       </div>
     </CarouselProvider>

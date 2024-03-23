@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import LocationDotSVG from "@/assets/icons/location-dot.svg?react";
 
 type SliderContentProps = {
   img: string;
@@ -22,7 +21,7 @@ export function SliderContent({ img, location }: SliderContentProps) {
         </button>
       </div>
       <div className="absolute bottom-10 right-0 z-10 mx-6 text-white">
-        <FontAwesomeIcon icon={faLocationDot} className="mr-2 text-xl" />
+        <LocationDotSVG className="mr-2 inline w-[15px] fill-white" />
         <p className="inline-block">{location}</p>
       </div>
       <figure className="right-0 top-0 h-full w-full">

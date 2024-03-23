@@ -1494,6 +1494,16 @@ p,
   height: 2.25rem;
 }
 
+.size-\[290px\] {
+  width: 290px;
+  height: 290px;
+}
+
+.size-\[32px\] {
+  width: 32px;
+  height: 32px;
+}
+
 .size-\[70px\] {
   width: 70px;
   height: 70px;
@@ -1700,6 +1710,14 @@ p,
   width: 2.25rem;
 }
 
+.w-\[15px\] {
+  width: 15px;
+}
+
+.w-\[20px\] {
+  width: 20px;
+}
+
 .w-auto {
   width: auto;
 }
@@ -1716,6 +1734,14 @@ p,
 .w-max {
   width: -moz-max-content;
   width: max-content;
+}
+
+.w-\[115px\] {
+  width: 115px;
+}
+
+.w-\[22\.5px\] {
+  width: 22.5px;
 }
 
 .max-w-2xl {
@@ -2950,12 +2976,20 @@ p,
   fill: #01A368;
 }
 
+.fill-primary\/20 {
+  fill: rgb(1 163 104 / 0.2);
+}
+
 .fill-purple-600 {
   fill: #7E3AF2;
 }
 
 .fill-red-600 {
   fill: #E02424;
+}
+
+.fill-white {
+  fill: #ffffff;
 }
 
 .fill-yellow-400 {
@@ -3205,10 +3239,6 @@ p,
 
 .text-\[100px\] {
   font-size: 100px;
-}
-
-.text-\[250px\] {
-  font-size: 250px;
 }
 
 .text-\[42px\] {
@@ -4925,6 +4955,10 @@ p,
   .group:hover .motion-safe\:group-hover\:bg-secondary {
     --tw-bg-opacity: 1;
     background-color: rgb(0 214 146 / var(--tw-bg-opacity));
+  }
+
+  .group:hover .motion-safe\:group-hover\:fill-secondary {
+    fill: #00d692;
   }
 
   .group:hover .motion-safe\:group-hover\:text-secondary {

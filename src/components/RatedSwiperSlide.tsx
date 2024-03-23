@@ -1,6 +1,5 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Slide } from "pure-react-carousel";
+import StarSVG from "@/assets/icons/star.svg?react";
 
 type RatedSwiperSlideProps = {
   image: string;
@@ -19,7 +18,7 @@ export function RatedSwiperSlide({ image, locationName, rating, i }: RatedSwiper
         <h5 className="text-xl font-bold text-black">{locationName}</h5>
         <div className="flex items-center">
           {Array.from({ length: rating }).map((_, i) => (
-            <FontAwesomeIcon icon={faStar} className="mr-1 text-xl text-primary" key={i} />
+            <StarSVG className="mr-1 w-[20px] fill-primary text-xl" key={i} />
           ))}
           {rating}
         </div>

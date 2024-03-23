@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Spinner } from "flowbite-react";
 import axios from "axios";
-import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LocationCrosshairsSVG from "@/assets/icons/location-crosshairs.svg?react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Category } from "@/types/Category";
 
@@ -38,10 +37,7 @@ export function CategoriesSection() {
                 </h4>
               </div>
               <div className="absolute bottom-0 right-0 translate-x-[40%]">
-                <FontAwesomeIcon
-                  icon={faLocationCrosshairs}
-                  className="-rotate-[10deg] text-[100px] text-primary/20 duration-1000 motion-safe:group-hover:-rotate-[60deg] motion-safe:group-hover:text-secondary"
-                />
+                <LocationCrosshairsSVG className="w-[115px] -rotate-[10deg] fill-primary/20 duration-1000 motion-safe:group-hover:-rotate-[60deg] motion-safe:group-hover:fill-secondary" />
               </div>
             </li>
           ))
