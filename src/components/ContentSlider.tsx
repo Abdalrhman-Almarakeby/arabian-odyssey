@@ -4,12 +4,11 @@ import { RatedSwiperSlide } from "@/components/RatedSwiperSlide";
 import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
 import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
 import { UnratedSwiperSlide } from "./UnratedSwiperSlide";
-import { Attraction } from "@/types/attraction";
 import temp from "@/assets/temp.jpg";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
 type ContentSliderProps = {
-  data: Attraction[];
+  data: { name: string; image: { path: string }; rating?: number }[];
   isRated: boolean;
 };
 
@@ -52,7 +51,7 @@ export function ContentSlider({ data, isRated }: ContentSliderProps) {
               <RatedSwiperSlide
                 locationName={item.name}
                 image={item.image ? item.image.path : temp}
-                rating={item.rating}
+                rating={item.rating ?? 0}
                 key={i}
                 i={i}
               />

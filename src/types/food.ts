@@ -1,5 +1,5 @@
-export type Category = {
-  id: string;
+export type Food = {
+  country: string;
   desc: string;
   image: {
     path: string;

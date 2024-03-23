@@ -1,5 +1,5 @@
 import { Slide } from "pure-react-carousel";
-import StarSVG from "@/assets/icons/star.svg?react";
+import { Review } from "./Review";
 
 type RatedSwiperSlideProps = {
   image: string;
@@ -16,12 +16,7 @@ export function RatedSwiperSlide({ image, locationName, rating, i }: RatedSwiper
       </figure>
       <div>
         <h5 className="text-xl font-bold text-black">{locationName}</h5>
-        <div className="flex items-center">
-          {Array.from({ length: rating }).map((_, i) => (
-            <StarSVG className="mr-1 w-[20px] fill-primary text-xl" key={i} />
-          ))}
-          {rating}
-        </div>
+        <Review rating={rating} />
       </div>
     </Slide>
   );

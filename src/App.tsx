@@ -6,6 +6,7 @@ import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
 import { Layout } from "@/components/Layout";
 import { Home } from "@/pages/Home";
+import { Country } from "@/pages/Country";
 import { Error } from "@/pages/Error";
 import { Signup } from "@/pages/Signup";
 import { Signin } from "@/pages/Signin";
@@ -45,6 +46,8 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout loading={isLoading} />}>
         <Route index element={<Home />} />
+        <Route path="/country/:countryId" element={<Country />} />
+        <Route path="/country/:countryId/:stateId" element={<Country />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/settings" element={<Settings />} />

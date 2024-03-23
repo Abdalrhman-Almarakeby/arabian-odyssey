@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Spinner } from "flowbite-react";
-import { Country } from "@/types/Country";
+import { Country } from "@/types/country";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CountryDisplay } from "@/components/CountryDisplay";
 
@@ -26,7 +26,7 @@ export function MostVisitedSection() {
               name={country.name}
               touristCount={country.numoftourist}
               flag={country.flag.path}
-              id={country._id}
+              id={country.id}
             />
           ))
         ) : (

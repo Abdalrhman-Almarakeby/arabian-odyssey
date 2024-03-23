@@ -1348,12 +1348,20 @@ p,
   margin-bottom: 2.5rem;
 }
 
+.mb-15 {
+  margin-bottom: 3.75rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
 
 .mb-2\.5 {
   margin-bottom: 0.625rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
 .mb-4 {
@@ -1430,6 +1438,10 @@ p,
 
 .mt-1\.5 {
   margin-top: 0.375rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
 }
 
 .mt-2 {
@@ -1589,8 +1601,16 @@ p,
   height: 24rem;
 }
 
+.h-\[2px\] {
+  height: 2px;
+}
+
 .h-\[calc\(100svh-61px\)\] {
   height: calc(100svh - 61px);
+}
+
+.h-\[calc\(100svh-64px\)\] {
+  height: calc(100svh - 64px);
 }
 
 .h-auto {
@@ -1770,6 +1790,26 @@ p,
 
 .max-w-\[100vw\] {
   max-width: 100vw;
+}
+
+.max-w-\[300px\] {
+  max-width: 300px;
+}
+
+.max-w-\[400px\] {
+  max-width: 400px;
+}
+
+.max-w-\[450px\] {
+  max-width: 450px;
+}
+
+.max-w-\[500px\] {
+  max-width: 500px;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .max-w-lg {
@@ -2284,6 +2324,11 @@ p,
   border-top-width: 4px;
 }
 
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
 .border-blue-500 {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
@@ -2481,6 +2526,11 @@ p,
 .border-yellow-600 {
   --tw-border-opacity: 1;
   border-color: rgb(159 88 10 / var(--tw-border-opacity));
+}
+
+.border-b-primary {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(1 163 104 / var(--tw-border-opacity));
 }
 
 .\!bg-transparent {
@@ -3102,6 +3152,11 @@ p,
   padding-bottom: 0.375rem;
 }
 
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -3137,12 +3192,24 @@ p,
   padding-bottom: 120px;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
 
 .pb-2\.5 {
   padding-bottom: 0.625rem;
+}
+
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
+.pb-\[120px\] {
+  padding-bottom: 120px;
 }
 
 .pl-0 {
@@ -3217,6 +3284,10 @@ p,
   padding-top: 1.5rem;
 }
 
+.pt-\[50px\] {
+  padding-top: 50px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -3231,6 +3302,10 @@ p,
 
 .text-3xl {
   font-size: 30px;
+}
+
+.text-4xl {
+  font-size: 36px;
 }
 
 .text-\[42px\] {
@@ -4131,6 +4206,11 @@ p,
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -4180,6 +4260,11 @@ p,
   background-color: rgb(251 213 213 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-secondary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 214 146 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-teal-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(175 236 239 / var(--tw-bg-opacity));
@@ -4217,6 +4302,16 @@ p,
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.hover\:text-secondary:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 214 146 / var(--tw-text-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -6235,6 +6330,10 @@ p,
     width: 1.5rem;
   }
 
+  .sm\:max-w-\[500px\] {
+    max-width: 500px;
+  }
+
   .sm\:max-w-md {
     max-width: 28rem;
   }
@@ -6292,8 +6391,16 @@ p,
     margin-right: 0.5rem;
   }
 
+  .md\:mb-15 {
+    margin-bottom: 3.75rem;
+  }
+
   .md\:me-6 {
     margin-inline-end: 1.5rem;
+  }
+
+  .md\:mr-10 {
+    margin-right: 2.5rem;
   }
 
   .md\:mr-6 {
@@ -6339,6 +6446,10 @@ p,
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:max-w-none {
+    max-width: none;
   }
 
   .md\:max-w-xl {
@@ -6387,6 +6498,11 @@ p,
 
   .md\:rounded-none {
     border-radius: 0px;
+  }
+
+  .md\:rounded-b {
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
   }
 
   .md\:rounded-l-lg {
@@ -6439,6 +6555,12 @@ p,
   .md\:text-cyan-700 {
     --tw-text-opacity: 1;
     color: rgb(14 116 144 / var(--tw-text-opacity));
+  }
+
+  .md\:shadow-none {
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
   .md\:hover\:bg-transparent:hover {

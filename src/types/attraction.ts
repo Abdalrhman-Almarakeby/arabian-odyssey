@@ -9,4 +9,5 @@ export type Attraction = {
   name: string;
   user: string;
   rating: number;
+  desc: string;
 };
