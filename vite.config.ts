@@ -10,7 +10,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/",
+  // To deploy on github page ( temporarily )
+  base: "/arabian-odyssey",
   server: {
     port: 3000,
   },
