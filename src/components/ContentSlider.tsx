@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
+import {
+  CarouselProvider,
+  Slider,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel";
 import { RatedSwiperSlide } from "@/components/RatedSwiperSlide";
 import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
 import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
@@ -7,12 +12,22 @@ import { UnratedSwiperSlide } from "./UnratedSwiperSlide";
 import temp from "@/assets/temp.jpg";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
-type ContentSliderProps = {
-  data: { name: string; image: { path: string }; rating?: number }[];
-  isRated: boolean;
+type data = {
+  name: string;
+  image: { path: string };
+  rating?: number;
+  _id: string;
+  country: string;
+  images: { path: string }[];
 };
 
-export function ContentSlider({ data, isRated }: ContentSliderProps) {
+type ContentSliderProps = {
+  data: data[];
+  isRated: boolean;
+  linkTo: string;
+};
+
+export function ContentSlider({ data, isRated, linkTo }: ContentSliderProps) {
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
@@ -35,6 +50,17 @@ export function ContentSlider({ data, isRated }: ContentSliderProps) {
     visibleSlides = 3;
   }
 
+  const getFullLink = (link: string, item: any) => {
+    if (!link) return linkTo;
+
+    const regex = /:(\w+)/gi;
+    const matches = Array.from(link.matchAll(regex));
+    for (const match of matches) {
+      link = link.replace(match[0], item[match[1]]);
+    }
+    return link;
+  };
+
   return (
     <CarouselProvider
       className="relative w-full"
@@ -50,17 +76,33 @@ export function ContentSlider({ data, isRated }: ContentSliderProps) {
           ? data.map((item, i) => (
               <RatedSwiperSlide
                 locationName={item.name}
-                image={item.image ? item.image.path : temp}
+                image={
+                  item.image
+                    ? item.image.path
+                    : item.images && item.images.length
+                    ? item.images[0].path
+                    : temp
+                }
                 rating={item.rating ?? 0}
+                id={item._id}
                 key={i}
+                linkTo={getFullLink(linkTo, item)}
                 i={i}
               />
             ))
           : data.map((item, i: number) => (
               <UnratedSwiperSlide
                 locationName={item.name}
-                image={item.image ? item.image.path : temp}
+                image={
+                  item.image
+                    ? item.image.path
+                    : item.images && item.images.length
+                    ? item.images[0].path
+                    : temp
+                }
                 key={i}
+                id={item._id}
+                linkTo={getFullLink(linkTo, item)}
                 i={i}
               />
             ))}

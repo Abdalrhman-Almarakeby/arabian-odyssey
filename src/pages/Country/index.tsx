@@ -8,11 +8,16 @@ import { CountriesSuggestions } from "@/components/CountriesSuggestions";
 import { CountryData } from "@/types/country";
 import { Description } from "./Description";
 import { Food } from "./Food";
+import { StateData } from "@/types/state";
 
-export function Country() {
-  const { countryId } = useParams();
+type CountryProps = {
+  isState: boolean
+}
+
+export function Country({ isState }: CountryProps) {
+  const { countryId, stateId } = useParams();
   const [country, setCountry] = useState<CountryData | null>(null);
-
+  const [state, setState] = useState<StateData | null>(null);
   useEffect(() => {
     axios
       .get(`https://arabian-odyssey.vercel.app/country/${countryId}`)
@@ -21,17 +26,30 @@ export function Country() {
       .catch((err) => console.log(err));
   }, [countryId]);
 
+  useEffect(() => {
+    if (stateId) {
+      axios.get(`https://arabian-odyssey.vercel.app/state/${stateId}`)
+        .then((res: AxiosResponse) => res.data)
+        .then((data: { state: StateData }) => setState(data.state))
+        .catch((err) => console.log(err));
+    }
+  }, [stateId]);
+
   return (
     <>
       {country ? (
         <>
           <header className="h-[calc(100svh-64px)]">
-            <Wallpaper name={country.name} flag={country.flag.path} images={country.images} />
+            <Wallpaper
+              name={country.name}
+              flag={country.flag.path}
+              images={country.images}
+            />
           </header>
           <main className="px-6 pb-[120px] pt-[50px]">
             <Description country={country} countryId={countryId} />
             <Food foodData={country.popularFood} />
-            <Attractions data={country.attractions} />
+            <Attractions data={isState && state ? state.attractions : country.attractions} />
             <CountriesSuggestions />
           </main>
         </>

@@ -7,10 +7,11 @@ type DataSliderProps = {
   path: string;
   isRated: boolean;
   field: string;
+  linkTo: string
 };
 
-export function DataSlider({ path, isRated, field }: DataSliderProps) {
-  const [data, setData] = useState<{ name: string; image: { path: string }; rating?: number }[]>(
+export function DataSlider({ path, isRated, field, linkTo }: DataSliderProps) {
+  const [data, setData] = useState<{ name: string; images: {path: string}[]; country: string; image: { path: string }; rating?: number; _id: string }[]>(
     []
   );
   const [error, setError] = useState(false);
@@ -24,7 +25,7 @@ export function DataSlider({ path, isRated, field }: DataSliderProps) {
 
   return (
     <>
-      {data && <ContentSlider isRated={isRated} data={data} />}
+      {data && <ContentSlider isRated={isRated} data={data} linkTo={linkTo} />}
       {error && (
         <p className="text-center text-base text-red-500">Unable to get data, try again later</p>
       )}

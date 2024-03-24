@@ -31,7 +31,7 @@ export function AttractionsList({ attractions }: AttractionsProps) {
           className="flex items-center gap-2 text-xl text-primary duration-300 hover:text-secondary"
           onClick={addDisplayNum}
         >
-          Load more <AngleDownSVG />
+          Load more <AngleDownSVG/>
         </button>
       )}
     </div>
