@@ -14,7 +14,7 @@ export function ReasonElem({ title, desc, Icon }: reasonItemProps) {
         <h4 className="mb-4.5 text-xl font-bold text-black motion-safe:group-hover:text-white">
           {title}
         </h4>
-        <p className="font-light group-hover:text-white">{desc}</p>
+        <p className="font-light motion-safe:group-hover:text-white">{desc}</p>
       </div>
       <div className="absolute bottom-0 right-0 translate-x-[45%]">
         <Icon className="size-[290px] -rotate-[10deg] fill-primary/20 duration-1000 motion-safe:group-hover:-rotate-[45deg] motion-safe:group-hover:fill-secondary" />
