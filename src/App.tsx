@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
+import { Toaster } from "react-hot-toast";
 import { User } from "@/types/user";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
@@ -47,19 +48,22 @@ export default function App() {
   }, [setUser, token]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout loading={isLoading} />}>
-        <Route index element={<Home />} />
-        <Route path="/country/:countryId" element={<Country isState={false} />} />
-        <Route path="/country/:countryId/:stateId" element={<Country isState={true} />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/category/:categoryId" element={<Category />} />
-      </Route>
-      <Route path="/confirm-email" element={<ConfirmEmail />} />
-      <Route path="*" element={<Error />} />
-    </Routes>
+    <>
+      <Toaster />
+      <Routes>
+        <Route path="/" element={<Layout loading={isLoading} />}>
+          <Route index element={<Home />} />
+          <Route path="/country/:countryId" element={<Country isState={false} />} />
+          <Route path="/country/:countryId/:stateId" element={<Country isState={true} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/category/:categoryId" element={<Category />} />
+        </Route>
+        <Route path="/confirm-email" element={<ConfirmEmail />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </>
   );
 }
