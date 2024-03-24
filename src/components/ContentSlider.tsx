@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  CarouselProvider,
-  Slider,
-  ButtonBack,
-  ButtonNext,
-} from "pure-react-carousel";
+import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
 import { RatedSwiperSlide } from "@/components/RatedSwiperSlide";
 import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
 import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
@@ -24,7 +19,7 @@ type data = {
 type ContentSliderProps = {
   data: data[];
   isRated: boolean;
-  linkTo: string;
+  linkTo?: string;
 };
 
 export function ContentSlider({ data, isRated, linkTo }: ContentSliderProps) {
@@ -86,7 +81,7 @@ export function ContentSlider({ data, isRated, linkTo }: ContentSliderProps) {
                 rating={item.rating ?? 0}
                 id={item._id}
                 key={i}
-                linkTo={getFullLink(linkTo, item)}
+                linkTo={linkTo && getFullLink(linkTo, item)}
                 i={i}
               />
             ))
@@ -102,7 +97,7 @@ export function ContentSlider({ data, isRated, linkTo }: ContentSliderProps) {
                 }
                 key={i}
                 id={item._id}
-                linkTo={getFullLink(linkTo, item)}
+                linkTo={linkTo && getFullLink(linkTo, item)}
                 i={i}
               />
             ))}

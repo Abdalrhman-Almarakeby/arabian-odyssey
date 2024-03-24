@@ -5,4 +5,7 @@ export type Food = {
     path: string;
   };
   name: string;
+  rating?: number;
+  _id: string;
+  images: { path: string }[];
 };
