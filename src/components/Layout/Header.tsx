@@ -51,6 +51,7 @@ export function Header() {
         <button
           aria-label="Categories menu"
           className="relative flex items-center rounded-sm text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          onClick={() => setIsCatagoriesMenuOpen(true)}
           onFocus={() => {
             setIsCatagoriesMenuOpen(true);
             setIsUserMenuOpen(false);
@@ -84,6 +85,7 @@ export function Header() {
         <div className="relative flex items-center">
           <button
             className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            onClick={() => setIsUserMenuOpen(true)}
             onFocus={() => {
               setIsUserMenuOpen(true);
               setIsCatagoriesMenuOpen(false);
