@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import axios, { AxiosResponse } from "axios";
 import toast from "react-hot-toast";
@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { Category } from "@/types/category";
 
 export function Header() {
+  const navigate = useNavigate();
   const { user, setUser } = useUser();
   const { setToken } = useLocalStorageToken();
 
@@ -37,6 +38,7 @@ export function Header() {
     setUser(null);
     setToken("");
     toast.success("Signed out successfully.");
+    setTimeout(() => navigate("/"), 10);
   }
 
   return (
