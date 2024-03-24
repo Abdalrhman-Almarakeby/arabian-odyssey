@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import toast from "react-hot-toast";
 import { Loading } from "@/components/Loading";
 import { useSignupEmail } from "@/contexts/SignupEmailContext";
 import { useUser } from "@/contexts/UserContext";
-import { FormError } from "@/components/FormError";
 import { Input } from "@/components/Input";
 import { SubmitButton } from "@/components/SubmitButton";
 
 export function Signup() {
   const { setSignupEmail } = useSignupEmail();
-  const [error, setErrors] = useState<string[] | string>([]);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -36,20 +35,33 @@ export function Signup() {
       })
       .then((res: AxiosResponse) => res.data)
       .then((data: { message: string; err?: string | { message: string }[] }) => {
-        console.log(data);
-        if (data.err) {
-          setErrors(
-            typeof data.err === "string"
-              ? data.err
-              : data.err.map((err: { message: string }) => err.message)
+        if (data.message === "success") {
+          toast.success("User created successfully. Check your email for confirmation");
+          navigate("/confirm-email");
+          return;
+        }
+        toast.error("An Error Occurred. Pleas try later.");
+      })
+      .catch((err: AxiosError<{ err: string | { message: string }[] }>) => {
+        if (err.response) {
+          const message = err.response.data.err;
+          if (!(typeof message === "string"))
+            return message.forEach((item) => toast.error(item.message));
+
+          toast.error(
+            message === "user already exist" ? (
+              <>
+                User already exist. consider<>&nbsp;</>
+                <Link to="/signin" className="underline">
+                  Sing in
+                </Link>
+              </>
+            ) : (
+              message
+            )
           );
         }
-        if (data.message === "success") {
-          setLoading(false);
-          navigate("/confirm-email");
-        }
       })
-      .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }
 
@@ -69,24 +81,6 @@ export function Signup() {
             Create an account
           </h1>
           <form className="space-y-4 md:space-y-6" method="POST" onSubmit={handleSubmit}>
-            {error.length > 0 && (
-              <div className="space-y-5" role="alert">
-                {Array.isArray(error) ? (
-                  error.map((err) => <FormError>{err}</FormError>)
-                ) : (
-                  <FormError>
-                    {error === "user already exist" ? (
-                      <>
-                        user already exist. Please <Link to="/signin">sign in</Link> or use a
-                        different email address.
-                      </>
-                    ) : (
-                      error
-                    )}
-                  </FormError>
-                )}
-              </div>
-            )}
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-medium text-black">
                 Your full name

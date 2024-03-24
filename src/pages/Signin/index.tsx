@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import toast from "react-hot-toast";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useUser } from "@/contexts/UserContext";
 import { Loading } from "@/components/Loading";
@@ -12,7 +13,6 @@ export function Signin() {
     email: "",
     password: "",
   });
-  const [error, setErrors] = useState<string[] | string>([]);
   const [loading, setLoading] = useState(false);
   const { setToken } = useLocalStorageToken();
   const navigate = useNavigate();
@@ -32,20 +32,34 @@ export function Signin() {
       })
       .then((res: AxiosResponse) => res.data)
       .then((data: { message: string; token: string; err?: string | { message: string }[] }) => {
-        if (data.err) {
-          setErrors(
-            typeof data.err === "string"
-              ? data.err
-              : data.err.map((err: { message: string }) => err.message)
-          );
-        }
         if (data.message === "success") {
+          toast.success("Logged in successfully");
           setToken(data.token);
           () => setTimeout(() => navigate("/"), 10);
+          return;
         }
-        setLoading(false);
+        toast.error("An Error Occurred. Pleas try later.");
       })
-      .catch((err) => console.log(err));
+      .catch((err: AxiosError<{ err: string | { message: string }[] }>) => {
+        if (err.response) {
+          const message = err.response.data.err;
+          if (!(typeof message === "string"))
+            return message.forEach((item) => toast.error(item.message));
+          toast.error(
+            message === "email not exist " ? (
+              <>
+                User doesn't exist consider<>&nbsp;</>
+                <Link to="/signup" className="underline">
+                  Sing up
+                </Link>
+              </>
+            ) : (
+              message
+            )
+          );
+        }
+      })
+      .finally(() => setLoading(false));
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -64,35 +78,6 @@ export function Signin() {
             Welcome agin!
           </h1>
           <form className="space-y-4 md:space-y-6" method="POST" onSubmit={handleSubmit}>
-            {error.length > 0 && (
-              <div className="space-y-5" role="alert">
-                {Array.isArray(error) ? (
-                  error.map((err) => (
-                    <p
-                      key={err}
-                      className="lg:text-lg rounded-lg border border-red-600 bg-red-200 px-2 py-2 text-sm font-semibold text-red-600 md:text-base"
-                      aria-label={err}
-                    >
-                      {err}
-                    </p>
-                  ))
-                ) : (
-                  <p
-                    className="lg:text-lg rounded-lg border border-red-600 bg-red-200 px-2 py-2 text-sm font-semibold text-red-600 md:text-base"
-                    aria-label={error}
-                  >
-                    {error === "user already exist" ? (
-                      <>
-                        user already exist. Please <Link to="/signin">sign in</Link> or use a
-                        different email address.
-                      </>
-                    ) : (
-                      error
-                    )}
-                  </p>
-                )}
-              </div>
-            )}
             <div>
               <label htmlFor="email" className="mb-2 block text-sm font-medium text-black">
                 Email

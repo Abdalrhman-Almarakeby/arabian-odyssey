@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import axios, { AxiosResponse } from "axios";
+import toast from "react-hot-toast";
 import { useUser } from "@/contexts/UserContext";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useClickOutside } from "@/lib/hooks/useClickOutside";
@@ -35,6 +36,7 @@ export function Header() {
   function signOut() {
     setUser(null);
     setToken("");
+    toast.success("Logged out successfully");
   }
 
   return (
