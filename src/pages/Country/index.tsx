@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
 import { Spinner } from "flowbite-react";
 import { Wallpaper } from "@/components/Wallpaper";
+import { Attractions } from "@/components/Attractions";
+import { CountriesSuggestions } from "@/components/CountriesSuggestions";
 import { CountryData } from "@/types/country";
 import { Description } from "./Description";
 import { Food } from "./Food";
-import { Attractions } from "./Attractions";
-import { CountriesSuggestions } from "./CountriesSuggestions";
 
 export function Country() {
   const { countryId } = useParams();

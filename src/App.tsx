@@ -56,7 +56,7 @@ export default function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/category/:category" element={<Category />} />
+        <Route path="/category/:categoryId" element={<Category />} />
       </Route>
       <Route path="/confirm-email" element={<ConfirmEmail />} />
       <Route path="*" element={<Error />} />

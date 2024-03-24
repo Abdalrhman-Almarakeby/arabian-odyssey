@@ -1,23 +1,14 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import axios, { AxiosResponse } from "axios";
 import { useUser } from "@/contexts/UserContext";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useClickOutside } from "@/lib/hooks/useClickOutside";
 import DropDownArrowSVG from "@/assets/icons/drop-down-arrow.svg?react";
 import UserAvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { cn } from "@/lib/utils";
-
-const CATAGORIES = [
-  "Cultural",
-  "Religious",
-  "Adventure",
-  "Ecotourists",
-  "Food and Culinary",
-  "Historical",
-  "Educational",
-  "Beach",
-];
+import { Category } from "@/types/category";
 
 export function Header() {
   const { user, setUser } = useUser();
@@ -30,6 +21,16 @@ export function Header() {
   const [isCatagoriesMenuOpen, setIsCatagoriesMenuOpen] = useState(false);
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
   useClickOutside(catagoriesMenuButtonRef, () => setIsCatagoriesMenuOpen(false));
+
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    axios
+      .get("https://arabian-odyssey.vercel.app/category/")
+      .then((res: AxiosResponse) => res.data)
+      .then((data: { category: Category[] }) => setCategories(data.category))
+      .catch((err) => console.log(err));
+  }, []);
 
   function signOut() {
     setUser(null);
@@ -64,14 +65,14 @@ export function Header() {
           )}
           role="menu"
         >
-          {CATAGORIES.map((category) => (
+          {categories.map(({ name, id }) => (
             <Link
-              to={`/category/${category.toLowerCase()}`}
-              key={category}
+              to={`/category/${id}`}
+              key={name}
               className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
               role="menuitem"
             >
-              {category}
+              {name}
             </Link>
           ))}
         </div>

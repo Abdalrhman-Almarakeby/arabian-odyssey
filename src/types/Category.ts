@@ -1,3 +1,5 @@
+import { Attraction } from "./attraction";
+
 export type Category = {
   id: string;
   desc: string;
@@ -5,4 +7,8 @@ export type Category = {
     path: string;
   };
   name: string;
+};
+
+export type CategoryData = Category & {
+  attractions: Attraction[];
 };

@@ -1511,6 +1511,11 @@ p,
   height: 290px;
 }
 
+.size-\[300px\] {
+  width: 300px;
+  height: 300px;
+}
+
 .size-\[32px\] {
   width: 32px;
   height: 32px;
@@ -1519,11 +1524,6 @@ p,
 .size-\[70px\] {
   width: 70px;
   height: 70px;
-}
-
-.size-\[300px\] {
-  width: 300px;
-  height: 300px;
 }
 
 .h-0 {
@@ -1767,10 +1767,6 @@ p,
 .w-max {
   width: -moz-max-content;
   width: max-content;
-}
-
-.w-\[300px\] {
-  width: 300px;
 }
 
 .max-w-2xl {
@@ -2064,6 +2060,10 @@ p,
   gap: 5rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -2135,6 +2135,12 @@ p,
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-15 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3.75rem * var(--tw-space-y-reverse));
 }
 
 .divide-x > :not([hidden]) ~ :not([hidden]) {
@@ -2830,6 +2836,18 @@ p,
   background-color: rgb(159 88 10 / var(--tw-bg-opacity));
 }
 
+.bg-black\/10 {
+  background-color: rgb(0 0 0 / 0.1);
+}
+
+.bg-black\/30 {
+  background-color: rgb(0 0 0 / 0.3);
+}
+
+.bg-black\/40 {
+  background-color: rgb(0 0 0 / 0.4);
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -3199,6 +3217,11 @@ p,
 .py-\[120px\] {
   padding-top: 120px;
   padding-bottom: 120px;
+}
+
+.py-\[50px\] {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .pb-10 {
@@ -6557,6 +6580,10 @@ p,
     font-size: 16px;
   }
 
+  .md\:text-3xl {
+    font-size: 30px;
+  }
+
   .md\:font-medium {
     font-weight: 500;
   }
@@ -6592,6 +6619,14 @@ p,
 }
 
 @media (min-width: 1024px) {
+  .lg\:bottom-15 {
+    bottom: 3.75rem;
+  }
+
+  .lg\:left-9 {
+    left: 2.25rem;
+  }
+
   .lg\:my-8 {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -6619,8 +6654,20 @@ p,
     padding-bottom: 0.75rem;
   }
 
+  .lg\:text-4xl {
+    font-size: 36px;
+  }
+
   .lg\:text-\[2\.5rem\] {
     font-size: 2.5rem;
+  }
+
+  .lg\:text-3xl {
+    font-size: 30px;
+  }
+
+  .lg\:text-\[40px\] {
+    font-size: 40px;
   }
 }
 
