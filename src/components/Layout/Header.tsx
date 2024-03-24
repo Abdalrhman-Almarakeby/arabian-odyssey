@@ -36,7 +36,7 @@ export function Header() {
   function signOut() {
     setUser(null);
     setToken("");
-    toast.success("Logged out successfully");
+    toast.success("Signed out successfully.");
   }
 
   return (

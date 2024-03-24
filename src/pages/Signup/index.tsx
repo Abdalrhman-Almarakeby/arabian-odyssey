@@ -36,7 +36,7 @@ export function Signup() {
       .then((res: AxiosResponse) => res.data)
       .then((data: { message: string; err?: string | { message: string }[] }) => {
         if (data.message === "success") {
-          toast.success("User created successfully. Check your email for confirmation");
+          toast.success("User created successfully. Check your email for confirmation.");
           navigate("/confirm-email");
           return;
         }

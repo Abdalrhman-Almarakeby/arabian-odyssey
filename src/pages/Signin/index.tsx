@@ -33,9 +33,9 @@ export function Signin() {
       .then((res: AxiosResponse) => res.data)
       .then((data: { message: string; token: string; err?: string | { message: string }[] }) => {
         if (data.message === "success") {
-          toast.success("Logged in successfully");
+          toast.success("Logged in successfully.");
           setToken(data.token);
-          () => setTimeout(() => navigate("/"), 10);
+          setTimeout(() => navigate("/"), 10);
           return;
         }
         toast.error("An Error Occurred. Pleas try later.");

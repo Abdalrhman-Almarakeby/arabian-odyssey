@@ -41,10 +41,10 @@ export default function App() {
       .then((data: { message: string; user: User; err?: string }) => {
         if (data.message === "success") {
           setUser(data.user);
-          setIsLoading(false);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }, [setUser, token]);
 
   return (
