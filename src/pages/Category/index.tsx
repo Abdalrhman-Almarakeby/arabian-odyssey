@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
 import { Spinner } from "flowbite-react";
 import { Attractions } from "@/components/Attractions";
 import { CountriesSuggestions } from "@/components/CountriesSuggestions";
 import { CategoryData } from "@/types/category";
-import { cn } from "@/lib/utils";
+import { BtnsLine } from "@/components/BtnsLine";
 
 export function Category() {
   const { categoryId } = useParams();
@@ -41,22 +41,7 @@ export function Category() {
             </h1>
           </header>
           <main className="container space-y-15 px-6 py-[50px]">
-            <div className="flex w-full flex-wrap items-center gap-3 py-2">
-              {categories.map(({ name, id }) => (
-                <Link
-                  key={id}
-                  to={`/category/${id}`}
-                  className={cn(
-                    "border-2 border-black transition rounded-full py-1 px-3",
-                    id === category.id
-                      ? "text-white bg-black"
-                      : "hover:bg-gray-400 hover:text-white"
-                  )}
-                >
-                  {name}
-                </Link>
-              ))}
-            </div>
+            <BtnsLine states={categories} base={"/category"} baseBtn={false} />
             <div className="mt-12">
               <h2 className="mb-6 text-4xl font-bold lg:text-[40px]">{category.name}</h2>
               <p className="max-w-[500px]">{category.desc}</p>
