@@ -6,7 +6,7 @@ type reasonItemProps = {
 
 export function ReasonElem({ title, desc, Icon }: reasonItemProps) {
   return (
-    <div className="group relative overflow-hidden rounded-[0.625rem] bg-primary/10 p-5 hover:bg-primary">
+    <div className="group relative overflow-hidden rounded-[0.625rem] bg-primary/10 p-5 motion-safe:hover:bg-primary">
       <div className="relative z-10">
         <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-[0.625rem] bg-primary text-white motion-safe:group-hover:bg-secondary">
           <Icon className="size-[32px] fill-white" />
