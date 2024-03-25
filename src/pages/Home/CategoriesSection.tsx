@@ -5,7 +5,11 @@ import LocationCrosshairsSVG from "@/assets/icons/location-crosshairs.svg?react"
 import { SectionHeading } from "@/components/SectionHeading";
 import { Category } from "@/types/category";
 
-export function CategoriesSection() {
+type CategoriesSectionProps = {
+  title: boolean
+}
+
+export function CategoriesSection({ title }: CategoriesSectionProps) {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -18,7 +22,9 @@ export function CategoriesSection() {
 
   return (
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
-      <SectionHeading>Browse By Category</SectionHeading>
+      {
+        title && <SectionHeading>Browse By Category</SectionHeading>
+      }
 
       <ul className="grid w-full grid-cols-1 justify-center gap-10 gap-x-4 min-450:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
         {categories ? (

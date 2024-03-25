@@ -24,7 +24,7 @@ export function AttractionsList({ attractions }: AttractionsProps) {
   return (
     <div className="flex flex-col items-center">
       {attractions.slice(0, displayNum + 1).map((attraction, i) => (
-        <Attraction data={attraction} key={i} />
+        <Attraction data={attraction} key={i} row={false} />
       ))}
       {displayNum < attractionsNum && (
         <button

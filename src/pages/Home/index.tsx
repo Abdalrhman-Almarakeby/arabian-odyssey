@@ -16,7 +16,7 @@ export function Home() {
         <MostVisitedSection />
         <HotAttractionsSection />
         <TopDestinationsSection />
-        <CategoriesSection />
+        <CategoriesSection title />
       </main>
     </>
   );
