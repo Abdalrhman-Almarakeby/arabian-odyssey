@@ -10,7 +10,11 @@ export function Food({ foodData }: foodProps) {
   return (
     <section className="mb-15">
       <h2 className="mb-6 text-2xl font-bold">Local food & Cuisine</h2>
-      {foodData.length ? <ContentSlider data={foodData} isRated={false} /> : <NoData />}
+      {foodData.length ? (
+        <ContentSlider data={foodData} isRated={false} linkTo="/food" />
+      ) : (
+        <NoData />
+      )}
     </section>
   );
 }

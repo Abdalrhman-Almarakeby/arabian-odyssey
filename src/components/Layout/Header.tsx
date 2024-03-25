@@ -1,15 +1,16 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import axios, { AxiosResponse } from "axios";
 import toast from "react-hot-toast";
 import { useUser } from "@/contexts/UserContext";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useClickOutside } from "@/lib/hooks/useClickOutside";
-import DropDownArrowSVG from "@/assets/icons/drop-down-arrow.svg?react";
 import UserAvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { cn } from "@/lib/utils";
-import { Category } from "@/types/category";
+import { Modal } from "flowbite-react";
+import { CategoriesSection } from "@/pages/Home/CategoriesSection";
+import SearchMenu from "../SearchMenu";
+import SearchIcon from "@/assets/icons/search.svg?react";
 
 export function Header() {
   const navigate = useNavigate();
@@ -21,18 +22,11 @@ export function Header() {
   useClickOutside(userMenuButtonRef, () => setIsUserMenuOpen(false));
 
   const [isCatagoriesMenuOpen, setIsCatagoriesMenuOpen] = useState(false);
+  const [isSearchMenuOpen, setIsSearchMenuOpen] = useState(false);
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
-  useClickOutside(catagoriesMenuButtonRef, () => setIsCatagoriesMenuOpen(false));
-
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  useEffect(() => {
-    axios
-      .get("https://arabian-odyssey.vercel.app/category/")
-      .then((res: AxiosResponse) => res.data)
-      .then((data: { category: Category[] }) => setCategories(data.category))
-      .catch((err) => console.log(err));
-  }, []);
+  useClickOutside(catagoriesMenuButtonRef, () =>
+    setIsCatagoriesMenuOpen(false)
+  );
 
   function signOut() {
     setUser(null);
@@ -42,48 +36,39 @@ export function Header() {
   }
 
   return (
-    <header className="container relative flex items-center gap-4 px-4 py-2 lg:py-3">
-      <HashLink
-        to="/#"
-        className="mr-auto flex flex-shrink-0 items-center text-3xl font-bold text-primary md:text-4xl lg:text-[2.5rem]"
-      >
-        Logo
-      </HashLink>
-      <div className="relative flex items-center">
-        <button
-          aria-label="Categories menu"
-          className="relative flex items-center rounded-sm text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          onClick={() => setIsCatagoriesMenuOpen(true)}
-          onFocus={() => {
-            setIsCatagoriesMenuOpen(true);
-            setIsUserMenuOpen(false);
-          }}
-          ref={catagoriesMenuButtonRef}
+    <header className="container flex justify-between px-4 py-2">
+      <div className="flex gap-5 items-center w-max">
+        <HashLink
+          to="/#"
+          className="flex flex-shrink-0 items-center text-3xl font-bold text-primary md:text-4xl lg:text-[2.5rem]"
         >
-          Catagories <DropDownArrowSVG className="text-gray-700" />
-        </button>
-
-        <div
-          className={cn(
-            "bg-white shadow-1 py-2 g z-10 w-48  rounded-md absolute top-[calc(100%+20px)] right-0",
-            isCatagoriesMenuOpen ? "grid" : "hidden"
-          )}
-          role="menu"
-        >
-          {categories.map(({ name, id }) => (
-            <Link
-              to={`/category/${id}`}
-              key={name}
-              className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
-              role="menuitem"
-            >
-              {name}
-            </Link>
-          ))}
+          Logo
+        </HashLink>
+        <span className="h-1/2 w-[2px] bg-primary"></span>
+        {/* categories  */}
+        <div className="flex items-center gap-3">
+          <button
+            aria-label="Categories menu"
+            className="flex items-center rounded-sm text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            onClick={() => setIsCatagoriesMenuOpen(true)}
+            ref={catagoriesMenuButtonRef}
+          >
+            Catagories
+          </button>
+          <button
+            aria-label="Seach menu"
+            className="flex items-center bg-gray-200 py-1 px-2 rounded text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            onClick={() => setIsSearchMenuOpen(true)}
+          >
+            <SearchIcon className="w-4 mr-2" /> Search
+          </button>
         </div>
       </div>
 
+      {/* user state || login  */}
+      {user ? (
       {token ? (
+
         <div className="relative flex items-center">
           <button
             className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
@@ -146,6 +131,21 @@ export function Header() {
           </Link>
         </div>
       )}
+      <Modal
+        show={isCatagoriesMenuOpen}
+        onClose={() => setIsCatagoriesMenuOpen(false)}
+      >
+        <Modal.Header>
+          <h3 className="text-center text-2xl font-bold">Categories</h3>
+        </Modal.Header>
+        <Modal.Body>
+          <CategoriesSection title={false} />
+        </Modal.Body>
+      </Modal>
+      <SearchMenu
+        isSearchMenuOpen={isSearchMenuOpen}
+        setIsSearchMenuOpen={setIsSearchMenuOpen}
+      />
     </header>
   );
 }
