@@ -13,8 +13,8 @@ import { Category } from "@/types/category";
 
 export function Header() {
   const navigate = useNavigate();
-  const { user, setUser } = useUser();
-  const { setToken } = useLocalStorageToken();
+  const { setUser } = useUser();
+  const { token, setToken } = useLocalStorageToken();
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const userMenuButtonRef = useRef<HTMLButtonElement>(null);
@@ -83,7 +83,7 @@ export function Header() {
         </div>
       </div>
 
-      {user ? (
+      {token ? (
         <div className="relative flex items-center">
           <button
             className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
