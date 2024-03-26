@@ -13,7 +13,7 @@ export function LandingSection() {
   ];
 
   return (
-    <section className="relative h-[calc(100svh-61px)] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-84px)]">
+    <section className="full-screen-height relative">
       <div className="relative flex h-full items-center justify-center bg-gray-400">
         <Carousel
           opts={{ loop: true, duration: 50 }}

@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { Rating } from "./Rating";
 
-type RatedSwiperSlideProps = {
+type RatedSlideCardProps = {
   image: string;
   locationName: string;
   rating: number;
   to: string;
 };
 
-export function RatedSwiperSlide({ image, locationName, rating, to }: RatedSwiperSlideProps) {
+export function RatedSlideCard({ image, locationName, rating, to }: RatedSlideCardProps) {
   return (
-    <Link to={to}>
+    <HashLink to={to} className="rounded-lg">
       <figure className="group overflow-hidden rounded">
         <img
           src={image}
@@ -22,6 +22,6 @@ export function RatedSwiperSlide({ image, locationName, rating, to }: RatedSwipe
         <h5 className="text-xl font-bold text-black">{locationName}</h5>
         <Rating rating={rating} />
       </div>
-    </Link>
+    </HashLink>
   );
 }

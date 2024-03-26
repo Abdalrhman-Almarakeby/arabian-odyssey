@@ -1,4 +1,5 @@
-import { Carousel } from "flowbite-react";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/Carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 type WallpaperProps = {
   images: { path: string }[];
@@ -8,21 +9,34 @@ type WallpaperProps = {
 
 export function Wallpaper({ images, flag, name }: WallpaperProps) {
   return (
-    <Carousel slideInterval={5000} pauseOnHover>
-      {images.map((image, i) => (
-        <div key={i} className="relative flex h-full items-center justify-center bg-gray-400">
-          <div className="absolute bottom-0 left-0 z-10 flex items-center px-6 py-10">
-            <figure className="mr-3 w-20 rounded-full">
-              <img src={flag} className="rounded-full" alt="" />
-            </figure>
-            <h1 className="text-4xl text-white">{name}</h1>
-          </div>
-          <figure className="right-0 top-0 h-full w-full">
-            <div className="absolute left-0 top-0 h-full w-full bg-black opacity-20"></div>
-            <img className="h-full w-full object-cover" src={image.path} alt="" />
+    <header className="full-screen-height">
+      <div className="relative flex h-full items-center justify-center bg-gray-400">
+        <Carousel
+          opts={{ loop: true, duration: 50 }}
+          className="h-full"
+          plugins={[
+            Autoplay({
+              delay: 3000,
+            }),
+          ]}
+        >
+          <CarouselContent className="h-full">
+            {images.map(({ path }) => (
+              <CarouselItem key={path} className="relative h-full w-full bg-black/30">
+                <img className="h-full w-full object-cover" src={path} alt="" />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+        <div className="absolute bottom-6 left-4 z-10 flex items-center">
+          <figure className="mr-3 rounded-full">
+            <img src={flag} className="size-[50px] rounded-full" alt="" />
           </figure>
+          <h1 className="rounded-md bg-black/40 px-2.5 py-1.5 text-xl font-bold text-white">
+            {name}
+          </h1>
         </div>
-      ))}
-    </Carousel>
+      </div>
+    </header>
   );
 }
