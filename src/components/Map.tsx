@@ -3,9 +3,9 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 type MapProps = {
-    cords: LatLngExpression;
-    location: string
-}
+  cords: LatLngExpression;
+  location: string;
+};
 
 export function Map({ cords, location }: MapProps) {
   return (
@@ -16,7 +16,7 @@ export function Map({ cords, location }: MapProps) {
       />
       <Marker position={cords}>
         <Popup>
-          <p className="font-bold">{ location }</p>
+          <p className="font-bold">{location}</p>
         </Popup>
       </Marker>
     </MapContainer>
