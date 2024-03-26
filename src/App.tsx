@@ -14,6 +14,7 @@ import { Signin } from "@/pages/Signin";
 import { ConfirmEmail } from "@/pages/ConfirmEmail";
 import { Category } from "@/pages/Category";
 import { Settings } from "@/pages/Settings";
+import { Attraction } from "@/pages/Attraction"
 import { Profile } from "@/pages/Profile";
 
 import "./CSS/output.css";
@@ -55,6 +56,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/country/:countryId" element={<Country isState={false} />} />
           <Route path="/country/:countryId/:stateId" element={<Country isState={true} />} />
+          <Route path="/attraction/:attractionId" element={<Attraction />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/settings" element={<Settings />} />

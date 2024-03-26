@@ -9,7 +9,10 @@ type SearchMenu = {
   setIsSearchMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export function SearchMenu({ isSearchMenuOpen, setIsSearchMenuOpen }: SearchMenu) {
+export function SearchMenu({
+  isSearchMenuOpen,
+  setIsSearchMenuOpen,
+}: SearchMenu) {
   const [attractions, setAttractions] = useState<AttractionType[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -33,8 +36,19 @@ export function SearchMenu({ isSearchMenuOpen, setIsSearchMenuOpen }: SearchMenu
       </Modal.Header>
       <Modal.Body>
         {attractions.map((attraction, i) => {
-          if (attraction.name.toLocaleLowerCase().includes(searchQuery.toLowerCase())) {
-            return <Attraction data={attraction} key={i} row />;
+          if (
+            attraction.name
+              .toLocaleLowerCase()
+              .includes(searchQuery.toLowerCase())
+          ) {
+            return (
+              <Attraction
+                data={attraction}
+                setModal={setIsSearchMenuOpen}
+                key={i}
+                row
+              />
+            );
           }
         })}
       </Modal.Body>

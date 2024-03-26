@@ -38,7 +38,7 @@ export function Signin() {
           setTimeout(() => navigate("/"), 10);
           return;
         }
-        toast.error("An Error Occurred. Pleas try later.");
+        toast.error("An Error Occurred. Please try later.");
       })
       .catch((err: AxiosError<{ err: string | { message: string }[] }>) => {
         if (err.response) {

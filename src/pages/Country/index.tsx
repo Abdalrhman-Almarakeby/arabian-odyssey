@@ -41,7 +41,7 @@ export function Country({ isState }: CountryProps) {
       {country ? (
         <>
           <Wallpaper name={country.name} flag={country.flag.path} images={country.images} />
-          <main className="container px-6 pb-[120px] pt-[50px]">
+          <main className="container  pb-[120px] pt-[50px]">
             <Description country={country} countryId={countryId} />
             <Food foodData={country.popularFood} />
             <Attractions data={isState && state ? state.attractions : country.attractions} />

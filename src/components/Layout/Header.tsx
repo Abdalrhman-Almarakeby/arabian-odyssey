@@ -7,10 +7,10 @@ import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useClickOutside } from "@/lib/hooks/useClickOutside";
 import UserAvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { cn } from "@/lib/utils";
-import { Modal } from "flowbite-react";
 import { CategoriesSection } from "@/pages/Home/CategoriesSection";
 import { SearchMenu } from "../SearchMenu";
 import SearchIcon from "@/assets/icons/search.svg?react";
+import { Modal } from "flowbite-react";
 
 export function Header() {
   const navigate = useNavigate();
@@ -24,7 +24,9 @@ export function Header() {
   const [isCatagoriesMenuOpen, setIsCatagoriesMenuOpen] = useState(false);
   const [isSearchMenuOpen, setIsSearchMenuOpen] = useState(false);
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
-  useClickOutside(catagoriesMenuButtonRef, () => setIsCatagoriesMenuOpen(false));
+  useClickOutside(catagoriesMenuButtonRef, () =>
+    setIsCatagoriesMenuOpen(false)
+  );
 
   function signOut() {
     setUser(null);
@@ -35,7 +37,7 @@ export function Header() {
 
   return (
     <header className="container flex justify-between px-4 py-2">
-      <div className="flex w-max items-center gap-5">
+      <div className="flex items-center gap-5">
         <HashLink
           to="/#"
           className="flex flex-shrink-0 items-center text-3xl font-bold text-primary md:text-4xl lg:text-[2.5rem]"
@@ -44,7 +46,7 @@ export function Header() {
         </HashLink>
         <span className="h-1/2 w-[2px] bg-primary"></span>
         {/* categories  */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-5">
           <button
             aria-label="Categories menu"
             className="flex items-center rounded-sm text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
@@ -55,7 +57,7 @@ export function Header() {
           </button>
           <button
             aria-label="Seach menu"
-            className="flex items-center rounded bg-gray-200 px-2 py-1 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="items-center rounded-3xl bg-gray-200 px-3 py-2 hidden sm:flex w-[200px] md:w-[300px] text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             onClick={() => setIsSearchMenuOpen(true)}
           >
             <SearchIcon className="mr-2 w-4" /> Search
@@ -127,7 +129,10 @@ export function Header() {
           </Link>
         </div>
       )}
-      <Modal show={isCatagoriesMenuOpen} onClose={() => setIsCatagoriesMenuOpen(false)}>
+      <Modal
+        show={isCatagoriesMenuOpen}
+        onClose={() => setIsCatagoriesMenuOpen(false)}
+      >
         <Modal.Header>
           <h3 className="text-center text-2xl font-bold">Categories</h3>
         </Modal.Header>
@@ -135,7 +140,10 @@ export function Header() {
           <CategoriesSection title={false} />
         </Modal.Body>
       </Modal>
-      <SearchMenu isSearchMenuOpen={isSearchMenuOpen} setIsSearchMenuOpen={setIsSearchMenuOpen} />
+      <SearchMenu
+        isSearchMenuOpen={isSearchMenuOpen}
+        setIsSearchMenuOpen={setIsSearchMenuOpen}
+      />
     </header>
   );
 }
