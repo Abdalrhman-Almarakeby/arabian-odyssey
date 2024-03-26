@@ -32,7 +32,7 @@ export function Category() {
         <>
           <header className="relative">
             <img
-              className="h-[calc(100svh-64px)] w-full object-cover"
+              className="full-screen-height w-full object-cover"
               src={category.image.path}
               alt=""
             />
@@ -51,7 +51,7 @@ export function Category() {
           </main>
         </>
       ) : (
-        <main className="flex h-[calc(100svh-64px)] w-full items-center justify-center">
+        <main className="full-screen-height flex w-full items-center justify-center">
           <Spinner color={"success"} size={"xl"} />
         </main>
       )}

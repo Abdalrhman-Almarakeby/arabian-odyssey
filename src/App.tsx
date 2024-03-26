@@ -56,7 +56,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/country/:countryId" element={<Country isState={false} />} />
           <Route path="/country/:countryId/:stateId" element={<Country isState={true} />} />
-          <Route path="/attractions/:attractionId" element={<Attraction />} />
+          <Route path="/attraction/:attractionId" element={<Attraction />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/settings" element={<Settings />} />

@@ -145,7 +145,7 @@ export function Signup() {
               />
             </div>
             <SubmitButton>Create an account</SubmitButton>
-            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+            <p className="text-sm font-light text-gray-500">
               Already have an account?{" "}
               <Link className="font-medium text-primary hover:underline" to="/signin">
                 Sign in here

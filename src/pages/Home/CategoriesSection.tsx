@@ -4,6 +4,7 @@ import axios from "axios";
 import LocationCrosshairsSVG from "@/assets/icons/location-crosshairs.svg?react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Category } from "@/types/category";
+import { Link } from "react-router-dom";
 
 type CategoriesSectionProps = {
   title: boolean
@@ -33,6 +34,7 @@ export function CategoriesSection({ title }: CategoriesSectionProps) {
               key={category.name}
               className="group relative flex flex-col items-center justify-center overflow-hidden rounded-[0.625rem] bg-primary/10 px-14 py-3 motion-safe:hover:bg-primary"
             >
+              <Link to={`/category/${category.id}`}>
               <div className="relative z-10">
                 <img
                   src={category.image && category.image.path}
@@ -45,6 +47,7 @@ export function CategoriesSection({ title }: CategoriesSectionProps) {
               <div className="absolute bottom-0 right-0 translate-x-[40%]">
                 <LocationCrosshairsSVG className="w-[115px] -rotate-[10deg] fill-primary/20 duration-1000 motion-safe:group-hover:-rotate-[60deg] motion-safe:group-hover:fill-secondary" />
               </div>
+              </Link>
             </li>
           ))
         ) : (

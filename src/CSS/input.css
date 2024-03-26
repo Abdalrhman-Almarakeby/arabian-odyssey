@@ -26,5 +26,10 @@
   h6 {
     @apply max-w-[75ch];
   }
+}
 
+@layer components {
+  .full-screen-height {
+    @apply h-[calc(100svh-61px)] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-84px)];
+  }
 }

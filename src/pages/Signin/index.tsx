@@ -109,7 +109,7 @@ export function Signin() {
             </div>
 
             <SubmitButton>Log in</SubmitButton>
-            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+            <p className="text-sm font-light text-gray-500">
               Don't have an account?{" "}
               <Link className="font-medium text-primary hover:underline" to="/signup">
                 Sing up here

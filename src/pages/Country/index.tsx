@@ -11,8 +11,8 @@ import { Food } from "./Food";
 import { StateData } from "@/types/state";
 
 type CountryProps = {
-  isState: boolean
-}
+  isState: boolean;
+};
 
 export function Country({ isState }: CountryProps) {
   const { countryId, stateId } = useParams();
@@ -28,7 +28,8 @@ export function Country({ isState }: CountryProps) {
 
   useEffect(() => {
     if (stateId) {
-      axios.get(`https://arabian-odyssey.vercel.app/state/${stateId}`)
+      axios
+        .get(`https://arabian-odyssey.vercel.app/state/${stateId}`)
         .then((res: AxiosResponse) => res.data)
         .then((data: { state: StateData }) => setState(data.state))
         .catch((err) => console.log(err));
@@ -39,14 +40,8 @@ export function Country({ isState }: CountryProps) {
     <>
       {country ? (
         <>
-          <header className="h-[calc(100svh-64px)]">
-            <Wallpaper
-              name={country.name}
-              flag={country.flag.path}
-              images={country.images}
-            />
-          </header>
-          <main className="px-6 pb-[120px] pt-[50px]">
+          <Wallpaper name={country.name} flag={country.flag.path} images={country.images} />
+          <main className="container  pb-[120px] pt-[50px]">
             <Description country={country} countryId={countryId} />
             <Food foodData={country.popularFood} />
             <Attractions data={isState && state ? state.attractions : country.attractions} />
@@ -54,7 +49,7 @@ export function Country({ isState }: CountryProps) {
           </main>
         </>
       ) : (
-        <main className="flex h-[calc(100svh-64px)] w-full items-center justify-center">
+        <main className="full-screen-height flex w-full items-center justify-center">
           <Spinner color={"success"} size={"xl"} />
         </main>
       )}
