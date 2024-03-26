@@ -9,7 +9,7 @@ import UserAvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { cn } from "@/lib/utils";
 import { Modal } from "flowbite-react";
 import { CategoriesSection } from "@/pages/Home/CategoriesSection";
-import SearchMenu from "../SearchMenu";
+import { SearchMenu } from "../SearchMenu";
 import SearchIcon from "@/assets/icons/search.svg?react";
 
 export function Header() {
