@@ -2,10 +2,7 @@
 /* eslint-env node */
 module.exports = {
   darkMode: ["class"],
-  content: [
-    "./src/**/*.{ts,tsx}",
-    "node_modules/flowbite-react/lib/esm/**/*.js",
-  ],
+  content: ["./src/**/*.{ts,tsx}", "node_modules/flowbite-react/lib/esm/**/*.js"],
   prefix: "",
   theme: {
     container: {
@@ -57,7 +54,7 @@ module.exports = {
         "10s": "10s",
       },
       boxShadow: {
-        1: " rgba(0, 0, 0, 0.1) 0px 4px 12px",
+        1: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
       },
     },
   },

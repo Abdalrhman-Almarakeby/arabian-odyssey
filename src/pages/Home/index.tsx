@@ -7,17 +7,15 @@ import { CategoriesSection } from "./CategoriesSection";
 
 export function Home() {
   return (
-    <>
-      <header>
-        <LandingSection />
-      </header>
-      <main className="flex flex-col items-center gap-20 py-[120px]">
+    <main>
+      <LandingSection />
+      <div className="flex flex-col items-center gap-20 py-[120px]">
         <VisitArabiaSection />
         <MostVisitedSection />
         <HotAttractionsSection />
         <TopDestinationsSection />
         <CategoriesSection title />
-      </main>
-    </>
+      </div>
+    </main>
   );
 }

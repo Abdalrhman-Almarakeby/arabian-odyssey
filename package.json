@@ -18,6 +18,8 @@
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "embla-carousel-autoplay": "^8.0.0",
+    "embla-carousel-react": "^8.0.0",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.3",
     "pure-react-carousel": "^1.30.1",

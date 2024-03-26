@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
-import { RatedSwiperSlide } from "@/components/RatedSwiperSlide";
+import { RatedSlideCard } from "@/components/RatedSlideCard";
 import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
 import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
 import { UnratedSwiperSlide } from "./UnratedSwiperSlide";
@@ -69,7 +69,7 @@ export function ContentSlider({ data, isRated, linkTo }: ContentSliderProps) {
       <Slider className="px-6">
         {isRated
           ? data.map((item, i) => (
-              <RatedSwiperSlide
+              <RatedSlideCard
                 locationName={item.name}
                 image={
                   item.image

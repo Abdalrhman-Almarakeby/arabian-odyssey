@@ -1,6 +1,6 @@
 import { Attraction } from "@/types/attraction";
 import { Link } from "react-router-dom";
-import { Review } from "./Review";
+import { Rating } from "./Rating";
 
 type AttractionProps = {
   data: Attraction;
@@ -31,7 +31,7 @@ export function Attraction({ data, row }: AttractionProps) {
         }`}
       >
         <h3 className="mb-1 text-2xl font-bold">{data.name}</h3>
-        <Review rating={data.rating} />
+        <Rating rating={data.rating} />
         <p className="mb-4 mt-6 max-w-[450px] text-base font-light">
           {data.desc.length > 200
             ? `${data.desc.substring(0, 200)}...`
