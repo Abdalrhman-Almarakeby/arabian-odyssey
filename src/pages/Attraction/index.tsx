@@ -10,18 +10,17 @@ import { CountriesSuggestions } from "@/components/CountriesSuggestions";
 export function Attraction() {
   const { attractionId } = useParams();
   const [attraction, SetAttraction] = useState<Attraction | null>(null);
+
   useEffect(() => {
     axios
       .get(`https://arabian-odyssey.vercel.app/attraction/${attractionId}`)
       .then((res: AxiosResponse) => res.data)
-      .then((data: { attraction: Attraction }) =>
-        SetAttraction(data.attraction)
-      )
+      .then((data: { attraction: Attraction }) => SetAttraction(data.attraction))
       .catch((err: AxiosError) => console.log(err));
-  }, []);
-  console.log(attraction);
+  }, [attractionId]);
+
   return (
-    <div className="container px-6 pt-10 pb-[100px]">
+    <div className="container px-6 pb-[100px] pt-10">
       {attraction ? (
         <>
           <section>
@@ -35,7 +34,7 @@ export function Attraction() {
           </section>
         </>
       ) : (
-        <div className="flex justify-center items-center h-[calc(100svh-64px)]">
+        <div className="flex h-[calc(100svh-64px)] items-center justify-center">
           <Spinner color="success" size={"xl"} />
         </div>
       )}
