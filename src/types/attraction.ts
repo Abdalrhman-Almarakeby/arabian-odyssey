@@ -1,6 +1,8 @@
+import { LatLngExpression } from "leaflet";
 import { Category } from "./category";
 import { Country } from "./country";
 import { State } from "./state";
+import { review } from "./Review";
 
 export type Attraction = {
   _id: string;
@@ -21,5 +23,7 @@ export type Attraction = {
   admissionFees: string;
   openingHours: string;
   state: State;
-  category: Category[]
+  category: Category[];
+  locationCoordinates: LatLngExpression;
+  Review: review[]
 };

@@ -6,6 +6,7 @@ import { About } from "./About";
 import { Spinner } from "flowbite-react";
 import { Details } from "./Details";
 import { CountriesSuggestions } from "@/components/CountriesSuggestions";
+import Reviews from "./Reviews";
 
 export function Attraction() {
   const { attractionId } = useParams();
@@ -15,10 +16,12 @@ export function Attraction() {
     axios
       .get(`https://arabian-odyssey.vercel.app/attraction/${attractionId}`)
       .then((res: AxiosResponse) => res.data)
-      .then((data: { attraction: Attraction }) => SetAttraction(data.attraction))
+      .then((data: { attraction: Attraction }) =>
+        SetAttraction(data.attraction)
+      )
       .catch((err: AxiosError) => console.log(err));
   }, [attractionId]);
-
+  console.log(attraction);
   return (
     <div className="container px-6 pb-[100px] pt-10">
       {attraction ? (
@@ -27,7 +30,13 @@ export function Attraction() {
             <About attraction={attraction} />
           </section>
           <section className="mb-20">
-            <Details />
+            <Details
+              cords={attraction.locationCoordinates}
+              location={`${attraction.state.name}, ${attraction.country.name}`}
+            />
+          </section>
+          <section className="mb-20">
+            <Reviews reviews={attraction.Review} />
           </section>
           <section>
             <CountriesSuggestions />

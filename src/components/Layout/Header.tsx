@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import toast from "react-hot-toast";
@@ -7,10 +7,11 @@ import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import { useClickOutside } from "@/lib/hooks/useClickOutside";
 import UserAvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { cn } from "@/lib/utils";
-import { CategoriesSection } from "@/pages/Home/CategoriesSection";
 import { SearchMenu } from "../SearchMenu";
 import SearchIcon from "@/assets/icons/search.svg?react";
-import { Modal } from "flowbite-react";
+import DropDownArrowSVG from "@/assets/icons/drop-down-arrow.svg?react";
+import axios from "axios";
+import { Category } from "@/types/category";
 
 export function Header() {
   const navigate = useNavigate();
@@ -23,6 +24,16 @@ export function Header() {
 
   const [isCatagoriesMenuOpen, setIsCatagoriesMenuOpen] = useState(false);
   const [isSearchMenuOpen, setIsSearchMenuOpen] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    axios
+      .get("https://arabian-odyssey.vercel.app/category")
+      .then((res: { data: { category: Category[] } }) => {
+        setCategories(res.data.category);
+      });
+  }, []);
+
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
   useClickOutside(catagoriesMenuButtonRef, () =>
     setIsCatagoriesMenuOpen(false)
@@ -37,7 +48,7 @@ export function Header() {
 
   return (
     <header className="container flex justify-between px-4 py-2">
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 w-full mr-10">
         <HashLink
           to="/#"
           className="flex flex-shrink-0 items-center text-3xl font-bold text-primary md:text-4xl lg:text-[2.5rem]"
@@ -46,18 +57,42 @@ export function Header() {
         </HashLink>
         <span className="h-1/2 w-[2px] bg-primary"></span>
         {/* categories  */}
-        <div className="flex items-center gap-5">
-          <button
-            aria-label="Categories menu"
-            className="flex items-center rounded-sm text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-            onClick={() => setIsCatagoriesMenuOpen(true)}
-            ref={catagoriesMenuButtonRef}
-          >
-            Catagories
-          </button>
+        <div className="flex items-center gap-5 w-full">
+          <div className="relative flex items-center">
+            <button
+              aria-label="Categories menu"
+              className="relative flex items-center rounded-sm text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              onFocus={() => {
+                setIsCatagoriesMenuOpen(true);
+                setIsUserMenuOpen(false);
+              }}
+              ref={catagoriesMenuButtonRef}
+            >
+              Catagories <DropDownArrowSVG className="text-gray-700" />
+            </button>
+
+            <div
+              className={cn(
+                "bg-white shadow-1 py-2 g z-10 w-48  rounded-md absolute top-[calc(100%+30px)] right-0",
+                isCatagoriesMenuOpen ? "grid" : "hidden"
+              )}
+              role="menu"
+            >
+              {categories.map((category) => (
+                <Link
+                  to={`/category/${category.id}`}
+                  key={category.name}
+                  className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
+                  role="menuitem"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
+          </div>
           <button
             aria-label="Seach menu"
-            className="items-center rounded-3xl bg-gray-200 px-3 py-2 hidden sm:flex w-[200px] md:w-[300px] text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="items-center rounded-3xl bg-gray-200 px-3 py-2 hidden sm:flex w-full text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             onClick={() => setIsSearchMenuOpen(true)}
           >
             <SearchIcon className="mr-2 w-4" /> Search
@@ -129,17 +164,6 @@ export function Header() {
           </Link>
         </div>
       )}
-      <Modal
-        show={isCatagoriesMenuOpen}
-        onClose={() => setIsCatagoriesMenuOpen(false)}
-      >
-        <Modal.Header>
-          <h3 className="text-center text-2xl font-bold">Categories</h3>
-        </Modal.Header>
-        <Modal.Body>
-          <CategoriesSection title={false} />
-        </Modal.Body>
-      </Modal>
       <SearchMenu
         isSearchMenuOpen={isSearchMenuOpen}
         setIsSearchMenuOpen={setIsSearchMenuOpen}
