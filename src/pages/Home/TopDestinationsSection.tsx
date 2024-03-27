@@ -37,9 +37,16 @@ export function TopDestinationsSection() {
           className="w-full px-8"
         >
           <CarouselContent className="relative -ml-5">
-            {states.map(({ id, image, name }) => (
-              <CarouselItem key={name} className="pl-5 shadow-xl md:basis-1/2 lg:basis-1/3">
-                <UnratedSlideCard to={`/attraction/${id}`} locationName={name} image={image.path} />
+            {states.map(({ id, image, name, country }) => (
+              <CarouselItem
+                key={name}
+                className="pl-5 shadow-xl md:basis-1/2 lg:basis-1/3"
+              >
+                <UnratedSlideCard
+                  to={`/country/${country}/${id}`}
+                  locationName={name}
+                  image={image.path}
+                />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -53,7 +60,9 @@ export function TopDestinationsSection() {
         </Carousel>
       )}
       {error && (
-        <p className="text-center text-base text-red-500">Unable to get data, try again later</p>
+        <p className="text-center text-base text-red-500">
+          Unable to get data, try again later
+        </p>
       )}
       {!error && !states && <Spinner color="success" size={"xl"} />}
     </section>

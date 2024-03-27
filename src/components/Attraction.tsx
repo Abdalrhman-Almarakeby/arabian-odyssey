@@ -15,11 +15,23 @@ export function Attraction({ data, row, setModal = false }: AttractionProps) {
     }
   }
   return (
-    <div className={`mb-20 flex flex-col items-center ${!row && "md:mb-15 md:flex-row"}`}>
+    <div
+      className={`mb-20 flex flex-col items-center ${
+        !row && "md:mb-15 md:flex-row"
+      }`}
+    >
       {!row && (
         <figure className="max-w-full rounded sm:max-w-[500px] md:mr-10">
-          <Link onClick={changeState} className="w-full" to={`/attraction/${data._id}`}>
-            <img src={data.image.path} className="rounded-t md:rounded-b" alt="" />
+          <Link
+            onClick={changeState}
+            className="w-full"
+            to={`/attraction/${data._id}`}
+          >
+            <img
+              src={data.image.path}
+              className="rounded-t md:rounded-b"
+              alt=""
+            />
           </Link>
         </figure>
       )}
@@ -31,7 +43,9 @@ export function Attraction({ data, row, setModal = false }: AttractionProps) {
         <h3 className="mb-1 text-2xl font-bold">{data.name}</h3>
         <Rating rating={data.rating} />
         <p className="mb-4 mt-6 max-w-[450px] text-base font-light">
-          {data.desc.length > 200 ? `${data.desc.substring(0, 200)}...` : data.desc}
+          {data.desc.length > 200
+            ? `${data.desc.substring(0, 200)}...`
+            : data.desc}
         </p>
         <Link
           onClick={changeState}

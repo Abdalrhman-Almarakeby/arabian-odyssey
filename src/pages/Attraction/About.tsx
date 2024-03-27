@@ -10,7 +10,7 @@ import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
 import LocationDotSVG from "@/assets/icons/location-dot.svg?react";
 import { Rating } from "@/components/Rating";
 import { Attraction } from "@/types/attraction";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "flowbite-react";
 import { Link } from "react-router-dom";
 
@@ -20,6 +20,9 @@ type AboutProps = {
 
 export function About({ attraction }: AboutProps) {
   const [active, setActive] = useState<string>(attraction.images[0].path);
+  useEffect(() => {
+    setActive(attraction.images[0].path)
+  }, [attraction])
   return (
     <div>
       <div className="mb-8">
@@ -92,8 +95,8 @@ export function About({ attraction }: AboutProps) {
             )}
             <div className="mt-3 flex max-w-[400px] flex-wrap gap-2">
               {attraction.category.map((item, i) => (
-                <Link to={`/category/${item.id}`}>
-                  <Badge key={i} color={"success"} className="underline">
+                <Link to={`/category/${item.id}`} key={i}>
+                  <Badge color={"success"} className="underline">
                     {item.name}
                   </Badge>
                 </Link>
