@@ -5,7 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/Carousel";
-import { review } from "@/types/Review";
+import { review } from "@/types/review";
 import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
 import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
 import { Review } from "@/components/Review";
