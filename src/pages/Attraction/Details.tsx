@@ -2,12 +2,12 @@ import { AttractionSuggestions } from "@/components/AttractionSuggestions";
 import { Map } from "@/components/Map";
 import { LatLngExpression } from "leaflet";
 
-type DeatilsProps = {
+type DetailsProps = {
   cords: LatLngExpression;
   location: string;
 };
 
-export function Details({ cords, location }: DeatilsProps) {
+export function Details({ cords, location }: DetailsProps) {
   return (
     <div className="flex w-full flex-col-reverse gap-20 lg:flex-row lg:gap-10">
       <AttractionSuggestions />
