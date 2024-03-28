@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Spinner } from "flowbite-react";
-import { Country } from "@/types/country";
+import { Country } from "@/types/Country";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CountryDisplay } from "@/components/CountryDisplay";
 

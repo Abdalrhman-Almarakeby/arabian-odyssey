@@ -1,5 +1,5 @@
 import { Attraction } from "./attraction";
-import { Category } from "./category";
+import { Category } from "./Category";
 import { Food } from "./food";
 import { State } from "./state";
 

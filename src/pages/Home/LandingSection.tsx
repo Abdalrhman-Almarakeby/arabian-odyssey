@@ -4,8 +4,14 @@ import homeImg1 from "@/assets/imgs/slider1.webp";
 import homeImg2 from "@/assets/imgs/slider2.webp";
 import homeImg3 from "@/assets/imgs/slider3.webp";
 import LocationDotSVG from "@/assets/icons/location-dot.svg?react";
+import { Dispatch, SetStateAction } from "react";
 
-export function LandingSection() {
+type LandingSectionProps = {
+  isSearchMenuOpen: boolean;
+  setIsSearchMenuOpen: Dispatch<SetStateAction<boolean>>
+}
+
+export function LandingSection({ isSearchMenuOpen, setIsSearchMenuOpen }: LandingSectionProps) {
   const LOCATIONS = [
     { img: homeImg1, location: "Sir Al Dannieyh, Lebanon" },
     { img: homeImg2, location: "Ain Draham, Tunisia" },
@@ -44,7 +50,7 @@ export function LandingSection() {
             Embark on a journey to explore the vibrant tapestry of the Arab world, where each step
             unveils treasures beyond the desert sands
           </p>
-          <button className="rounded-[100px] bg-primary px-4 py-2 text-base font-bold text-white sm:text-xl">
+          <button onClick={() => setIsSearchMenuOpen(!isSearchMenuOpen)} className="rounded-[100px] bg-primary px-4 py-2 text-base font-bold text-white sm:text-xl">
             Explore now
           </button>
         </div>

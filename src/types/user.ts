@@ -1,9 +1,10 @@
+import { Attraction } from "./attraction.ts";
 import { Role } from "./role.ts";
 
 export type User = {
   _id: string;
   email: string;
-  attractionsAdded: [];
+  attractionsAdded: Attraction[];
   gender: "male" | "female";
   isConfirmed: boolean;
   isDeleted: boolean;
@@ -11,5 +12,6 @@ export type User = {
   createdAt: string;
   name: string;
   password: string;
+  WishList: Attraction[];
   status: "Online" | "Offline";
 };
