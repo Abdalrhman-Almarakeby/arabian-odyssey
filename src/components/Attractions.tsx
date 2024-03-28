@@ -35,6 +35,7 @@ export function Attractions({ data, country }: AttractionsProps) {
             const targetPath = `/country/${country.id}/${id}`;
             return (
               <HashLink
+                key={id}
                 className={`border-2 border-black rounded-[100px] py-1 px-3 mr-3 ${
                   pathname.includes(targetPath)
                     ? "text-white bg-black"
