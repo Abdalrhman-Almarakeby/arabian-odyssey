@@ -14,7 +14,7 @@ import { Signin } from "@/pages/Signin";
 import { ConfirmEmail } from "@/pages/ConfirmEmail";
 import { Category } from "@/pages/Category";
 import { Settings } from "@/pages/Settings";
-import { Attraction } from "@/pages/Attraction"
+import { Attraction } from "@/pages/Attraction";
 import { Profile } from "@/pages/Profile";
 
 import "./CSS/output.css";
@@ -22,7 +22,7 @@ import "./CSS/output.css";
 export default function App() {
   const { token } = useLocalStorageToken();
   const { setUser } = useUser();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!token) {
@@ -30,6 +30,7 @@ export default function App() {
       setIsLoading(false);
       return;
     }
+    setIsLoading(true);
 
     axios
       .get("https://arabian-odyssey.vercel.app/user", {
