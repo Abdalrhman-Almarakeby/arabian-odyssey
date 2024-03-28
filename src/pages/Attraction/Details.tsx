@@ -16,7 +16,7 @@ export function Details({ cords, location }: DeatilsProps) {
           !cords && "flex items-center justify-center"
         }`}
       >
-        {cords ? (
+        {Array.isArray(cords) && cords.length ? (
           <Map cords={cords} location={location} />
         ) : (
           <p className="text-center text-red-500">

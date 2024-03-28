@@ -1,5 +1,5 @@
 import { review } from "@/types/review";
-import avatar from "@/assets/icons/user-avatar.svg";
+import AvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { Rating } from "./Rating";
 
 type ReviewProps = {
@@ -8,15 +8,25 @@ type ReviewProps = {
 
 export function Review({ review }: ReviewProps) {
   return (
-    <div className="min-h-[300px] max-w-[350px] rounded bg-white px-10 py-5">
+    <div
+      className="flex h-full flex-col gap-4 rounded bg-white px-4 py-5"
+      aria-label={`Review by ${review.user.name}`}
+    >
       <div className="flex items-center gap-2">
-        <figure>
-          <img src={avatar} alt="" />
-        </figure>
-        <p>Username</p>
+        {review.user.image ? (
+          <figure>
+            <img src={review.user.image.path} alt="" className="size-[50px] rounded-full" />
+          </figure>
+        ) : (
+          <AvatarSVG className="size-[50px] fill-primary" />
+        )}
+        <p className="capitalize"> {review.user.name}</p>
       </div>
-      <Rating rating={+review.rating} />
-      <div className="mt-3">{review.comment}</div>
+      <div className="mb-4">{review.comment}</div>
+      <div className="mt-auto flex justify-between px-2">
+        <Rating rating={+review.rating} />
+        <p>{review.date ?? "Feb 13, 2021"}</p>
+      </div>
     </div>
   );
 }

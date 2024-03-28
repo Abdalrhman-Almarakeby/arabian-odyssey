@@ -77,11 +77,12 @@ export function About({ attraction }: AboutProps) {
           <Rating rating={attraction.rating} />
         </div>
         <h2 className="mb-1 text-2xl font-bold md:text-3xl">About</h2>
-        <Link to={`/country/${attraction.country.id}/${attraction.state.id}`}>
-          <p className="flex items-center text-sm font-light underline">
-            <LocationDotSVG className="mr-1 size-5" />
-            {attraction.state.name}, {attraction.country.name}
-          </p>
+        <Link
+          className="flex items-center text-sm font-light capitalize underline"
+          to={`/country/${attraction.country.id}/${attraction.state.id}`}
+        >
+          <LocationDotSVG className="mr-1 size-5" />
+          {attraction.state.name}, {attraction.country.name}
         </Link>
         <p className="mb-4 mt-6 text-base font-light">{attraction.desc}</p>
         <div className="flex flex-wrap items-start gap-3">

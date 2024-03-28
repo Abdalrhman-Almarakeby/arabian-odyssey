@@ -1,4 +1,11 @@
 export type review = {
   comment: string;
-  rating: "1" | "2" | "3" | "4" | "5";
+  rating: 1 | 2 | 3 | 4 | 5;
+  attraction: string;
+  user: {
+    name: string;
+    image?: {
+      path: string;
+    };
+  };
 };

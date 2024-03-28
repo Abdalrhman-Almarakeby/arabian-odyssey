@@ -16,8 +16,8 @@ type ReviewsProps = {
 
 export function Reviews({ reviews }: ReviewsProps) {
   return (
-    <div className="flex min-h-[50svh] w-full flex-col items-center rounded bg-gray-200 px-5 py-8">
-      <h2 className="mb-10 text-xl font-bold">People's openion</h2>
+    <div className="flex w-full flex-col items-center rounded bg-gray-100 px-5 py-8">
+      <h2 className="mb-10 text-2xl font-bold">Visitor Reviews</h2>
       {reviews.length ? (
         <Carousel
           opts={{
@@ -27,7 +27,7 @@ export function Reviews({ reviews }: ReviewsProps) {
         >
           <CarouselContent className="relative -ml-5">
             {reviews.map((review) => (
-              <CarouselItem key={review.comment}>
+              <CarouselItem key={review.comment} className="pl-5 md:basis-1/2 xl:basis-1/3">
                 <Review review={review} />
               </CarouselItem>
             ))}

@@ -1488,6 +1488,10 @@ p,
   margin-top: 1.5rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .block {
   display: block;
 }
@@ -3504,6 +3508,10 @@ p,
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .italic {
@@ -6927,6 +6935,10 @@ p,
 
   .xl\:basis-1\/5 {
     flex-basis: 20%;
+  }
+
+  .xl\:basis-1\/3 {
+    flex-basis: 33.333333%;
   }
 
   .xl\:grid-cols-3 {
