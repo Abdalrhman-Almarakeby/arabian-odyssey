@@ -40,7 +40,7 @@ export function HotAttractionsSection() {
             {attractions.map(({ _id, image, rating, name }) => (
               <CarouselItem key={name} className="pl-5 shadow-xl md:basis-1/2 lg:basis-1/3">
                 <RatedSlideCard
-                  to={`/attraction/${_id}`}
+                  to={`/attraction/${_id}#`}
                   locationName={name}
                   image={image.path}
                   rating={rating}

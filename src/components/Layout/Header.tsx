@@ -35,9 +35,7 @@ export function Header() {
   }, []);
 
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
-  useClickOutside(catagoriesMenuButtonRef, () =>
-    setIsCatagoriesMenuOpen(false)
-  );
+  useClickOutside(catagoriesMenuButtonRef, () => setIsCatagoriesMenuOpen(false));
 
   function signOut() {
     setUser(null);
@@ -48,7 +46,7 @@ export function Header() {
 
   return (
     <header className="container flex justify-between px-4 py-2">
-      <div className="flex items-center gap-5 w-full mr-10">
+      <div className="mr-10 flex w-full items-center gap-5">
         <HashLink
           to="/#"
           className="flex flex-shrink-0 items-center text-3xl font-bold text-primary md:text-4xl lg:text-[2.5rem]"
@@ -57,7 +55,7 @@ export function Header() {
         </HashLink>
         <span className="h-1/2 w-[2px] bg-primary"></span>
         {/* categories  */}
-        <div className="flex items-center gap-5 w-full">
+        <div className="flex w-full items-center gap-5">
           <div className="relative flex items-center">
             <button
               aria-label="Categories menu"
@@ -79,20 +77,20 @@ export function Header() {
               role="menu"
             >
               {categories.map((category) => (
-                <Link
-                  to={`/category/${category.id}`}
+                <HashLink
+                  to={`/category/${category.id}#`}
                   key={category.name}
                   className="bg-white px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:bg-gray-100"
                   role="menuitem"
                 >
                   {category.name}
-                </Link>
+                </HashLink>
               ))}
             </div>
           </div>
           <button
-            aria-label="Seach menu"
-            className="items-center rounded-3xl bg-gray-200 px-3 py-2 hidden sm:flex w-full text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            aria-label="Search menu"
+            className="hidden w-full items-center rounded-3xl bg-gray-200 px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:flex"
             onClick={() => setIsSearchMenuOpen(true)}
           >
             <SearchIcon className="mr-2 w-4" /> Search
@@ -152,7 +150,7 @@ export function Header() {
         <div className="flex items-center gap-2 md:gap-4">
           <Link
             to="/signin"
-            className="text-xs rounded-md border border-primary px-2 py-1 font-medium md:px-3 md:py-2 md:text-sm"
+            className="text-xs whitespace-nowrap rounded-md border border-primary px-2 py-1 font-medium md:px-3 md:py-2 md:text-sm"
           >
             Log in
           </Link>
@@ -164,10 +162,7 @@ export function Header() {
           </Link>
         </div>
       )}
-      <SearchMenu
-        isSearchMenuOpen={isSearchMenuOpen}
-        setIsSearchMenuOpen={setIsSearchMenuOpen}
-      />
+      <SearchMenu isSearchMenuOpen={isSearchMenuOpen} setIsSearchMenuOpen={setIsSearchMenuOpen} />
     </header>
   );
 }

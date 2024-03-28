@@ -8,16 +8,16 @@ import {
 import { review } from "@/types/Review";
 import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
 import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
-import Review from "@/components/Review";
+import { Review } from "@/components/Review";
 
 type ReviewsProps = {
   reviews: review[];
 };
 
-function Reviews({ reviews }: ReviewsProps) {
+export function Reviews({ reviews }: ReviewsProps) {
   return (
-    <div className="w-full min-h-[50svh] rounded py-8 px-5 bg-gray-200 flex flex-col items-center">
-      <h2 className="font-bold text-xl mb-10">People's openion</h2>
+    <div className="flex min-h-[50svh] w-full flex-col items-center rounded bg-gray-200 px-5 py-8">
+      <h2 className="mb-10 text-xl font-bold">People's openion</h2>
       {reviews.length ? (
         <Carousel
           opts={{
@@ -26,8 +26,8 @@ function Reviews({ reviews }: ReviewsProps) {
           className="w-full px-8"
         >
           <CarouselContent className="relative -ml-5">
-            {reviews.map((review, i) => (
-              <CarouselItem key={i}>
+            {reviews.map((review) => (
+              <CarouselItem key={review.comment}>
                 <Review review={review} />
               </CarouselItem>
             ))}
@@ -41,12 +41,10 @@ function Reviews({ reviews }: ReviewsProps) {
           </CarouselNext>
         </Carousel>
       ) : (
-        <div className="flex w-full items-center justify-center h-full">
+        <div className="flex h-full w-full items-center justify-center">
           <p className="text-sm">No reviews</p>
         </div>
       )}
     </div>
   );
 }
-
-export default Reviews;

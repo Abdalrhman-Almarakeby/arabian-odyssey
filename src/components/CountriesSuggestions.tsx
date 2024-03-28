@@ -33,7 +33,7 @@ export function CountriesSuggestions() {
   const filteredCountries = countries?.filter(({ id }) => id !== currentCountryId);
 
   return (
-    <section className="container px-4">
+    <section className="container">
       <div className="mb-6 flex items-center gap-2">
         <h2 className="whitespace-nowrap text-2xl font-bold">Other Countries</h2>
         <span className="mt-1 h-[2px] w-full bg-primary"></span>
@@ -71,7 +71,11 @@ export function CountriesSuggestions() {
       {error && (
         <p className="text-center text-base text-red-500">Unable to get data, try again later</p>
       )}
-      {!error && !countries && <Spinner color="success" size={"xl"} />}
+      {!error && !countries && (
+        <div className="grid place-items-center">
+          <Spinner color="success" size={"xl"} />
+        </div>
+      )}
     </section>
   );
 }

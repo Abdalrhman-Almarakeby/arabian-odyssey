@@ -41,10 +41,13 @@ export function Country({ isState }: CountryProps) {
       {country ? (
         <>
           <Wallpaper name={country.name} flag={country.flag.path} images={country.images} />
-          <main className="container  pb-[120px] pt-[50px]">
-            <Description country={country} countryId={countryId} />
+          <main className="container px-4 pb-[80px] pt-[50px]">
+            <Description country={country} />
             <Food foodData={country.popularFood} />
-            <Attractions data={isState && state ? state.attractions : country.attractions} />
+            <Attractions
+              country={country}
+              data={isState && state ? state.attractions : country.attractions}
+            />
             <CountriesSuggestions />
           </main>
         </>

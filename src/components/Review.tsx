@@ -1,23 +1,22 @@
 import { review } from "@/types/Review";
 import avatar from "@/assets/icons/user-avatar.svg";
 import { Rating } from "./Rating";
+
 type ReviewProps = {
   review: review;
 };
 
-function Review({ review }: ReviewProps) {
+export function Review({ review }: ReviewProps) {
   return (
-    <div className="bg-white rounded max-w-[350px] py-5 px-10 min-h-[300px]">
-      <div className="flex gap-2 items-center">
+    <div className="min-h-[300px] max-w-[350px] rounded bg-white px-10 py-5">
+      <div className="flex items-center gap-2">
         <figure>
           <img src={avatar} alt="" />
         </figure>
         <p>Username</p>
       </div>
-      <Rating rating={review.rating} />
+      <Rating rating={+review.rating} />
       <div className="mt-3">{review.comment}</div>
     </div>
   );
 }
-
-export default Review;
