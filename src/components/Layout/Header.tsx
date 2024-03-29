@@ -14,7 +14,7 @@ import BarsSVG from "@/assets/icons/Bars.svg?react";
 import XmarkSVG from "@/assets/icons/xmark.svg?react";
 import axios from "axios";
 import logo from "@/assets/imgs/logo.png";
-import { Category } from "@/types/Category";
+import { Category } from "@/types/category";
 
 type HeaderProps = {
   isSearchMenuOpen: boolean;
@@ -37,11 +37,11 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
   const [categories, setCategories] = useState<Category[]>([]);
 
   // useEffect(() => {
-    if (window.innerWidth >= 640) {
-      useClickOutside(userMenuButtonRef, () => setIsUserMenuOpen(false));
-    } else {
-      useClickOutside(mobileUserMenuButtonRef, () => setIsUserMenuOpen(false));
-    }
+  if (window.innerWidth >= 640) {
+    useClickOutside(userMenuButtonRef, () => setIsUserMenuOpen(false));
+  } else {
+    useClickOutside(mobileUserMenuButtonRef, () => setIsUserMenuOpen(false));
+  }
   // }, [window.innerWidth]);
 
   useEffect(() => {
@@ -53,9 +53,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
   }, []);
 
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
-  useClickOutside(catagoriesMenuButtonRef, () =>
-    setIsCatagoriesMenuOpen(false)
-  );
+  useClickOutside(catagoriesMenuButtonRef, () => setIsCatagoriesMenuOpen(false));
 
   function signOut() {
     setUser(null);
@@ -67,14 +65,14 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
   return (
     <>
       <header className="container flex justify-between px-4 py-2">
-        <div className="flex items-center gap-5 mr-10">
+        <div className="mr-10 flex items-center gap-5">
           <HashLink
             to="/#"
             className="flex max-w-[80px] flex-shrink-0 items-center text-3xl font-bold text-primary md:text-4xl lg:text-[2.5rem]"
           >
             <img src={logo} className="max-w-[90px]" />
           </HashLink>
-          <span className="hidden sm:block h-1/2 w-[2px] bg-primary"></span>
+          <span className="hidden h-1/2 w-[2px] bg-primary sm:block"></span>
           {/* categories  */}
         </div>
 
@@ -130,15 +128,11 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
             </div>
           )}
           <button onClick={() => setMobileMenu(!mobileMenu)}>
-            {mobileMenu ? (
-              <XmarkSVG className="size-6" />
-            ) : (
-              <BarsSVG className="size-6" />
-            )}
+            {mobileMenu ? <XmarkSVG className="size-6" /> : <BarsSVG className="size-6" />}
           </button>
         </div>
-        <div className="w-full items-center hidden sm:flex">
-          <div className="flex items-center gap-5 w-full">
+        <div className="hidden w-full items-center sm:flex">
+          <div className="flex w-full items-center gap-5">
             <div className="relative flex items-center">
               <button
                 aria-label="Categories menu"
@@ -173,7 +167,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
             </div>
             <button
               aria-label="Seach menu"
-              className="flex items-center rounded-3xl bg-gray-200 px-3 py-2 w-full text-sm font-bold mr-6 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="mr-6 flex w-full items-center rounded-3xl bg-gray-200 px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               onClick={() => setIsSearchMenuOpen(true)}
             >
               <SearchIcon className="mr-2 w-4" /> Search
@@ -245,28 +239,25 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
             )}
           </div>
         </div>
-        <SearchMenu
-          isSearchMenuOpen={isSearchMenuOpen}
-          setIsSearchMenuOpen={setIsSearchMenuOpen}
-        />
+        <SearchMenu isSearchMenuOpen={isSearchMenuOpen} setIsSearchMenuOpen={setIsSearchMenuOpen} />
       </header>
       {mobileMenu && (
-        <div className="bg-white border-t-[1px] border-black z-10 w-[100%] relative sm:hidden top-[calc(100%)] right-0">
-          <div className="w-full border-b-[1px] flex flex-col justify-center border-black text-base font-bold">
+        <div className="relative right-0 top-[calc(100%)] z-10 w-[100%] border-t-[1px] border-black bg-white sm:hidden">
+          <div className="flex w-full flex-col justify-center border-b-[1px] border-black text-base font-bold">
             <button
               onClick={() => setCategoriesMenu(!categoriesMenu)}
-              className="flex items-center justify-center w-full py-5 hover:bg-primary hover:text-white duration-300"
+              className="flex w-full items-center justify-center py-5 duration-300 hover:bg-primary hover:text-white"
             >
-              Categories <DropDownArrowSVG className="size-6 " />
+              Categories <DropDownArrowSVG className="size-6" />
             </button>
-            <div className="w-full flex flex-col items-center">
+            <div className="flex w-full flex-col items-center">
               {categoriesMenu &&
                 categories.map((category) => (
                   <Link
                     to={`/category/${category.id}`}
                     onClick={() => setMobileMenu(false)}
                     key={category.name}
-                    className="w-[80%] py-3 border-b-[1px] flex justify-center border-black text-sm font-normal hover:bg-primary hover:text-white duration-300 last:border-b-0"
+                    className="flex w-[80%] justify-center border-b-[1px] border-black py-3 text-sm font-normal duration-300 last:border-b-0 hover:bg-primary hover:text-white"
                     role="menuitem"
                   >
                     {category.name}
@@ -275,7 +266,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
             </div>
           </div>
           <button
-            className="hover:fill-white flex w-full items-center justify-center border-b-[1px] border-black py-5 text-base font-bold hover:bg-primary hover:text-white duration-300"
+            className="flex w-full items-center justify-center border-b-[1px] border-black py-5 text-base font-bold duration-300 hover:bg-primary hover:fill-white hover:text-white"
             onClick={() => {
               setIsSearchMenuOpen(true);
               setMobileMenu(false);
@@ -288,14 +279,14 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
               <Link
                 to={"/signup"}
                 onClick={() => setMobileMenu(false)}
-                className="block text-center w-full border-b-[1px] border-black py-5 text-base font-bold hover:bg-primary hover:text-white duration-300"
+                className="block w-full border-b-[1px] border-black py-5 text-center text-base font-bold duration-300 hover:bg-primary hover:text-white"
               >
                 Register
               </Link>
               <Link
                 to={"/signin"}
                 onClick={() => setMobileMenu(false)}
-                className="block text-center w-full border-b-[1px] border-black py-5 text-base font-bold hover:bg-primary hover:text-white duration-300"
+                className="block w-full border-b-[1px] border-black py-5 text-center text-base font-bold duration-300 hover:bg-primary hover:text-white"
               >
                 Login
               </Link>
