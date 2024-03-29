@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ItemsSlider } from "./ItemsSlider";
 import { Dispatch, SetStateAction, useState } from "react";
 import CreateAttraction from "./CreateAttraction";
+import About from "./About";
 
 type ProfileProps = {
   isSearchMenuOpen: boolean;
@@ -26,6 +27,9 @@ export function Profile({
   return (
     user && (
       <div className="container flex-grow px-6 pt-10 pb-[100px]">
+        <section className="mb-24">
+          <About user={user} />
+        </section>
         <section className="mb-24">
           <h2 className="text-xl font-bold mb-10">WishList</h2>
           {user.WishList.length ? (

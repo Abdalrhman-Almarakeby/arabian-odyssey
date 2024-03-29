@@ -27,6 +27,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
   const { token, setToken } = useLocalStorageToken();
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  console.log(isUserMenuOpen)
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
   const [categoriesMenu, setCategoriesMenu] = useState<boolean>(false);
   const userMenuButtonRef = useRef<HTMLButtonElement>(null);
@@ -44,7 +45,9 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
   }, []);
 
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
-  useClickOutside(catagoriesMenuButtonRef, () => setIsCatagoriesMenuOpen(false));
+  useClickOutside(catagoriesMenuButtonRef, () =>
+    setIsCatagoriesMenuOpen(false)
+  );
 
   function signOut() {
     setUser(null);
@@ -72,22 +75,18 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
           {token && (
             <div className="relative flex items-center">
               <button
-                className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 mr-3"
+                className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 onClick={() => setIsUserMenuOpen(true)}
-                onFocus={() => {
-                  setIsUserMenuOpen(true);
-                  setIsCatagoriesMenuOpen(false);
-                }}
                 ref={userMenuButtonRef}
               >
                 <span className="sr-only">Open user menu</span>
                 {/* // TODO: Add the user image (if it is exist) */}
                 {/* {user.img? <img
-            className="size-9 rounded-full md:size-10 lg:size-12"
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-            alt="User Profile"
-          /> :<UserAvatarSVG className="size-9 rounded-full md:size-10 lg:size-12" />} */}
-                <UserAvatarSVG className="size-9 rounded-full text-gray-700 md:size-10 lg:size-12" />
+              className="size-9 rounded-full md:size-10 lg:size-12"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt="User Profile"
+            /> :<UserAvatarSVG className="size-9 rounded-full md:size-10 lg:size-12" />} */}
+                <UserAvatarSVG className="size-9 rounded-full text-gray-700 md:size-10 lg:size-12" />{" "}
               </button>
 
               <div
@@ -186,7 +185,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="User Profile"
             /> :<UserAvatarSVG className="size-9 rounded-full md:size-10 lg:size-12" />} */}
-                  <UserAvatarSVG className="size-9 rounded-full text-gray-700 md:size-10 lg:size-12" />
+                  <UserAvatarSVG className="size-9 rounded-full text-gray-700 md:size-10 lg:size-12" />{" "}
                 </button>
 
                 <div
@@ -254,7 +253,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
                     to={`/category/${category.id}`}
                     onClick={() => setMobileMenu(false)}
                     key={category.name}
-                    className="w-[80%] py-3 border-b-[1px] flex justify-center border-black text-base font-bold hover:bg-primary hover:text-white duration-300 last:border-b-0"
+                    className="w-[80%] py-3 border-b-[1px] flex justify-center border-black text-sm font-normal hover:bg-primary hover:text-white duration-300 last:border-b-0"
                     role="menuitem"
                   >
                     {category.name}

@@ -3,7 +3,7 @@ import { SubmitButton } from "@/components/SubmitButton";
 import { Category } from "@/types/Category";
 import { CountryData } from "@/types/Country";
 import { State } from "@/types/state";
-import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext"
+import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import axios, { AxiosResponse } from "axios";
 import { Modal, ModalBody, ModalHeader, Spinner } from "flowbite-react";
 import {
@@ -28,7 +28,7 @@ type FormDataProps = {
   openingHours: string;
   admissionFees: string;
   image: string;
-  images: string[]
+  images: string[];
 };
 
 function CreateAttraction({
@@ -51,10 +51,10 @@ function CreateAttraction({
     openingHours: "",
     admissionFees: "",
     image: "",
-    images: []
+    images: [],
   });
 
-  const {token} = useLocalStorageToken()
+  const { token } = useLocalStorageToken();
 
   useEffect(() => {
     if (country) {
@@ -80,17 +80,15 @@ function CreateAttraction({
   function uploadAttraction(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     setSubmitState("submiting");
-    formData.images.push(formData.image)
+    formData.images.push(formData.image);
+    console.log(formData);
     axios
-      .post(
-        "https://arabian-odyssey.vercel.app/attraction",
-        formData,
-        {
-          headers: {
-            token: `ArabianOdyssey__${token}`
-          }
-        }
-      )
+      .post("https://arabian-odyssey.vercel.app/attraction", formData, {
+        headers: {
+          token: `ArabianOdyssey__${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then(() => setIsSuccess(true))
       .catch((e) => {
         console.log(e);
@@ -112,13 +110,19 @@ function CreateAttraction({
 
   return (
     <Modal show={displayModal} onClose={() => setDisplayModal(false)}>
-      <ModalHeader>Create attraction</ModalHeader>
+      <ModalHeader>
+        <p>
+          Create attraction -{" "}
+          <span className="text-red-500">not available currently</span>
+        </p>
+      </ModalHeader>
       <ModalBody>
         {submitState === "unsubmited" ? (
           <form
             className="space-y-4 md:space-y-6"
             method="POST"
             onSubmit={uploadAttraction}
+            encType="multipar/form-data"
           >
             <div>
               <label
@@ -282,12 +286,16 @@ function CreateAttraction({
           </form>
         ) : submitState === "submiting" ? (
           <div className="flex w-full items-center justify-center">
-          <Spinner size={"xl"} color="primary"/>
+            <Spinner size={"xl"} color="primary" />
           </div>
         ) : isSuccess ? (
-          <p className="text-center text-primary">Attraction created successfully</p>
+          <p className="text-center text-primary">
+            Attraction created successfully
+          </p>
         ) : (
-          <p className="text-center text-red-500">Unable to create attraction</p>
+          <p className="text-center text-red-500">
+            Unable to create attraction
+          </p>
         )}
       </ModalBody>
     </Modal>
