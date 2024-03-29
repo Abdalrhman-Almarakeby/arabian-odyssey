@@ -13,20 +13,21 @@ import { useUser } from "@/contexts/UserContext";
 export function Attraction() {
   const { attractionId } = useParams();
   const { user } = useUser();
-  const [attraction, SetAttraction] = useState<Attraction | null>(null);
+  const [attraction, setAttraction] = useState<Attraction | null>(null);
+  const [userDidComment, setUserDidComment] = useState(false);
 
   useEffect(() => {
     axios
       .get(`https://arabian-odyssey.vercel.app/attraction/${attractionId}`)
       .then((res: AxiosResponse) => res.data)
-      .then((data: { attraction: Attraction }) => SetAttraction(data.attraction))
+      .then((data: { attraction: Attraction }) => setAttraction(data.attraction))
       .catch((err: AxiosError) => console.log(err));
   }, [attractionId]);
 
   const userHasRated =
     attraction &&
     user &&
-    attraction.Review.map((review) => review.user._id !== user._id).includes(true);
+    attraction.Review.map((review) => review.user._id === user._id).includes(true);
 
   return (
     <div className="container px-6 pb-[100px] pt-10">
@@ -38,9 +39,13 @@ export function Attraction() {
           <section className="mb-20">
             <Reviews reviews={attraction.Review} />
           </section>
-          {(!userHasRated || !user) && (
+          {((!userHasRated && !userDidComment) || !user) && (
             <section className="mb-20">
-              <RatingForm attractionId={attraction._id} />
+              <RatingForm
+                attractionId={attraction._id}
+                setUserDidComment={setUserDidComment}
+                setAttraction={setAttraction}
+              />
             </section>
           )}
           <section className="mb-20">
