@@ -14,6 +14,12 @@ import { useEffect, useState } from "react";
 import { Badge } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import BookmarkSVG from "@/assets/icons/bookmark.svg?react";
+import BookmarkOutlineSVG from "@/assets/icons/outline-bookmark.svg?react";
+import { useUser } from "@/contexts/UserContext";
+import toast from "react-hot-toast";
+import axios, { AxiosResponse } from "axios";
+import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 
 type AboutProps = {
   attraction: Attraction;
@@ -21,25 +27,115 @@ type AboutProps = {
 
 export function About({ attraction }: AboutProps) {
   const [active, setActive] = useState<string>(attraction.images[0].path);
+  const [addedToWishList, setAddedToWishList] = useState<null | boolean>(null);
+  const { user } = useUser();
+  const { token } = useLocalStorageToken();
 
   useEffect(() => {
     setActive(attraction.images[0].path);
   }, [attraction]);
 
+  const inWishList = user && user.WishList.includes(attraction._id);
+
+  const showBookmark = addedToWishList === null ? inWishList : addedToWishList;
+
+  function handleWishListToggle() {
+    if (!user) {
+      toast.error(
+        <>
+          Please
+          <>&nbsp;</>
+          <Link to="/signin" className="underline">
+            Sign in
+          </Link>
+          <>&nbsp;</>
+          to add attractions to your wish list
+        </>
+      );
+      return;
+    }
+    if (showBookmark) {
+      const toastId = toast.loading(`Removing ${attraction.name} from your wish list...`);
+      axios
+        .patch(
+          `https://arabian-odyssey.vercel.app/user/wishlist/${attraction._id}`,
+          {},
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              token: `ArabianOdyssey__${token}`,
+            },
+          }
+        )
+        .then((res: AxiosResponse) => res.data)
+        .then((data) => {
+          if (data.message === "success") {
+            setAddedToWishList(false);
+            toast.success(`${attraction.name} is removed from your wish list`);
+          } else {
+            toast.error(data.message ?? "Sorry, something went wrong. Please try again.");
+          }
+        })
+        .catch((err) =>
+          toast.error(err.message ?? "Sorry, something went wrong. Please try again.")
+        )
+        .finally(() => toast.dismiss(toastId));
+    } else {
+      const toastId = toast.loading(`Adding ${attraction.name} to your wish list...`);
+      axios
+        .post(
+          `https://arabian-odyssey.vercel.app/user/wishlist/${attraction._id}`,
+          {},
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              token: `ArabianOdyssey__${token}`,
+            },
+          }
+        )
+        .then((res: AxiosResponse) => res.data)
+        .then((data) => {
+          if (data.message === "success") {
+            setAddedToWishList(true);
+            toast.success(`${attraction.name} is added to your wish list`);
+          } else {
+            toast.error(data.message ?? "Sorry, something went wrong. Please try again.");
+          }
+        })
+        .catch((err) =>
+          toast.error(err.message ?? "Sorry, something went wrong. Please try again.")
+        )
+        .finally(() => toast.dismiss(toastId));
+    }
+  }
+
   return (
     <div className="mb-20 flex flex-col gap-10 px-10 pb-5 shadow-md md:mb-15 md:gap-14 lg:flex-row lg:gap-0">
+      <div className="absolute right-10 top-15 grid">
+        <button onClick={handleWishListToggle}>
+          {showBookmark ? (
+            <>
+              <BookmarkSVG className="w-[20px]" />
+              <span className="sr-only">Remove from the wish list </span>
+            </>
+          ) : (
+            <>
+              <BookmarkOutlineSVG className="w-[20px]" />
+              <span className="sr-only">Add to the wish list </span>
+            </>
+          )}
+        </button>
+      </div>
       <div className="pt-5 lg:hidden">
         <h1 className="mb-1 text-3xl font-bold">{attraction.name}</h1>
         <Rating rating={attraction.rating} />
       </div>
       <div className="grid w-full gap-4 rounded">
-        <div>
-          <img
-            className="h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[480px]"
-            src={active}
-            alt=""
-          />
-        </div>
+        <img
+          className="h-auto w-full max-w-full rounded-lg object-cover object-center md:h-[480px]"
+          src={active}
+          alt=""
+        />
         <Carousel
           opts={{
             align: "start",

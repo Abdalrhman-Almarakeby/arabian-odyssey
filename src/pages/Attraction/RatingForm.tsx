@@ -46,6 +46,7 @@ export function RatingForm({ attractionId, setUserDidComment, setAttraction }: R
         { rating, comment },
         {
           headers: {
+            "Access-Control-Allow-Origin": "*",
             token: `ArabianOdyssey__${token}`,
           },
         }
@@ -70,7 +71,10 @@ export function RatingForm({ attractionId, setUserDidComment, setAttraction }: R
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4 rounded px-5 py-8">
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-full max-w-[700px] flex-col gap-4 rounded px-5 py-8 lg:px-0"
+    >
       {loading && <Loading />}
       <h3 className="flex items-center gap-2 text-2xl font-bold">
         Give A Rating <CommentSVG className="mt-2 size-[20px] fill-primary" />

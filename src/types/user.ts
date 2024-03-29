@@ -12,4 +12,5 @@ export type User = {
   name: string;
   password: string;
   status: "Online" | "Offline";
+  WishList: string[];
 };

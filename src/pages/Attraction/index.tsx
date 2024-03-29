@@ -30,7 +30,7 @@ export function Attraction() {
     attraction.Review.map((review) => review.user._id === user._id).includes(true);
 
   return (
-    <div className="container px-6 pb-[100px] pt-10">
+    <div className="container relative px-6 pb-[100px] pt-10">
       {attraction ? (
         <>
           <section>

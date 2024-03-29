@@ -30,6 +30,7 @@ export function Signup() {
     axios
       .post("https://arabian-odyssey.vercel.app/auth/signup", JSON.stringify(formData), {
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
         },
       })

@@ -36,6 +36,7 @@ export default function App() {
       .get("https://arabian-odyssey.vercel.app/user", {
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
           token: `ArabianOdyssey__${token}`,
         },
       })
