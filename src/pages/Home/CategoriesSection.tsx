@@ -25,7 +25,7 @@ export function CategoriesSection({ title }: CategoriesSectionProps) {
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
       {title && <SectionHeading>Browse By Category</SectionHeading>}
 
-      {categories && (
+      {categories.length > 0 && (
         <ul className="grid w-full grid-cols-1 justify-center gap-10 gap-x-4 min-450:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
           {categories.map((category) => (
             <HashLink key={category.name} to={`/category/${category.id}#`}>
@@ -51,7 +51,7 @@ export function CategoriesSection({ title }: CategoriesSectionProps) {
       {error && (
         <p className="text-center text-base text-red-500">Unable to get data, try again later</p>
       )}
-      {!error && !categories && (
+      {!error && !categories.length && (
         <div className="grid place-items-center">
           <Spinner color="success" size={"xl"} />
         </div>

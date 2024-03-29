@@ -20,7 +20,7 @@ export function MostVisitedSection() {
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
       <SectionHeading>Most Visited</SectionHeading>
 
-      {countries && (
+      {countries.length > 0 && (
         <ol className="grid w-full grid-cols-1 items-center justify-center gap-10 gap-x-4 min-450:grid-cols-2 md:grid-cols-3">
           {countries.map((country) => (
             <CountryDisplay
@@ -34,10 +34,10 @@ export function MostVisitedSection() {
         </ol>
       )}
 
-      {error && (
+      {error && !countries.length && (
         <p className="text-center text-base text-red-500">Unable to get data, try again later</p>
       )}
-      {!error && !countries && (
+      {!error && !countries.length && (
         <div className="grid place-items-center">
           <Spinner color="success" size={"xl"} />
         </div>
