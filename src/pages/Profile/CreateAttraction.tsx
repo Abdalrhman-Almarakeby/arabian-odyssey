@@ -7,6 +7,7 @@ import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import axios, { AxiosResponse } from "axios";
 import { Modal, ModalBody, ModalHeader, Spinner } from "flowbite-react";
 import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 type CreateAttractionProps = {
   setDisplayModal: Dispatch<SetStateAction<boolean>>;
@@ -78,9 +79,9 @@ function CreateAttraction({ setDisplayModal, displayModal }: CreateAttractionPro
         },
       })
       .then(() => setIsSuccess(true))
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
         setIsSuccess(false);
+        toast.error("An Error Occurred. Please try later.");
       })
       .finally(() => setSubmitState("submited"));
   }

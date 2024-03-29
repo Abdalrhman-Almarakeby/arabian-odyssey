@@ -65,12 +65,7 @@ export default function App() {
             />
           }
         >
-          <Route
-            index
-            element={
-              <Home setIsSearchMenuOpen={setIsSearchMenuOpen} isSearchMenuOpen={isSearchMenuOpen} />
-            }
-          />
+          <Route index element={<Home />} />
           <Route path="/country/:countryId" element={<Country isState={false} />} />
           <Route path="/country/:countryId/:stateId" element={<Country isState={true} />} />
           <Route path="/attraction/:attractionId" element={<Attraction />} />

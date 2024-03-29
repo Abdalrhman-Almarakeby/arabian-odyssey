@@ -27,7 +27,10 @@ export function HotAttractionsSection() {
   }, []);
 
   return (
-    <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
+    <section
+      className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12"
+      id="hot-destinations"
+    >
       <SectionHeading>Hot Attractions</SectionHeading>
       {attractions && (
         <Carousel

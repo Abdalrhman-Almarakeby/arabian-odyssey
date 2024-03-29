@@ -14,7 +14,6 @@ type ProfileProps = {
 export function Profile({ isSearchMenuOpen, setIsSearchMenuOpen }: ProfileProps) {
   const navigate = useNavigate();
   const { user } = useUser();
-  console.log(user);
   const [displayModal, setDisplayModal] = useState<boolean>(false);
 
   useEffect(() => {
