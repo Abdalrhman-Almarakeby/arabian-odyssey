@@ -1,7 +1,7 @@
 import { Input } from "@/components/Input";
 import { SubmitButton } from "@/components/SubmitButton";
-import { Category } from "@/types/category";
-import { CountryData } from "@/types/country";
+import { Category } from "@/types/Category";
+import { CountryData } from "@/types/Country";
 import { State } from "@/types/state";
 import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import axios, { AxiosResponse } from "axios";

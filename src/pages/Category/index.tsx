@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from "axios";
 import { Spinner } from "flowbite-react";
 import { Attractions } from "@/components/Attractions";
 import { CountriesSuggestions } from "@/components/CountriesSuggestions";
-import { CategoryData } from "@/types/category";
+import { CategoryData } from "@/types/Category";
 import { HashLink } from "react-router-hash-link";
 
 export function Category() {
