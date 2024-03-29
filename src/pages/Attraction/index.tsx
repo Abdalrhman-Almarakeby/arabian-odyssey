@@ -19,7 +19,7 @@ export function Attraction() {
       .then((data: { attraction: Attraction }) => SetAttraction(data.attraction))
       .catch((err: AxiosError) => console.log(err));
   }, [attractionId]);
-
+  console.log(attraction);
   return (
     <div className="container px-6 pb-[100px] pt-10">
       {attraction ? (
