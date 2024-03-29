@@ -17,8 +17,11 @@ type foodProps = {
 
 export function Food({ foodData }: foodProps) {
   return (
-    <section className="container mb-15 px-4">
-      <h2 className="mb-6 text-2xl font-bold">Local food & Cuisine</h2>
+    <section className="container mb-15">
+      <div className="mb-6 flex items-center">
+        <h2 className="mr-2 whitespace-nowrap text-2xl font-bold">Local food & Cuisine</h2>
+        <span className="mt-1 h-[2px] w-full bg-primary"></span>
+      </div>
       {foodData.length ? (
         <Carousel
           opts={{
@@ -28,7 +31,7 @@ export function Food({ foodData }: foodProps) {
         >
           <CarouselContent className="relative -ml-5">
             {foodData.map(({ image, name }) => (
-              <CarouselItem key={name} className="pl-5 shadow-xl md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={name} className="pl-5 shadow-xl sm:basis-1/2 lg:basis-1/3">
                 <UnratedSlideCard locationName={name} image={image.path} />
               </CarouselItem>
             ))}

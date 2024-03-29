@@ -44,9 +44,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
   }, []);
 
   const catagoriesMenuButtonRef = useRef<HTMLButtonElement>(null);
-  useClickOutside(catagoriesMenuButtonRef, () =>
-    setIsCatagoriesMenuOpen(false)
-  );
+  useClickOutside(catagoriesMenuButtonRef, () => setIsCatagoriesMenuOpen(false));
 
   function signOut() {
     setUser(null);

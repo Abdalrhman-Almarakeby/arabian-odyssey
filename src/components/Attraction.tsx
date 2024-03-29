@@ -1,6 +1,6 @@
 import { Attraction } from "@/types/attraction";
-import { Link } from "react-router-dom";
 import { Rating } from "./Rating";
+import { HashLink } from "react-router-hash-link";
 
 type AttractionProps = {
   data: Attraction;
@@ -15,24 +15,12 @@ export function Attraction({ data, row, setModal = false }: AttractionProps) {
     }
   }
   return (
-    <div
-      className={`mb-20 flex flex-col items-center ${
-        !row && "md:mb-15 md:flex-row"
-      }`}
-    >
+    <div className={`mb-20 flex flex-col items-center ${!row && "md:mb-15 md:flex-row"}`}>
       {!row && (
         <figure className="max-w-full rounded sm:max-w-[500px] md:mr-10">
-          <Link
-            onClick={changeState}
-            className="w-full"
-            to={`/attraction/${data._id}`}
-          >
-            <img
-              src={data.image.path}
-              className="rounded-t md:rounded-b"
-              alt=""
-            />
-          </Link>
+          <HashLink onClick={changeState} className="w-full" to={`/attraction/${data._id}#`}>
+            <img src={data.image.path} className="rounded-t md:rounded-b" alt="" />
+          </HashLink>
         </figure>
       )}
       <div
@@ -43,17 +31,15 @@ export function Attraction({ data, row, setModal = false }: AttractionProps) {
         <h3 className="mb-1 text-2xl font-bold">{data.name}</h3>
         <Rating rating={data.rating} />
         <p className="mb-4 mt-6 max-w-[450px] text-base font-light">
-          {data.desc.length > 200
-            ? `${data.desc.substring(0, 200)}...`
-            : data.desc}
+          {data.desc.length > 200 ? `${data.desc.substring(0, 200)}...` : data.desc}
         </p>
-        <Link
+        <HashLink
           onClick={changeState}
           className="rounded-[100px] bg-primary px-4 py-2 text-xl text-white duration-300 hover:bg-secondary"
-          to={`/attraction/${data._id}`}
+          to={`/attraction/${data._id}#`}
         >
           Read more
-        </Link>
+        </HashLink>
       </div>
     </div>
   );

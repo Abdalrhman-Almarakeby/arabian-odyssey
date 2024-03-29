@@ -1,23 +1,32 @@
-import { review } from "@/types/Review";
-import avatar from "@/assets/icons/user-avatar.svg";
+import { review } from "@/types/review";
+import AvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { Rating } from "./Rating";
+
 type ReviewProps = {
   review: review;
 };
 
-function Review({ review }: ReviewProps) {
+export function Review({ review }: ReviewProps) {
   return (
-    <div className="bg-white rounded max-w-[350px] py-5 px-10 min-h-[300px]">
-      <div className="flex gap-2 items-center">
-        <figure>
-          <img src={avatar} alt="" />
-        </figure>
-        <p>Username</p>
+    <div
+      className="flex h-full flex-col gap-4 rounded bg-white px-4 py-5"
+      aria-label={`Review by ${review.user.name}`}
+    >
+      <div className="flex items-center gap-2">
+        {review.user.image ? (
+          <figure>
+            <img src={review.user.image.path} alt="" className="size-[50px] rounded-full" />
+          </figure>
+        ) : (
+          <AvatarSVG className="size-[50px] fill-primary" />
+        )}
+        <p className="capitalize"> {review.user.name}</p>
       </div>
-      <Rating rating={review.rating} />
-      <div className="mt-3">{review.comment}</div>
+      <div className="mb-4">{review.comment}</div>
+      <div className="mt-auto flex justify-between px-2">
+        <Rating rating={+review.rating} />
+        <p>{review.date ?? "Feb 13, 2021"}</p>
+      </div>
     </div>
   );
 }
-
-export default Review;

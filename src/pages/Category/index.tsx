@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
 import { Spinner } from "flowbite-react";
 import { Attractions } from "@/components/Attractions";
 import { CountriesSuggestions } from "@/components/CountriesSuggestions";
 import { CategoryData } from "@/types/category";
-import { BtnsLine } from "@/components/BtnsLine";
+import { HashLink } from "react-router-hash-link";
 
 export function Category() {
   const { categoryId } = useParams();
+  const { pathname } = useLocation();
   const [categories, setCategories] = useState<CategoryData[] | null>(null);
   const [category, setCategory] = useState<CategoryData | null>(null);
 
@@ -40,13 +41,31 @@ export function Category() {
               {category.name}
             </h1>
           </header>
-          <main className="container space-y-15 px-6 py-[50px]">
-            <BtnsLine states={categories} base={"/category"} baseBtn={false} />
-            <div className="mt-12">
-              <h2 className="mb-6 text-4xl font-bold lg:text-[40px]">{category.name}</h2>
-              <p className="max-w-[500px]">{category.desc}</p>
-            </div>
+          <main className="container px-6 py-[50px]">
+            <h2 className="mb-6 text-4xl font-bold lg:text-[40px]">{category.name}</h2>
+            <p className="mb-14">{category.desc}</p>
             <Attractions data={category.attractions} />
+            <div className="mb-6 flex items-center gap-2">
+              <h2 className="whitespace-nowrap text-2xl font-bold">Other Categories</h2>
+              <span className="mt-1 h-[2px] w-full bg-primary"></span>
+            </div>
+            <div className="flex w-full flex-wrap items-center gap-2 py-2 pb-14">
+              {categories
+                .filter(({ id }) => id !== category.id)
+                .map(({ id, name }) => (
+                  <HashLink
+                    key={id}
+                    className={`border-2 border-black rounded-[100px] py-1 px-3 mr-3 ${
+                      pathname.split("/")[2] === id
+                        ? "text-white bg-black"
+                        : "hover:bg-gray-400 hover:text-white"
+                    }`}
+                    to={`/category/${id}#`}
+                  >
+                    {name}
+                  </HashLink>
+                ))}
+            </div>
             <CountriesSuggestions />
           </main>
         </>

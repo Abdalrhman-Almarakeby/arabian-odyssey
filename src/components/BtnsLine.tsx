@@ -6,19 +6,15 @@ import { CategoryData } from "@/types/category";
 type BtnsLineProps = {
   states: State[] | CategoryData[];
   base: string;
-  baseBtn: string | false;
 };
 
-export function BtnsLine({ states, base, baseBtn }: BtnsLineProps) {
+export function BtnsLine({ states, base }: BtnsLineProps) {
   const { pathname } = useLocation();
   return (
-    <div className="flex w-full flex-wrap items-center gap-2 py-2">
-      {baseBtn && (
-        <InlineBtn name="About" base={base} id={false} currentPath={pathname} />
-      )}
-      {states.map((state, i) => (
+    <div className="flex w-full flex-wrap items-center justify-center gap-2 py-2 pb-14">
+      {states.map((state) => (
         <InlineBtn
-          key={i}
+          key={state.id}
           base={base}
           id={state.id}
           name={state.name}
