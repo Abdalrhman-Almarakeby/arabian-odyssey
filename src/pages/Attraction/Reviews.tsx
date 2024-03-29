@@ -26,8 +26,8 @@ export function Reviews({ reviews }: ReviewsProps) {
           className="w-full px-8"
         >
           <CarouselContent className="relative -ml-5">
-            {reviews.map((review) => (
-              <CarouselItem key={review.user.name} className="pl-5 md:basis-1/2 xl:basis-1/3">
+            {reviews.map((review, i) => (
+              <CarouselItem key={i} className="pl-5 md:basis-1/2 xl:basis-1/3">
                 <Review review={review} />
               </CarouselItem>
             ))}

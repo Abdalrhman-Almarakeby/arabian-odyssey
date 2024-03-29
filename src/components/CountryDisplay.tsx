@@ -13,7 +13,7 @@ export function CountryDisplay({ name, touristCount, flag, id }: CountryDisplayP
       <HashLink to={`/country/${id}#`} className="flex flex-col items-center">
         <img src={flag} className="size-[70px] rounded-full bg-gray-500"></img>
         <div className="text-center">
-          <p className="text-xl font-bold">{name}</p>
+          <p className="text-xl font-bold capitalize">{name}</p>
           <p className="font-light">{touristCount} Tourists</p>
         </div>
       </HashLink>

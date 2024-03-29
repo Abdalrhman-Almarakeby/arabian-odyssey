@@ -22,7 +22,7 @@ export function Review({ review }: ReviewProps) {
         )}
         <p className="capitalize"> {review.user.name}</p>
       </div>
-      <div className="mb-4">{review.user.name}</div>
+      <div className="mb-4">{review.comment}</div>
       <div className="mt-auto flex justify-between px-2">
         <Rating rating={+review.rating} review />
         <p>{review.date ?? "Feb 13, 2021"}</p>

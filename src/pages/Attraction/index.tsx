@@ -22,7 +22,7 @@ export function Attraction() {
       .then((res: AxiosResponse) => res.data)
       .then((data: { attraction: Attraction }) => setAttraction(data.attraction))
       .catch((err: AxiosError) => console.log(err));
-  }, [attractionId]);
+  }, [attractionId, userDidComment]);
 
   const userHasRated =
     attraction &&

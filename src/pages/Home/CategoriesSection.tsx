@@ -33,7 +33,7 @@ export function CategoriesSection({ title }: CategoriesSectionProps) {
                 <div className="relative z-10">
                   <img
                     src={category.image && category.image.path}
-                    className="mb-2.5 h-16 w-20 rounded bg-primary object-cover transition duration-500 group-hover:bg-secondary"
+                    className="mx-auto mb-2.5 h-16 w-20 rounded bg-primary object-cover transition duration-500 group-hover:bg-secondary"
                   ></img>
                   <h4 className="text-lg mb-4.5 text-center font-bold text-black motion-safe:group-hover:text-white">
                     {category.name}

@@ -144,7 +144,7 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
               </div>
             </div>
             <button
-              aria-label="Seach menu"
+              aria-label="Search menu"
               className="mr-6 flex w-full items-center rounded-3xl bg-gray-200 px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               onClick={() => setIsSearchMenuOpen(true)}
             >

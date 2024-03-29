@@ -18,7 +18,7 @@ export function MostVisitedSection() {
 
   return (
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
-      <SectionHeading>Most Visited</SectionHeading>
+      <SectionHeading>Most Visited Countries</SectionHeading>
 
       {countries.length > 0 && (
         <ol className="grid w-full grid-cols-1 items-center justify-center gap-10 gap-x-4 min-450:grid-cols-2 md:grid-cols-3">

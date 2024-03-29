@@ -21,7 +21,7 @@ export function Signup() {
   const { user } = useUser();
 
   useEffect(() => {
-    if (!user) navigate("/");
+    if (user) navigate("/");
   }, [navigate, user]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {

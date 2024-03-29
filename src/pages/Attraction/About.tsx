@@ -28,6 +28,7 @@ type AboutProps = {
 export function About({ attraction }: AboutProps) {
   const [active, setActive] = useState<string>(attraction.images[0].path);
   const [addedToWishList, setAddedToWishList] = useState<null | boolean>(null);
+  const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const { token } = useLocalStorageToken();
 
@@ -54,6 +55,8 @@ export function About({ attraction }: AboutProps) {
       );
       return;
     }
+    setLoading(true);
+
     if (showBookmark) {
       const toastId = toast.loading(`Removing ${attraction.name} from your wish list...`);
       axios
@@ -79,7 +82,10 @@ export function About({ attraction }: AboutProps) {
         .catch((err) =>
           toast.error(err.message ?? "Sorry, something went wrong. Please try again.")
         )
-        .finally(() => toast.dismiss(toastId));
+        .finally(() => {
+          toast.dismiss(toastId);
+          setLoading(false);
+        });
     } else {
       const toastId = toast.loading(`Adding ${attraction.name} to your wish list...`);
       axios
@@ -105,14 +111,17 @@ export function About({ attraction }: AboutProps) {
         .catch((err) =>
           toast.error(err.message ?? "Sorry, something went wrong. Please try again.")
         )
-        .finally(() => toast.dismiss(toastId));
+        .finally(() => {
+          toast.dismiss(toastId);
+          setLoading(false);
+        });
     }
   }
 
   return (
     <div className="mb-20 flex flex-col gap-10 px-10 pb-5 shadow-md md:mb-15 md:gap-14 lg:flex-row lg:gap-0">
       <div className="absolute right-10 top-15 grid">
-        <button onClick={handleWishListToggle}>
+        <button onClick={handleWishListToggle} disabled={loading}>
           {showBookmark ? (
             <>
               <BookmarkSVG className="w-[20px]" />
