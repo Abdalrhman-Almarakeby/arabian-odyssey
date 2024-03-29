@@ -14,7 +14,7 @@ import BarsSVG from "@/assets/icons/Bars.svg?react";
 import XmarkSVG from "@/assets/icons/xmark.svg?react";
 import axios from "axios";
 import logo from "@/assets/imgs/logo.png";
-import { Category } from "@/types/category";
+import { Category } from "@/types/Category";
 
 type HeaderProps = {
   isSearchMenuOpen: boolean;
