@@ -9,7 +9,7 @@ type ReviewProps = {
 export function Review({ review }: ReviewProps) {
   return (
     <div
-      className="flex h-full flex-col gap-4 rounded bg-white px-4 py-5"
+      className="flex h-full flex-col gap-4 rounded-lg bg-white px-4 py-5"
       aria-label={`Review by ${review.user.name}`}
     >
       <div className="flex items-center gap-2">
@@ -24,7 +24,7 @@ export function Review({ review }: ReviewProps) {
       </div>
       <div className="mb-4">{review.comment}</div>
       <div className="mt-auto flex justify-between px-2">
-        <Rating rating={+review.rating} />
+        <Rating rating={+review.rating} review />
         <p>{review.date ?? "Feb 13, 2021"}</p>
       </div>
     </div>

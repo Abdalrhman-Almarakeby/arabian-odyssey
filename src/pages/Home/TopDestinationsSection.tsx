@@ -40,7 +40,7 @@ export function TopDestinationsSection() {
             {states.map(({ id, image, name, country }) => (
               <CarouselItem key={name} className="pl-5 shadow-xl md:basis-1/2 lg:basis-1/3">
                 <UnratedSlideCard
-                  to={`/country/${country}/${id}#`}
+                  to={`/country/${country}/${id}#attractions`}
                   locationName={name}
                   image={image.path}
                 />

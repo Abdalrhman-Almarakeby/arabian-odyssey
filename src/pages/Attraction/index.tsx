@@ -7,21 +7,30 @@ import { Spinner } from "flowbite-react";
 import { Details } from "./Details";
 import { CountriesSuggestions } from "@/components/CountriesSuggestions";
 import { Reviews } from "./Reviews";
+import { RatingForm } from "./RatingForm";
+import { useUser } from "@/contexts/UserContext";
 
 export function Attraction() {
   const { attractionId } = useParams();
-  const [attraction, SetAttraction] = useState<Attraction | null>(null);
+  const { user } = useUser();
+  const [attraction, setAttraction] = useState<Attraction | null>(null);
+  const [userDidComment, setUserDidComment] = useState(false);
 
   useEffect(() => {
     axios
       .get(`https://arabian-odyssey.vercel.app/attraction/${attractionId}`)
       .then((res: AxiosResponse) => res.data)
-      .then((data: { attraction: Attraction }) => SetAttraction(data.attraction))
+      .then((data: { attraction: Attraction }) => setAttraction(data.attraction))
       .catch((err: AxiosError) => console.log(err));
-  }, [attractionId]);
-  console.log(attraction);
+  }, [attractionId, userDidComment]);
+
+  const userHasRated =
+    attraction &&
+    user &&
+    attraction.Review.map((review) => review.user._id === user._id).includes(true);
+
   return (
-    <div className="container px-6 pb-[100px] pt-10">
+    <div className="container relative px-6 pb-[100px] pt-10">
       {attraction ? (
         <>
           <section>
@@ -30,6 +39,15 @@ export function Attraction() {
           <section className="mb-20">
             <Reviews reviews={attraction.Review} />
           </section>
+          {((!userHasRated && !userDidComment) || !user) && (
+            <section className="mb-20">
+              <RatingForm
+                attractionId={attraction._id}
+                setUserDidComment={setUserDidComment}
+                setAttraction={setAttraction}
+              />
+            </section>
+          )}
           <section className="mb-20">
             <Details
               cords={attraction.locationCoordinates}

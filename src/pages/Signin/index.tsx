@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import toast from "react-hot-toast";
@@ -18,7 +18,9 @@ export function Signin() {
   const navigate = useNavigate();
   const { user } = useUser();
 
-  if (user) navigate("/");
+  useEffect(() => {
+    if (user) navigate("/");
+  }, [navigate, user]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
@@ -27,6 +29,7 @@ export function Signin() {
     axios
       .post("https://arabian-odyssey.vercel.app/auth/signin", JSON.stringify(formData), {
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
         },
       })

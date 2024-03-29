@@ -12,20 +12,20 @@ type CategoriesSectionProps = {
 
 export function CategoriesSection({ title }: CategoriesSectionProps) {
   const [categories, setCategories] = useState<Category[]>([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
       .get("https://arabian-odyssey.vercel.app/category")
-      .then((res: { data: { category: Category[] } }) => {
-        setCategories(res.data.category);
-      });
+      .then((res: { data: { category: Category[] } }) => setCategories(res.data.category))
+      .catch((err) => setError(err));
   }, []);
 
   return (
     <section className="container flex flex-col items-center justify-center gap-8 px-4 lg:gap-12">
       {title && <SectionHeading>Browse By Category</SectionHeading>}
 
-      {categories ? (
+      {categories.length > 0 && (
         <ul className="grid w-full grid-cols-1 justify-center gap-10 gap-x-4 min-450:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
           {categories.map((category) => (
             <HashLink key={category.name} to={`/category/${category.id}#`}>
@@ -33,7 +33,7 @@ export function CategoriesSection({ title }: CategoriesSectionProps) {
                 <div className="relative z-10">
                   <img
                     src={category.image && category.image.path}
-                    className="mb-2.5 h-16 w-20 rounded bg-primary object-cover transition duration-500 group-hover:bg-secondary"
+                    className="mx-auto mb-2.5 h-16 w-20 rounded bg-primary object-cover transition duration-500 group-hover:bg-secondary"
                   ></img>
                   <h4 className="text-lg mb-4.5 text-center font-bold text-black motion-safe:group-hover:text-white">
                     {category.name}
@@ -46,7 +46,12 @@ export function CategoriesSection({ title }: CategoriesSectionProps) {
             </HashLink>
           ))}
         </ul>
-      ) : (
+      )}
+
+      {error && (
+        <p className="text-center text-base text-red-500">Unable to get data, try again later</p>
+      )}
+      {!error && !categories.length && (
         <div className="grid place-items-center">
           <Spinner color="success" size={"xl"} />
         </div>

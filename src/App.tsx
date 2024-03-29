@@ -14,7 +14,7 @@ import { Signin } from "@/pages/Signin";
 import { ConfirmEmail } from "@/pages/ConfirmEmail";
 import { Category } from "@/pages/Category";
 import { Settings } from "@/pages/Settings";
-import { Attraction } from "@/pages/Attraction"
+import { Attraction } from "@/pages/Attraction";
 import { Profile } from "@/pages/Profile";
 
 import "./CSS/output.css";
@@ -22,7 +22,7 @@ import "./CSS/output.css";
 export default function App() {
   const { token } = useLocalStorageToken();
   const { setUser } = useUser();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSearchMenuOpen, setIsSearchMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -31,11 +31,13 @@ export default function App() {
       setIsLoading(false);
       return;
     }
+    setIsLoading(true);
 
     axios
       .get("https://arabian-odyssey.vercel.app/user", {
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
           token: `ArabianOdyssey__${token}`,
         },
       })
@@ -53,15 +55,32 @@ export default function App() {
     <>
       <Toaster />
       <Routes>
-        <Route path="/" element={<Layout loading={isLoading} setIsSearchMenuOpen={setIsSearchMenuOpen} isSearchMenuOpen={isSearchMenuOpen} />}>
-          <Route index element={<Home setIsSearchMenuOpen={setIsSearchMenuOpen} isSearchMenuOpen={isSearchMenuOpen} />} />
+        <Route
+          path="/"
+          element={
+            <Layout
+              loading={isLoading}
+              setIsSearchMenuOpen={setIsSearchMenuOpen}
+              isSearchMenuOpen={isSearchMenuOpen}
+            />
+          }
+        >
+          <Route index element={<Home />} />
           <Route path="/country/:countryId" element={<Country isState={false} />} />
           <Route path="/country/:countryId/:stateId" element={<Country isState={true} />} />
           <Route path="/attraction/:attractionId" element={<Attraction />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/profile" element={<Profile setIsSearchMenuOpen={setIsSearchMenuOpen} isSearchMenuOpen={isSearchMenuOpen} />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                setIsSearchMenuOpen={setIsSearchMenuOpen}
+                isSearchMenuOpen={isSearchMenuOpen}
+              />
+            }
+          />
           <Route path="/category/:categoryId" element={<Category />} />
         </Route>
         <Route path="/confirm-email" element={<ConfirmEmail />} />

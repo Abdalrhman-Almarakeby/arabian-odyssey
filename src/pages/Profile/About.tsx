@@ -3,14 +3,14 @@ import { User } from "@/types/user";
 
 function About({ user }: { user: User }) {
   const creationDate = new Date(user.createdAt).toDateString();
+
   return (
-    <div className="w-full flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-10">About</h2>
-      <div className="flex items-center gap-6 mb-4 shadow flex-col py-2 px-5 sm:flex-row">
+    <div className="flex w-full flex-col items-center">
+      <h2 className="mb-10 text-3xl font-bold">About</h2>
+      <div className="mb-4 flex flex-col items-center gap-6 px-5 py-2 shadow sm:flex-row">
         <div className="flex flex-col items-center sm:items-start">
-          <p className="text-xl font-bold mb-2">{user.name}</p>
+          <p className="mb-2 text-xl font-bold">{user.name}</p>
           <p className="font-light">{user.email}</p>
-          <p className="font-light">From: {user.location}</p>
           <p className="font-light">Gender: {user.gender}</p>
           <p className="font-light">Member since: {creationDate}</p>
         </div>
