@@ -11,7 +11,7 @@ import { SearchMenu } from "../SearchMenu";
 import SearchIcon from "@/assets/icons/search.svg?react";
 import DropDownArrowSVG from "@/assets/icons/drop-down-arrow.svg?react";
 import axios from "axios";
-import { Category } from "@/types/category";
+import { Category } from "@/types/Category";
 
 export function Header() {
   const navigate = useNavigate();
