@@ -12,7 +12,7 @@ import {
 import { UnratedSlideCard } from "@/components/UnratedSlideCard";
 import AngleRightSVG from "@/assets/icons/angle-right.svg?react";
 import AngleLeftSVG from "@/assets/icons/angle-left.svg?react";
-import { CountryData } from "@/types/country";
+import { CountryData } from "@/types/Country";
 
 export function CountriesSuggestions() {
   const { pathname } = useLocation();
