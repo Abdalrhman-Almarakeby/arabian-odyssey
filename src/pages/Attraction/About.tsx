@@ -35,7 +35,7 @@ export function About({ attraction }: AboutProps) {
     setActive(attraction.images[0].path);
   }, [attraction]);
 
-  const inWishList = user && user.WishList.includes(attraction._id);
+  const inWishList = user && user.WishList.some((item) => item.id === attraction._id);
 
   const showBookmark = addedToWishList === null ? inWishList : addedToWishList;
 
