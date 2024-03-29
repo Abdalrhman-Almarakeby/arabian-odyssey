@@ -13,28 +13,7 @@ export function Footer() {
           </HashLink>
           . All Rights Reserved.
         </span>
-        <ul className="mt-3 flex flex-wrap items-center text-sm font-medium text-gray-500 sm:mt-0">
-          <li>
-            <HashLink to="/#" className="me-4 hover:underline md:me-6">
-              About
-            </HashLink>
-          </li>
-          <li>
-            <HashLink to="/#" className="me-4 hover:underline md:me-6">
-              Privacy Policy
-            </HashLink>
-          </li>
-          <li>
-            <HashLink to="/#" className="me-4 hover:underline md:me-6">
-              Licensing
-            </HashLink>
-          </li>
-          <li>
-            <HashLink to="/#" className="hover:underline">
-              Contact
-            </HashLink>
-          </li>
-        </ul>
+
       </div>
     </footer>
   );

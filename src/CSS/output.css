@@ -1612,6 +1612,11 @@ p,
   height: 70px;
 }
 
+.size-40 {
+  width: 10rem;
+  height: 10rem;
+}
+
 .h-0 {
   height: 0px;
 }
@@ -2212,6 +2217,10 @@ p,
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .gap-x-4 {
@@ -6689,6 +6698,14 @@ p,
 
   .sm\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:items-start {
+    align-items: flex-start;
   }
 
   .sm\:p-8 {

@@ -74,6 +74,7 @@ function CreateAttraction({ setDisplayModal, displayModal }: CreateAttractionPro
       .post("https://arabian-odyssey.vercel.app/attraction", formData, {
         headers: {
           token: `ArabianOdyssey__${token}`,
+          "Content-Type": "multipart/form-data",
         },
       })
       .then(() => setIsSuccess(true))
@@ -95,10 +96,19 @@ function CreateAttraction({ setDisplayModal, displayModal }: CreateAttractionPro
 
   return (
     <Modal show={displayModal} onClose={() => setDisplayModal(false)}>
-      <ModalHeader>Create attraction</ModalHeader>
+      <ModalHeader>
+        <p>
+          Create attraction - <span className="text-red-500">not available currently</span>
+        </p>
+      </ModalHeader>
       <ModalBody>
         {submitState === "unsubmited" ? (
-          <form className="space-y-4 md:space-y-6" method="POST" onSubmit={uploadAttraction}>
+          <form
+            className="space-y-4 md:space-y-6"
+            method="POST"
+            onSubmit={uploadAttraction}
+            encType="multipar/form-data"
+          >
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-medium text-black">
                 Attraction name

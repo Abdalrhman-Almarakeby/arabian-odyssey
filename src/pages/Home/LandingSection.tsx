@@ -14,8 +14,8 @@ type LandingSectionProps = {
 export function LandingSection({ isSearchMenuOpen, setIsSearchMenuOpen }: LandingSectionProps) {
   const LOCATIONS = [
     { img: homeImg1, location: "Sir Al Dannieyh, Lebanon" },
-    { img: homeImg2, location: "Ain Draham, Tunisia" },
-    { img: homeImg3, location: "Sahara, Morocco" },
+    { img: homeImg3, location: "Ain Draham, Tunisia" },
+    { img: homeImg2, location: "Sahara, Morocco" },
   ];
 
   return (

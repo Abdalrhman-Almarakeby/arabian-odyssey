@@ -15,6 +15,7 @@ export type User = {
   isConfirmed: boolean;
   isDeleted: boolean;
   Role: Role;
+  location: string;
   createdAt: string;
   name: string;
   password: string;
