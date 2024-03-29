@@ -1,7 +1,7 @@
 import { Attraction } from "@/types/attraction";
 import { AttractionsList } from "@/components/AttractionsList";
 import { NoData } from "@/components/NoData";
-import { CountryData } from "@/types/country";
+import { CountryData } from "@/types/Country";
 import { useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
