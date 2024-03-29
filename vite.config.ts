@@ -11,7 +11,7 @@ export default defineConfig({
     },
   },
   // To deploy on github page ( temporarily )
-  base: "/arabian-odyssey",
+  base: "/",
   server: {
     port: 3000,
   },
