@@ -5,7 +5,7 @@ import { Spinner } from "flowbite-react";
 import { Wallpaper } from "@/components/Wallpaper";
 import { Attractions } from "@/components/Attractions";
 import { CountriesSuggestions } from "@/components/CountriesSuggestions";
-import { CountryData } from "@/types/Country";
+import { CountryData } from "@/types/country";
 import { Description } from "./Description";
 import { Food } from "./Food";
 import { StateData } from "@/types/state";

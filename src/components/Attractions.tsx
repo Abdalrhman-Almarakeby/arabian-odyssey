@@ -1,7 +1,7 @@
 import { Attraction } from "@/types/attraction";
 import { AttractionsList } from "@/components/AttractionsList";
 import { NoData } from "@/components/NoData";
-import { CountryData } from "@/types/Country";
+import { CountryData } from "@/types/country";
 import { useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
@@ -14,7 +14,7 @@ export function Attractions({ data, country }: AttractionsProps) {
   const { pathname } = useLocation();
 
   return (
-    <section className="mb-15">
+    <section className="mb-15" id="attractions">
       <div className="mb-6 flex items-center">
         <h2 className="mr-2 text-2xl font-bold">Attractions</h2>
         <span className="mt-1 h-[2px] w-full bg-primary"></span>

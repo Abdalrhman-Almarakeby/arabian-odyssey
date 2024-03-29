@@ -1,8 +1,8 @@
 import { LatLngExpression } from "leaflet";
-import { Category } from "./Category";
-import { Country } from "./Country";
+import { Category } from "./category";
+import { Country } from "./country";
 import { State } from "./state";
-import { review } from "./Review";
+import { review } from "./review";
 
 export type Attraction = {
   _id: string;

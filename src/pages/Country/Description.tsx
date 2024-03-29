@@ -1,5 +1,5 @@
 import { Badge } from "flowbite-react";
-import { CountryData } from "@/types/Country";
+import { CountryData } from "@/types/country";
 
 type DescriptionProps = {
   country: CountryData;

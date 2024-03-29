@@ -1,4 +1,4 @@
-import { review } from "@/types/Review";
+import { review } from "@/types/review";
 import AvatarSVG from "@/assets/icons/user-avatar.svg?react";
 import { Rating } from "./Rating";
 

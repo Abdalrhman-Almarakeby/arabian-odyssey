@@ -1,18 +1,12 @@
 import { Input } from "@/components/Input";
 import { SubmitButton } from "@/components/SubmitButton";
-import { Category } from "@/types/Category";
-import { CountryData } from "@/types/Country";
+import { Category } from "@/types/category";
+import { CountryData } from "@/types/country";
 import { State } from "@/types/state";
-import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext"
+import { useLocalStorageToken } from "@/contexts/LocalStorageTokenContext";
 import axios, { AxiosResponse } from "axios";
 import { Modal, ModalBody, ModalHeader, Spinner } from "flowbite-react";
-import {
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
 
 type CreateAttractionProps = {
   setDisplayModal: Dispatch<SetStateAction<boolean>>;
@@ -28,16 +22,13 @@ type FormDataProps = {
   openingHours: string;
   admissionFees: string;
   image: string;
-  images: string[]
+  images: string[];
 };
 
-function CreateAttraction({
-  setDisplayModal,
-  displayModal,
-}: CreateAttractionProps) {
-  const [submitState, setSubmitState] = useState<
-    "unsubmited" | "submiting" | "submited"
-  >("unsubmited");
+function CreateAttraction({ setDisplayModal, displayModal }: CreateAttractionProps) {
+  const [submitState, setSubmitState] = useState<"unsubmited" | "submiting" | "submited">(
+    "unsubmited"
+  );
   const [isSuccess, setIsSuccess] = useState<boolean>();
   const [country, setCountry] = useState<CountryData[]>();
   const [state, setState] = useState<State[]>([]);
@@ -51,16 +42,14 @@ function CreateAttraction({
     openingHours: "",
     admissionFees: "",
     image: "",
-    images: []
+    images: [],
   });
 
-  const {token} = useLocalStorageToken()
+  const { token } = useLocalStorageToken();
 
   useEffect(() => {
     if (country) {
-      const targetCountry = country.find(
-        (item) => item.id === formData.country
-      );
+      const targetCountry = country.find((item) => item.id === formData.country);
       if (targetCountry) setState(targetCountry.states);
     }
   }, [formData.country]);
@@ -80,17 +69,13 @@ function CreateAttraction({
   function uploadAttraction(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     setSubmitState("submiting");
-    formData.images.push(formData.image)
+    formData.images.push(formData.image);
     axios
-      .post(
-        "https://arabian-odyssey.vercel.app/attraction",
-        formData,
-        {
-          headers: {
-            token: `ArabianOdyssey__${token}`
-          }
-        }
-      )
+      .post("https://arabian-odyssey.vercel.app/attraction", formData, {
+        headers: {
+          token: `ArabianOdyssey__${token}`,
+        },
+      })
       .then(() => setIsSuccess(true))
       .catch((e) => {
         console.log(e);
@@ -100,9 +85,7 @@ function CreateAttraction({
   }
 
   function handleChange(
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ): void {
     setFormData((prev) => ({
       ...prev,
@@ -115,16 +98,9 @@ function CreateAttraction({
       <ModalHeader>Create attraction</ModalHeader>
       <ModalBody>
         {submitState === "unsubmited" ? (
-          <form
-            className="space-y-4 md:space-y-6"
-            method="POST"
-            onSubmit={uploadAttraction}
-          >
+          <form className="space-y-4 md:space-y-6" method="POST" onSubmit={uploadAttraction}>
             <div>
-              <label
-                htmlFor="name"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-black">
                 Attraction name
               </label>
               <Input
@@ -138,10 +114,7 @@ function CreateAttraction({
               />
             </div>
             <div>
-              <label
-                htmlFor="country"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="country" className="mb-2 block text-sm font-medium text-black">
                 Country
               </label>
               <select
@@ -162,19 +135,10 @@ function CreateAttraction({
               </select>
             </div>
             <div>
-              <label
-                htmlFor="state"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="state" className="mb-2 block text-sm font-medium text-black">
                 State
               </label>
-              <select
-                name="state"
-                id="state"
-                onChange={handleChange}
-                required
-                className="w-full"
-              >
+              <select name="state" id="state" onChange={handleChange} required className="w-full">
                 <option disabled selected>
                   {state.length ? "Select state" : "Select country"}
                 </option>
@@ -186,10 +150,7 @@ function CreateAttraction({
               </select>
             </div>
             <div>
-              <label
-                htmlFor="category"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="category" className="mb-2 block text-sm font-medium text-black">
                 Category
               </label>
               <select
@@ -210,10 +171,7 @@ function CreateAttraction({
               </select>
             </div>
             <div>
-              <label
-                htmlFor="openingHours"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="openingHours" className="mb-2 block text-sm font-medium text-black">
                 Opening Hours
               </label>
               <Input
@@ -227,10 +185,7 @@ function CreateAttraction({
               />
             </div>
             <div>
-              <label
-                htmlFor="admissionFees"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="admissionFees" className="mb-2 block text-sm font-medium text-black">
                 Admission Fees
               </label>
               <Input
@@ -244,10 +199,7 @@ function CreateAttraction({
               />
             </div>
             <div>
-              <label
-                htmlFor="image"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="image" className="mb-2 block text-sm font-medium text-black">
                 Image
               </label>
               <Input
@@ -261,16 +213,13 @@ function CreateAttraction({
               />
             </div>
             <div>
-              <label
-                htmlFor="desc"
-                className="mb-2 block text-sm font-medium text-black"
-              >
+              <label htmlFor="desc" className="mb-2 block text-sm font-medium text-black">
                 Description
               </label>
               <textarea
                 name="desc"
                 id="desc"
-                className="w-full min-h-[100px]"
+                className="min-h-[100px] w-full"
                 value={formData.desc}
                 onChange={handleChange}
                 placeholder="Description"
@@ -282,7 +231,7 @@ function CreateAttraction({
           </form>
         ) : submitState === "submiting" ? (
           <div className="flex w-full items-center justify-center">
-          <Spinner size={"xl"} color="primary"/>
+            <Spinner size={"xl"} color="primary" />
           </div>
         ) : isSuccess ? (
           <p className="text-center text-primary">Attraction created successfully</p>

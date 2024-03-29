@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { State } from "@/types/state";
 import { InlineBtn } from "./InlineBtn";
-import { CategoryData } from "@/types/Category";
+import { CategoryData } from "@/types/category";
 
 type BtnsLineProps = {
   states: State[] | CategoryData[];

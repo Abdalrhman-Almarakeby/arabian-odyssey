@@ -3,7 +3,7 @@ import { Spinner } from "flowbite-react";
 import axios from "axios";
 import LocationCrosshairsSVG from "@/assets/icons/location-crosshairs.svg?react";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Category } from "@/types/Category";
+import { Category } from "@/types/category";
 import { HashLink } from "react-router-hash-link";
 
 type CategoriesSectionProps = {
