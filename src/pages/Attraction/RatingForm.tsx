@@ -56,7 +56,6 @@ export function RatingForm({ attractionId, setUserDidComment, setAttraction }: R
       .then((data) => {
         if (!(data.message === "success"))
           toast.error(data.message ?? "Sorry, something went wrong. Please try again.");
-        console.log(data);
 
         setAttraction((prev) => {
           if (!prev) return prev;
