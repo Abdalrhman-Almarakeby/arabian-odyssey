@@ -1,13 +1,14 @@
 import { useUser } from "@/contexts/UserContext";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Settings() {
   const navigate = useNavigate();
   const { user } = useUser();
 
-  if (!user) {
-    navigate("/signin");
-  }
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [navigate, user]);
 
-  return user && <div className="container px-4 flex-grow">Settings: {user.name}</div>;
+  return user && <div className="container flex-grow px-4">Settings: {user.name}</div>;
 }

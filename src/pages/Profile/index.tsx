@@ -2,7 +2,7 @@ import { NoData } from "@/components/NoData";
 import { useUser } from "@/contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { ItemsSlider } from "./ItemsSlider";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import CreateAttraction from "./CreateAttraction";
 import About from "./About";
 
@@ -17,9 +17,9 @@ export function Profile({ isSearchMenuOpen, setIsSearchMenuOpen }: ProfileProps)
   console.log(user);
   const [displayModal, setDisplayModal] = useState<boolean>(false);
 
-  if (!user) {
-    navigate("/signin");
-  }
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [navigate, user]);
 
   return (
     user && (

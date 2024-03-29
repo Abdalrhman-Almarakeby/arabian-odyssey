@@ -30,6 +30,6 @@
 
 @layer components {
   .full-screen-height {
-    @apply h-[calc(100svh-61px)] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-84px)];
+    @apply h-[calc(100svh-53px)] sm:h-[calc(100svh-56px)] lg:h-[calc(100svh-64px)];
   }
 }

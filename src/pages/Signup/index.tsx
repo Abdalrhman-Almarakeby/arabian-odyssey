@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import toast from "react-hot-toast";
@@ -20,7 +20,9 @@ export function Signup() {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
 
-  if (user) navigate("/");
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [navigate, user]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
