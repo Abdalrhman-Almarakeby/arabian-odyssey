@@ -1913,6 +1913,14 @@ p,
   max-width: 500px;
 }
 
+.max-w-\[80px\] {
+  max-width: 80px;
+}
+
+.max-w-\[90px\] {
+  max-width: 90px;
+}
+
 .max-w-full {
   max-width: 100%;
 }
@@ -1939,26 +1947,6 @@ p,
 
 .max-w-xs {
   max-width: 20rem;
-}
-
-.max-w-\[100px\] {
-  max-width: 100px;
-}
-
-.max-w-\[150px\] {
-  max-width: 150px;
-}
-
-.max-w-\[120px\] {
-  max-width: 120px;
-}
-
-.max-w-\[80px\] {
-  max-width: 80px;
-}
-
-.max-w-\[90px\] {
-  max-width: 90px;
 }
 
 .flex-1 {

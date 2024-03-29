@@ -28,6 +28,7 @@ type FormDataProps = {
   openingHours: string;
   admissionFees: string;
   image: string;
+  images: string[]
 };
 
 function CreateAttraction({
@@ -50,6 +51,7 @@ function CreateAttraction({
     openingHours: "",
     admissionFees: "",
     image: "",
+    images: []
   });
 
   const {token} = useLocalStorageToken()
@@ -78,6 +80,7 @@ function CreateAttraction({
   function uploadAttraction(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     setSubmitState("submiting");
+    formData.images.push(formData.image)
     axios
       .post(
         "https://arabian-odyssey.vercel.app/attraction",
@@ -254,7 +257,7 @@ function CreateAttraction({
                 accept="image/*"
                 value={formData.image}
                 onChange={handleChange}
-                // required
+                required
               />
             </div>
             <div>

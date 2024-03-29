@@ -23,7 +23,6 @@ export function SearchMenu({
         setAttractions(res.data.attraction);
       });
   }, []);
-  console.log(attractions);
 
   return (
     <Modal show={isSearchMenuOpen} onClose={() => setIsSearchMenuOpen(false)}>
