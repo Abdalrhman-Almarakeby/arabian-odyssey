@@ -1298,6 +1298,10 @@ p,
   top: 3.75rem;
 }
 
+.top-\[calc\(100\%\)\] {
+  top: calc(100%);
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -1516,6 +1520,14 @@ p,
   margin-top: auto;
 }
 
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -1605,6 +1617,11 @@ p,
 .size-\[70px\] {
   width: 70px;
   height: 70px;
+}
+
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .h-0 {
@@ -1740,6 +1757,10 @@ p,
   min-height: 100svh;
 }
 
+.min-h-\[100px\] {
+  min-height: 100px;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -1858,12 +1879,24 @@ p,
   width: 20px;
 }
 
+.w-\[100\%\] {
+  width: 100%;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
 
 .min-w-full {
   min-width: 100%;
+}
+
+.min-w-\[180px\] {
+  min-width: 180px;
 }
 
 .max-w-2xl {
@@ -1932,6 +1965,14 @@ p,
 
 .max-w-\[700px\] {
   max-width: 700px;
+}
+
+.max-w-\[80px\] {
+  max-width: 80px;
+}
+
+.max-w-\[90px\] {
+  max-width: 90px;
 }
 
 .flex-1 {
@@ -2274,6 +2315,10 @@ p,
   border-color: rgb(229 231 235 / var(--tw-divide-opacity));
 }
 
+.self-start {
+  align-self: flex-start;
+}
+
 .self-center {
   align-self: center;
 }
@@ -2450,6 +2495,14 @@ p,
 
 .border-t-4 {
   border-top-width: 4px;
+}
+
+.border-b-\[1px\] {
+  border-bottom-width: 1px;
+}
+
+.border-t-\[1px\] {
+  border-top-width: 1px;
 }
 
 .border-black {
@@ -4394,6 +4447,10 @@ p,
   border-bottom-left-radius: 0.5rem;
 }
 
+.last\:border-b-0:last-child {
+  border-bottom-width: 0px;
+}
+
 .odd\:bg-white:nth-child(odd) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -4538,8 +4595,17 @@ p,
   background-color: rgb(252 233 106 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 163 104 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.hover\:fill-white:hover {
+  fill: #ffffff;
 }
 
 .hover\:text-cyan-700:hover {
@@ -6580,8 +6646,16 @@ p,
     margin-top: 0px;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:flex {
     display: flex;
+  }
+
+  .sm\:hidden {
+    display: none;
   }
 
   .sm\:size-\[400px\] {

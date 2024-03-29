@@ -23,6 +23,7 @@ export default function App() {
   const { token } = useLocalStorageToken();
   const { setUser } = useUser();
   const [isLoading, setIsLoading] = useState(false);
+  const [isSearchMenuOpen, setIsSearchMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!token) {
@@ -54,15 +55,37 @@ export default function App() {
     <>
       <Toaster />
       <Routes>
-        <Route path="/" element={<Layout loading={isLoading} />}>
-          <Route index element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Layout
+              loading={isLoading}
+              setIsSearchMenuOpen={setIsSearchMenuOpen}
+              isSearchMenuOpen={isSearchMenuOpen}
+            />
+          }
+        >
+          <Route
+            index
+            element={
+              <Home setIsSearchMenuOpen={setIsSearchMenuOpen} isSearchMenuOpen={isSearchMenuOpen} />
+            }
+          />
           <Route path="/country/:countryId" element={<Country isState={false} />} />
           <Route path="/country/:countryId/:stateId" element={<Country isState={true} />} />
           <Route path="/attraction/:attractionId" element={<Attraction />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                setIsSearchMenuOpen={setIsSearchMenuOpen}
+                isSearchMenuOpen={isSearchMenuOpen}
+              />
+            }
+          />
           <Route path="/category/:categoryId" element={<Category />} />
         </Route>
         <Route path="/confirm-email" element={<ConfirmEmail />} />
