@@ -27,7 +27,6 @@ export function Header({ setIsSearchMenuOpen, isSearchMenuOpen }: HeaderProps) {
   const { token, setToken } = useLocalStorageToken();
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-  console.log(isUserMenuOpen);
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
   const [categoriesMenu, setCategoriesMenu] = useState<boolean>(false);
   const userMenuButtonRef = useRef<HTMLButtonElement>(null);
