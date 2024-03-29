@@ -7051,6 +7051,10 @@ p,
   .lg\:text-\[40px\] {
     font-size: 40px;
   }
+
+  .lg\:text-xl {
+    font-size: 20px;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -7076,6 +7080,10 @@ p,
 
   .xl\:p-0 {
     padding: 0px;
+  }
+
+  .xl\:text-xl {
+    font-size: 20px;
   }
 }
 

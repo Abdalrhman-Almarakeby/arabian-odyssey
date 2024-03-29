@@ -41,7 +41,7 @@ export function LandingSection() {
           <h1 className="mb-8 text-center text-3xl font-bold text-white sm:text-4xl">
             Arabian Odyssey
           </h1>
-          <p className="mb-4 text-center text-sm font-light text-white sm:text-base">
+          <p className="mb-4 text-center text-sm font-light text-white sm:text-base xl:text-xl">
             Embark on a journey to explore and discover the vibrant tapestry of the Arab world,
             where each step unveils treasures beyond the desert sands.
           </p>
